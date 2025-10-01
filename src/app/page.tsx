@@ -1,7 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { ArrowRight, Sparkles, TrendingUp, Zap, Clock, Star, CheckCircle, Heart, Gift } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ArrowRight, Sparkles, TrendingUp, Zap, Clock, Star, CheckCircle, Heart, Gift, Map, Trophy, X, MessageCircle, Phone, Mail } from 'lucide-react';
+import SMSCTAButton from '@/components/SMSCTAButton';
+import TreasureMapModal from '@/components/TreasureMapModal';
+import EngagementTracker from '@/components/EngagementTracker';
 
 export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
@@ -13,6 +16,26 @@ export default function LandingPage() {
   const [sliderValue, setSliderValue] = useState(3);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0 });
   const [spotsRemaining, setSpotsRemaining] = useState(5);
+  const [showTreasureMap, setShowTreasureMap] = useState(false);
+  const [showExitIntent, setShowExitIntent] = useState(false);
+  const [konamiProgress, setKonamiProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [timeOnPage, setTimeOnPage] = useState(0);
+  const [scrollDepth, setScrollDepth] = useState(0);
+  const [hintLevel, setHintLevel] = useState(0);
+  const [showQRCode, setShowQRCode] = useState(false);
+  const [userLevel, setUserLevel] = useState(1);
+  const exitIntentTriggered = useRef(false);
+
+  // Device detection
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -20,12 +43,64 @@ export default function LandingPage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Progressive hint system
+  useEffect(() => {
+    const hintTimers = [
+      setTimeout(() => setHintLevel(1), 30000),  // 30 seconds
+      setTimeout(() => setHintLevel(2), 60000),  // 1 minute
+      setTimeout(() => setHintLevel(3), 120000), // 2 minutes
+      setTimeout(() => setHintLevel(4), 180000)  // 3 minutes
+    ];
+
+    return () => hintTimers.forEach(clearTimeout);
+  }, []);
+
+  // Time on page tracking
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeOnPage(prev => prev + 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  // Konami code detection (↑↑↓↓←→←→BA)
+  useEffect(() => {
+    const konamiCode = [
+      'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+      'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+      'b', 'a'
+    ];
+    let konamiIndex = 0;
+
+    const handleKonamiKey = (e: KeyboardEvent) => {
+      const key = e.key.toLowerCase();
+
+      if (key === konamiCode[konamiIndex] || key === konamiCode[konamiIndex].toLowerCase()) {
+        konamiIndex++;
+        setKonamiProgress(konamiIndex);
+
+        if (konamiIndex === konamiCode.length) {
+          handleCodeClick('SPOOKY10');
+          konamiIndex = 0;
+          setKonamiProgress(0);
+        }
+      } else {
+        konamiIndex = 0;
+        setKonamiProgress(0);
+      }
+    };
+
+    window.addEventListener('keydown', handleKonamiKey);
+    return () => window.removeEventListener('keydown', handleKonamiKey);
+  }, [foundCodes]);
+
   useEffect(() => {
     const calculateTimeLeft = () => {
       const halloween = new Date('2025-10-31T23:59:59');
       const now = new Date();
       const difference = halloween.getTime() - now.getTime();
-      
+
       if (difference > 0) {
         setTimeLeft({
           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -34,7 +109,7 @@ export default function LandingPage() {
         });
       }
     };
-    
+
     calculateTimeLeft();
     const timer = setInterval(calculateTimeLeft, 60000);
     return () => clearInterval(timer);
@@ -158,33 +233,36 @@ export default function LandingPage() {
       
       {/* Fixed Header */}
       <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/90 backdrop-blur-2xl py-3 shadow-lg shadow-purple-500/20' : 'bg-transparent py-5'}`}>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <Sparkles className="text-pink-400" size={28} />
-            <span className="font-black text-xl md:text-2xl tracking-tight">Emily's Circle</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex justify-between items-center">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <Sparkles className="text-pink-400" size={24} />
+            <span className="font-black text-lg sm:text-xl md:text-2xl tracking-tight">Emily's Circle</span>
           </div>
-          <button className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 px-5 py-2.5 md:px-7 md:py-3 rounded-full font-bold text-sm md:text-base shadow-lg shadow-pink-500/40 transition-all duration-300 hover:scale-105 flex items-center gap-2">
-            Reserve Spot ({spotsRemaining} left)
-          </button>
+          <EngagementTracker
+            interactionScore={interactionScore}
+            foundCodes={foundCodes}
+            timeOnPage={timeOnPage}
+            userLevel={userLevel}
+          />
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20 px-6 md:px-12">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6 md:px-12">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px] animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-pink-600/20 rounded-full blur-[120px] animate-pulse" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-1/4 left-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-purple-600/20 rounded-full blur-[120px] animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-pink-600/20 rounded-full blur-[120px] animate-pulse" style={{animationDelay: '1s'}}></div>
         </div>
 
         <div className="relative max-w-6xl mx-auto text-center z-10">
-          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-pink-500/20 to-purple-500/20 backdrop-blur-sm border border-pink-400/40 rounded-full px-6 py-3 mb-10">
-            <span className="text-2xl">🎃</span>
-            <span className="text-sm font-bold text-pink-300 tracking-wide">EMILY'S FRIENDS-ONLY HALLOWEEN SPECIAL</span>
-            <span className="text-2xl">👻</span>
+          <div className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-pink-500/20 to-purple-500/20 backdrop-blur-sm border border-pink-400/40 rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-6 sm:mb-10">
+            <span className="text-xl sm:text-2xl">🎃</span>
+            <span className="text-xs sm:text-sm font-bold text-pink-300 tracking-wide">EMILY'S FRIENDS-ONLY HALLOWEEN SPECIAL</span>
+            <span className="text-xl sm:text-2xl">👻</span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.1] tracking-tight">
-            <span className="block bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent mb-3">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-6 sm:mb-8 leading-[1.1] tracking-tight px-2">
+            <span className="block bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent mb-2 sm:mb-3">
               Imagine Waking Up to
             </span>
             <span className="block bg-gradient-to-r from-pink-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
@@ -192,19 +270,19 @@ export default function LandingPage() {
             </span>
           </h1>
 
-          <div className="max-w-4xl mx-auto mb-12 space-y-4">
-            <p className="text-2xl md:text-3xl text-purple-200 leading-relaxed">
+          <div className="max-w-4xl mx-auto mb-8 sm:mb-12 space-y-3 sm:space-y-4 px-2">
+            <p className="text-lg sm:text-2xl md:text-3xl text-purple-200 leading-relaxed">
               You didn't send a single email. You didn't post on social. You didn't lift a finger.
             </p>
-            <p className="text-xl md:text-2xl font-semibold text-white leading-relaxed">
+            <p className="text-base sm:text-xl md:text-2xl font-semibold text-white leading-relaxed">
               Your custom-branded app did it all while you slept.
             </p>
           </div>
 
           {/* Interactive Component #1: Quick Value Slider */}
-          <div className="max-w-2xl mx-auto mb-12 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl rounded-3xl p-8 border border-purple-500/30">
-            <h3 className="text-xl font-bold mb-4 text-purple-200">👉 Try This: Interactive Value Demo</h3>
-            <p className="text-sm text-purple-300 mb-4">How many qualified leads per month would transform your business?</p>
+          <div className="max-w-2xl mx-auto mb-8 sm:mb-12 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-purple-500/30">
+            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-purple-200">👉 Try This: Interactive Value Demo</h3>
+            <p className="text-xs sm:text-sm text-purple-300 mb-3 sm:mb-4">How many qualified leads per month would transform your business?</p>
             <input 
               type="range" 
               min="1" 
@@ -217,30 +295,38 @@ export default function LandingPage() {
               className="w-full h-2 bg-purple-900 rounded-lg appearance-none cursor-pointer accent-pink-500"
             />
             <div className="mt-4 text-center">
-              <div className="text-5xl font-black text-transparent bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text mb-2">
+              <div className="text-4xl sm:text-5xl font-black text-transparent bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text mb-2">
                 {sliderValue * 50}
               </div>
-              <div className="text-sm text-purple-300">qualified leads per month = ${(sliderValue * 50 * 500).toLocaleString()} potential revenue</div>
+              <div className="text-xs sm:text-sm text-purple-300">qualified leads per month = ${(sliderValue * 50 * 500).toLocaleString()} potential revenue</div>
             </div>
-            <p className="text-xs text-purple-400 mt-4 italic">This is the kind of calculator your prospects could be using right now to see their ROI with YOU.</p>
+            <p className="text-[11px] sm:text-xs text-purple-400 mt-3 sm:mt-4 italic">This is the kind of calculator your prospects could be using right now to see their ROI with YOU.</p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-10">
-            <button className="group bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 px-10 py-5 rounded-full font-bold text-lg md:text-xl shadow-2xl shadow-pink-500/50 transition-all duration-300 hover:scale-105 flex items-center gap-3">
-              Reserve My Spot - $99 Deposit
-              <ArrowRight className="group-hover:translate-x-2 transition-transform" size={24} />
-            </button>
+          <div className="flex justify-center items-center mb-6 sm:mb-10">
+            <SMSCTAButton
+              foundCodes={foundCodes}
+              isMobile={isMobile}
+              showQRCode={showQRCode}
+              setShowQRCode={setShowQRCode}
+              variant="primary"
+              className="w-full max-w-2xl"
+            />
           </div>
 
-          <p className="text-sm text-purple-300 mb-6">
+          <p className="text-xs sm:text-sm text-purple-300 mb-4 sm:mb-6 px-2">
             $99 non-refundable deposit secures your spot • Applies to final price of $6,000
           </p>
 
-          <div className="flex items-center justify-center gap-3 text-pink-300 mb-3">
-            <Clock size={18} />
-            <span className="text-sm font-semibold">
-              {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m until offer expires • Limited to 8 Tampa bosses
-            </span>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-pink-300 mb-3 px-2">
+            <div className="flex items-center gap-2">
+              <Clock size={16} className="sm:w-[18px] sm:h-[18px]" />
+              <span className="text-xs sm:text-sm font-semibold">
+                {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m until offer expires
+              </span>
+            </div>
+            <span className="hidden sm:inline">•</span>
+            <span className="text-xs sm:text-sm font-semibold">Limited to 8 Tampa bosses</span>
           </div>
           
           <div className="flex items-center justify-center gap-2 text-pink-400">
@@ -287,21 +373,34 @@ export default function LandingPage() {
       </section>
 
       {/* Proof Section - Emily's Actual Work */}
-      <section className="relative py-24 px-6 md:px-12 bg-gradient-to-b from-slate-800 via-pink-950/30 to-purple-950">
+      <section className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-slate-800 via-pink-950/30 to-purple-950">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            
+          <div className="grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
+
             {/* Emily's Photo - Image 1 (playful, throwing things) */}
             <div className="order-2 md:order-1">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 rounded-3xl blur-2xl opacity-20"></div>
-                <div className="relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl rounded-3xl p-8 border border-pink-500/30 shadow-2xl">
-                  <div className="aspect-[3/4] bg-gradient-to-br from-pink-200/10 to-blue-200/10 rounded-3xl border-4 border-pink-500/30 overflow-hidden shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 rounded-2xl sm:rounded-3xl blur-2xl opacity-20"></div>
+                <div className="relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-pink-500/30 shadow-2xl group">
+                  <div
+                    className="aspect-[3/4] bg-gradient-to-br from-pink-200/10 to-blue-200/10 rounded-3xl border-4 border-pink-500/30 overflow-hidden shadow-2xl cursor-pointer transition-all duration-500 hover:scale-105 hover:rotate-1"
+                    onMouseEnter={() => {
+                      if (interactionScore >= 8 && !foundCodes.includes('HAUNTED20')) {
+                        setTimeout(() => handleCodeClick('HAUNTED20'), 1500);
+                      }
+                    }}
+                    title={interactionScore >= 8 ? "👻 Hover carefully..." : ""}
+                  >
                     <img
                       src="/emily-playful.jpg"
                       alt="Emily Handren playfully tossing colorful pens in the air"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
+                    {interactionScore >= 8 && !foundCodes.includes('HAUNTED20') && (
+                      <div className="absolute inset-0 bg-purple-500/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span className="text-4xl animate-pulse">👻</span>
+                      </div>
+                    )}
                   </div>
                   <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-pink-400 to-purple-500 text-white px-6 py-3 rounded-2xl font-black text-lg shadow-xl rotate-3">
                     Your Bestie, Emily! 💜
@@ -709,11 +808,16 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              <div className="text-center">
-                <button className="group bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 px-12 py-6 rounded-full font-bold text-2xl md:text-3xl shadow-2xl shadow-pink-500/50 transition-all duration-300 hover:scale-105 inline-flex items-center gap-4 mb-4">
-                  Yes! Reserve My Spot ($99)
-                  <ArrowRight className="group-hover:translate-x-2 transition-transform" size={32} />
-                </button>
+              <div className="text-center flex flex-col items-center">
+                <SMSCTAButton
+                  foundCodes={foundCodes}
+                  isMobile={isMobile}
+                  showQRCode={showQRCode}
+                  setShowQRCode={setShowQRCode}
+                  variant="secondary"
+                  buttonText="Yes! Reserve My Spot ($99)"
+                  className="mb-4 !px-12 !py-6 !text-2xl md:!text-3xl"
+                />
                 <p className="text-purple-400 text-sm mb-2">✨ Includes free 30-min strategy session • Zero pressure • All possibility</p>
                 <p className="text-pink-400 text-xs font-bold flex items-center justify-center gap-2">
                   <span className="inline-block w-2 h-2 bg-pink-400 rounded-full animate-pulse"></span>
@@ -858,10 +962,15 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <button className="group bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 px-12 md:px-16 py-6 md:py-7 rounded-full font-bold text-2xl md:text-3xl shadow-2xl shadow-pink-500/50 transition-all duration-300 hover:scale-105 inline-flex items-center gap-4 mb-6">
-            Yes! I Want This ($99 Deposit)
-            <ArrowRight className="group-hover:translate-x-2 transition-transform" size={36} />
-          </button>
+          <SMSCTAButton
+            foundCodes={foundCodes}
+            isMobile={isMobile}
+            showQRCode={showQRCode}
+            setShowQRCode={setShowQRCode}
+            variant="primary"
+            buttonText="Yes! I Want This ($99 Deposit)"
+            className="mb-6 !px-12 md:!px-16 !py-6 md:!py-7 !text-2xl md:!text-3xl"
+          />
 
           <p className="text-purple-300 text-sm mb-4">
             Non-refundable $99 secures your October build • Applied to final project cost
@@ -1025,18 +1134,36 @@ export default function LandingPage() {
               <p className="font-semibold">Exclusively for women business owners in Emily's Tampa networking circle</p>
               <p className="text-purple-600">Custom app development • U.S.-based team • AI-powered • Built with possibility</p>
               <div className="relative mt-8">
-                <p 
-                  className="text-[8px] text-slate-950 hover:text-pink-500 transition-colors cursor-pointer select-none inline-block"
-                  onClick={() => handleCodeClick('ENCHANTED50')}
-                  title="The most dedicated hunters find the greatest treasures"
-                >
-                  ENCHANTED50
-                </p>
+                {interactionScore >= 15 ? (
+                  <p
+                    className="text-xs text-pink-400 hover:text-pink-300 transition-all duration-300 cursor-pointer select-none inline-block animate-pulse font-bold"
+                    onClick={() => handleCodeClick('ENCHANTED50')}
+                    title="🎉 You found the ultimate treasure! Click to claim!"
+                  >
+                    ✨ ENCHANTED50 ✨
+                  </p>
+                ) : (
+                  <p
+                    className="text-[6px] text-slate-950 select-none inline-block opacity-5"
+                    title={`${15 - interactionScore} more interactions needed to reveal...`}
+                  >
+                    ENCHANTED50
+                  </p>
+                )}
               </div>
             </div>
           </div>
         </div>
       </footer>
+
+      {/* Treasure Map Modal */}
+      <TreasureMapModal
+        foundCodes={foundCodes}
+        hintLevel={hintLevel}
+        interactionScore={interactionScore}
+        showMap={showTreasureMap}
+        setShowMap={setShowTreasureMap}
+      />
     </div>
   );
 }
