@@ -833,7 +833,8 @@ export default function LandingPage() {
 
             {/* Message Content */}
             <div className="flex-1">
-              <div className="relative inline-block mb-6">
+              <div className="flex justify-center md:justify-start mb-6">
+                <div className="relative inline-block">
                 <div
                   className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-besty-coral to-besty-blue rounded-full cursor-pointer hover:scale-110 transition-transform"
                   onDoubleClick={() => handleCodeClick('SPOOKY10')}
@@ -846,6 +847,7 @@ export default function LandingPage() {
                   <p className="text-xs font-black text-besty-coral whitespace-nowrap">
                     Double-tap for a gourd time! 🎃
                   </p>
+                </div>
                 </div>
               </div>
               
