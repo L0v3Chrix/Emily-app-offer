@@ -145,12 +145,12 @@ const TreasureMapModal: React.FC<TreasureMapModalProps> = ({
     return (
       <button
         onClick={() => setShowMap(true)}
-        className="fixed bottom-6 right-6 bg-gradient-to-br from-bestie-coral to-bestie-blue text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 z-40 group animate-bounce"
+        className="fixed bottom-6 right-6 bg-gradient-to-br from-besty-coral to-besty-blue text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 z-40 group animate-bounce"
         title="Open Treasure Map"
       >
         <Map className="w-6 h-6" />
         {foundCodes.length > 0 && (
-          <div className="absolute -top-2 -right-2 bg-bestie-coral text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center animate-pulse">
+          <div className="absolute -top-2 -right-2 bg-besty-coral text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center animate-pulse">
             {foundCodes.length}
           </div>
         )}
@@ -165,7 +165,7 @@ const TreasureMapModal: React.FC<TreasureMapModalProps> = ({
     >
       <div
         ref={modalRef}
-        className="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl border-2 border-bestie-coral/50 transform animate-slideUp touch-pan-y my-4 max-h-[95vh] overflow-y-auto"
+        className="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl border-2 border-besty-coral/50 transform animate-slideUp touch-pan-y my-4 max-h-[95vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
@@ -177,22 +177,22 @@ const TreasureMapModal: React.FC<TreasureMapModalProps> = ({
         {/* Close button - larger touch target on mobile */}
         <button
           onClick={() => setShowMap(false)}
-          className="absolute top-4 right-4 p-3 md:p-2 hover:bg-bestie-mint rounded-full transition-colors group"
+          className="absolute top-4 right-4 p-3 md:p-2 hover:bg-besty-mint rounded-full transition-colors group"
           aria-label="Close treasure map"
         >
-          <X className="w-7 h-7 md:w-6 md:h-6 text-bestie-blue group-hover:rotate-90 transition-transform" />
+          <X className="w-7 h-7 md:w-6 md:h-6 text-besty-blue group-hover:rotate-90 transition-transform" />
         </button>
 
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="inline-block p-4 bg-gradient-to-br from-bestie-coral to-bestie-blue rounded-2xl mb-4 shadow-lg">
+          <div className="inline-block p-4 bg-gradient-to-br from-besty-coral to-besty-blue rounded-2xl mb-4 shadow-lg">
             <Map className="w-12 h-12 text-white" />
           </div>
-          <h2 className="text-3xl font-black text-bestie-blue mb-2">🗺️ Treasure Map</h2>
-          <p className="text-bestie-gray mb-2">Find all 3 hidden discount codes!</p>
-          <div className="inline-block bg-gradient-to-r from-bestie-coral/20 to-bestie-green/20 backdrop-blur-sm border border-bestie-coral/40 rounded-full px-4 py-2">
-            <p className="text-sm font-bold text-bestie-coral">
-              💰 Discounts stack: 10% + 20% + 20% = <span className="text-bestie-blue">50% OFF!</span>
+          <h2 className="text-3xl font-black text-besty-blue mb-2">🗺️ Treasure Map</h2>
+          <p className="text-besty-gray mb-2">Find all 3 hidden discount codes!</p>
+          <div className="inline-block bg-gradient-to-r from-besty-coral/20 to-besty-green/20 backdrop-blur-sm border border-besty-coral/40 rounded-full px-4 py-2">
+            <p className="text-sm font-bold text-besty-coral">
+              💰 Discounts stack: 10% + 20% + 20% = <span className="text-besty-blue">50% OFF!</span>
             </p>
           </div>
         </div>
@@ -200,12 +200,12 @@ const TreasureMapModal: React.FC<TreasureMapModalProps> = ({
         {/* Progress bar */}
         <div className="mb-8">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm text-bestie-gray font-semibold">Progress</span>
-            <span className="text-sm text-bestie-coral font-bold">{foundCodes.length} / {treasures.length} Codes Found</span>
+            <span className="text-sm text-besty-gray font-semibold">Progress</span>
+            <span className="text-sm text-besty-coral font-bold">{foundCodes.length} / {treasures.length} Codes Found</span>
           </div>
-          <div className="h-3 bg-bestie-mint rounded-full overflow-hidden">
+          <div className="h-3 bg-besty-mint rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-bestie-green via-bestie-coral to-bestie-blue transition-all duration-500 ease-out"
+              className="h-full bg-gradient-to-r from-besty-green via-besty-coral to-besty-blue transition-all duration-500 ease-out"
               style={{ width: `${calculateProgress()}%` }}
             />
           </div>
@@ -218,35 +218,35 @@ const TreasureMapModal: React.FC<TreasureMapModalProps> = ({
               key={treasure.code}
               className={`relative p-4 sm:p-6 rounded-xl border-2 transition-all duration-300 ${
                 treasure.unlocked
-                  ? 'bg-gradient-to-br from-bestie-green/20 to-bestie-mint border-bestie-green'
+                  ? 'bg-gradient-to-br from-besty-green/20 to-besty-mint border-besty-green'
                   : pulseChest === index
-                  ? 'bg-gradient-to-br from-bestie-mint to-white border-bestie-coral animate-pulse'
-                  : 'bg-gradient-to-br from-bestie-gray-light to-white border-gray-300'
+                  ? 'bg-gradient-to-br from-besty-mint to-white border-besty-coral animate-pulse'
+                  : 'bg-gradient-to-br from-besty-gray-light to-white border-gray-300'
               }`}
             >
               {/* Chest icon */}
               <div className="text-center mb-3 sm:mb-4">
                 <div className={`text-4xl sm:text-6xl mb-2 ${pulseChest === index && !treasure.unlocked ? 'animate-bounce' : ''}`}>
-                  {treasure.unlocked ? <Unlock className="w-12 h-12 sm:w-16 sm:h-16 mx-auto text-bestie-green" /> : <Lock className="w-12 h-12 sm:w-16 sm:h-16 mx-auto text-gray-400" />}
+                  {treasure.unlocked ? <Unlock className="w-12 h-12 sm:w-16 sm:h-16 mx-auto text-besty-green" /> : <Lock className="w-12 h-12 sm:w-16 sm:h-16 mx-auto text-gray-400" />}
                 </div>
                 <div className="text-3xl sm:text-4xl mb-2">{treasure.icon}</div>
-                <h3 className="font-bold text-bestie-blue mb-1 text-sm sm:text-base">{treasure.name}</h3>
+                <h3 className="font-bold text-besty-blue mb-1 text-sm sm:text-base">{treasure.name}</h3>
                 <div className={`text-lg sm:text-xl font-black bg-gradient-to-r ${treasure.color} bg-clip-text text-transparent mb-1`}>
                   +{treasure.discount}% OFF
                 </div>
-                <div className="text-xs text-bestie-gray font-semibold">
+                <div className="text-xs text-besty-gray font-semibold">
                   (Total: {treasure.cumulative}% if you find all before)
                 </div>
               </div>
 
               {/* Hint */}
-              <div className="text-xs text-bestie-gray text-center bg-bestie-mint rounded-lg p-2 sm:p-3">
+              <div className="text-xs text-besty-gray text-center bg-besty-mint rounded-lg p-2 sm:p-3">
                 {getHintText(index, treasure)}
               </div>
 
               {/* Unlocked indicator */}
               {treasure.unlocked && (
-                <div className="absolute -top-2 -right-2 bg-bestie-green text-white p-2 rounded-full shadow-lg">
+                <div className="absolute -top-2 -right-2 bg-besty-green text-white p-2 rounded-full shadow-lg">
                   <Gift className="w-5 h-5" />
                 </div>
               )}
@@ -256,8 +256,8 @@ const TreasureMapModal: React.FC<TreasureMapModalProps> = ({
 
         {/* Victory message */}
         {foundCodes.length === treasures.length && (
-          <div className="bg-gradient-to-r from-bestie-coral to-bestie-blue rounded-xl p-4 sm:p-6 text-center shadow-lg">
-            <Trophy className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 text-bestie-green animate-bounce" />
+          <div className="bg-gradient-to-r from-besty-coral to-besty-blue rounded-xl p-4 sm:p-6 text-center shadow-lg">
+            <Trophy className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 text-besty-green animate-bounce" />
             <h3 className="text-xl sm:text-2xl font-black text-white mb-2">🎉 ALL CODES FOUND!</h3>
             <p className="text-white/90 mb-4 text-sm sm:text-base">
               You've discovered all the hidden treasures!
@@ -265,7 +265,7 @@ const TreasureMapModal: React.FC<TreasureMapModalProps> = ({
 
             {/* 50% Discount */}
             <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3 sm:p-4 mb-4">
-              <p className="text-bestie-green font-black text-xl sm:text-2xl mb-2">
+              <p className="text-besty-green font-black text-xl sm:text-2xl mb-2">
                 TOTAL: 50% OFF!
               </p>
               <p className="text-white text-xs sm:text-sm">

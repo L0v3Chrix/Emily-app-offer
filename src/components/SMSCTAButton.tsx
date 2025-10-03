@@ -29,14 +29,14 @@ const SMSCTAButton: React.FC<SMSCTAButtonProps> = ({
     const codesCount = foundCodes.length;
 
     if (codesCount === 0) {
-      return "Hi Emily! 🚀 Just saw your Bestie Bookkeepers Halloween app offer! I've been dreaming about having my own app (iOS App Store or custom web)—this feels like my moment! Your BFF app results are amazing. When can we talk about MY app idea? Let's make this happen!";
+      return "Hi Emily! 🚀 Just saw your Besty Bookkeepers Halloween app offer! I've been dreaming about having my own app (iOS App Store or custom web)—this feels like my moment! Your BFF app results are amazing. When can we talk about MY app idea? Let's make this happen!";
     }
 
     if (codesCount < 3) {
-      return `Hi Emily! 📱 Found ${foundCodes.join(", ")} on your page and I'm ALL IN! Your BFF app proof-of-concept sold me. I want my own app (still deciding iOS vs web). When can we do a Bestie strategy call to plan mine?`;
+      return `Hi Emily! 📱 Found ${foundCodes.join(", ")} on your page and I'm ALL IN! Your BFF app proof-of-concept sold me. I want my own app (still deciding iOS vs web). When can we do a Besty strategy call to plan mine?`;
     }
 
-    return "Hi Emily! 🏆 BOOM! All 3 codes found + 100% page engagement! I see the ultimate prize (that $99 App Store fee 👀). I'm READY to build my app with Bestie Bookkeepers. When can we start? SO many ideas!";
+    return "Hi Emily! 🏆 BOOM! All 3 codes found + 100% page engagement! I see the ultimate prize (that $99 App Store fee 👀). I'm READY to build my app with Besty Bookkeepers. When can we start? SO many ideas!";
   };
 
   const handleCTAClick = () => {

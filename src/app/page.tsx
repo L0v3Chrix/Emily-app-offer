@@ -273,12 +273,12 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-bestie-mint via-white to-bestie-gray-light text-bestie-gray">
+    <div className="min-h-screen bg-gradient-to-br from-besty-mint via-white to-besty-gray-light text-besty-gray">
 
       {/* Skip to main content link for keyboard navigation */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-bestie-coral focus:text-bestie-blue focus:rounded-full focus:shadow-xl"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-besty-coral focus:text-besty-blue focus:rounded-full focus:shadow-xl"
       >
         Skip to main content
       </a>
@@ -292,16 +292,16 @@ export default function LandingPage() {
       )}
 
       {/* Fixed Header */}
-      <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-2xl py-3 shadow-lg shadow-bestie-coral/10' : 'bg-transparent py-5'}`} role="banner">
+      <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-2xl py-3 shadow-lg shadow-besty-coral/10' : 'bg-transparent py-5'}`} role="banner">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex justify-between items-center">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-3">
             <div className="flex items-center gap-2">
               <span className="text-xl">🧡</span>
-              <span className="font-black text-base sm:text-lg md:text-xl tracking-tight text-bestie-blue">Emily's Circle</span>
+              <span className="font-black text-base sm:text-lg md:text-xl tracking-tight text-besty-blue">Emily's Circle</span>
             </div>
             <div className="flex items-center gap-1.5 text-[10px] sm:text-xs">
-              <span className="text-bestie-coral">•</span>
-              <span className="text-bestie-coral font-semibold">Bestie Bookkeepers</span>
+              <span className="text-besty-coral">•</span>
+              <span className="text-besty-coral font-semibold">Besty Bookkeepers</span>
             </div>
           </div>
           <EngagementTracker
@@ -316,55 +316,55 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section id="main-content" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6 md:px-12" aria-labelledby="hero-heading">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-bestie-coral/10 rounded-full blur-[120px] animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-bestie-green/15 rounded-full blur-[120px] animate-pulse" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-1/4 left-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-besty-coral/10 rounded-full blur-[120px] animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-besty-green/15 rounded-full blur-[120px] animate-pulse" style={{animationDelay: '1s'}}></div>
         </div>
 
         <div className="relative max-w-6xl mx-auto text-center z-10">
           <div className="mb-4 sm:mb-6">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-bestie-coral/20 to-bestie-blue/20 backdrop-blur-sm border border-bestie-coral/40 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 mb-3">
-              <span className="text-xs sm:text-sm font-bold text-bestie-coral tracking-wide">POWERED BY BESTIE BOOKKEEPERS</span>
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-besty-coral/20 to-besty-blue/20 backdrop-blur-sm border border-besty-coral/40 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 mb-3">
+              <span className="text-xs sm:text-sm font-bold text-besty-coral tracking-wide">POWERED BY BESTY BOOKKEEPERS</span>
             </div>
           </div>
 
-          <div className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-bestie-coral/20 to-bestie-green/20 backdrop-blur-sm border border-bestie-coral/40 rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-6 sm:mb-10">
+          <div className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-besty-coral/20 to-besty-green/20 backdrop-blur-sm border border-besty-coral/40 rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-6 sm:mb-10">
             <span className="text-xl sm:text-2xl">🎃</span>
-            <span className="text-xs sm:text-sm font-bold text-bestie-coral tracking-wide">EMILY'S FRIENDS-ONLY HALLOWEEN SPECIAL</span>
+            <span className="text-xs sm:text-sm font-bold text-besty-coral tracking-wide">EMILY'S FRIENDS-ONLY HALLOWEEN SPECIAL</span>
             <span className="text-xl sm:text-2xl">👻</span>
           </div>
 
           <h1 id="hero-heading" className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-6 sm:mb-8 leading-[1.1] tracking-tight px-2">
-            <span className="block text-bestie-blue mb-2 sm:mb-3">
+            <span className="block text-besty-blue mb-2 sm:mb-3">
               Your Business Deserves
             </span>
-            <span className="block bg-gradient-to-r from-bestie-coral via-bestie-blue to-bestie-coral bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-besty-coral via-besty-blue to-besty-coral bg-clip-text text-transparent">
               Its Own App
             </span>
           </h1>
 
           <div className="max-w-4xl mx-auto mb-8 sm:mb-12 space-y-3 sm:space-y-4 px-2">
-            <p className="text-lg sm:text-2xl md:text-3xl text-bestie-gray leading-relaxed">
-              Whether you've always dreamed of seeing your name in the <span className="font-bold text-bestie-blue">Apple App Store</span>
+            <p className="text-lg sm:text-2xl md:text-3xl text-besty-gray leading-relaxed">
+              Whether you've always dreamed of seeing your name in the <span className="font-bold text-besty-blue">Apple App Store</span>
             </p>
-            <p className="text-base sm:text-xl md:text-2xl text-bestie-gray leading-relaxed">
-              or want a <span className="font-bold text-bestie-blue">custom web app</span> that works like magic—
+            <p className="text-base sm:text-xl md:text-2xl text-besty-gray leading-relaxed">
+              or want a <span className="font-bold text-besty-blue">custom web app</span> that works like magic—
             </p>
-            <p className="text-lg sm:text-2xl md:text-3xl font-bold text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text">
+            <p className="text-lg sm:text-2xl md:text-3xl font-bold text-transparent bg-gradient-to-r from-besty-coral to-besty-blue bg-clip-text">
               this is your moment.
             </p>
           </div>
 
           <div className="max-w-3xl mx-auto mb-8 sm:mb-10 px-2">
-            <p className="text-base sm:text-lg md:text-xl text-bestie-coral font-semibold italic">
+            <p className="text-base sm:text-lg md:text-xl text-besty-coral font-semibold italic">
               "Every entrepreneur has an app inside of them. Let's build yours."
             </p>
           </div>
 
           {/* Interactive Component #1: Quick Value Slider */}
-          <div className="max-w-2xl mx-auto mb-8 sm:mb-12 bg-bestie-gray-light backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-bestie-coral/30 relative shadow-lg">
+          <div className="max-w-2xl mx-auto mb-8 sm:mb-12 bg-besty-gray-light backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-besty-coral/30 relative shadow-lg">
             <MobileIndicator type="tap" position="top-right" />
-            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-bestie-blue">👉 Try This: App Engagement Demo</h3>
-            <p className="text-xs sm:text-sm text-bestie-gray mb-3 sm:mb-4">How many daily app users would transform your business?</p>
+            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-besty-blue">👉 Try This: App Engagement Demo</h3>
+            <p className="text-xs sm:text-sm text-besty-gray mb-3 sm:mb-4">How many daily app users would transform your business?</p>
             <input
               type="range"
               min="1"
@@ -374,7 +374,7 @@ export default function LandingPage() {
                 setSliderValue(Number(e.target.value));
                 setInteractionScore(prev => prev + 0.1);
               }}
-              className="w-full h-3 bg-bestie-green rounded-lg appearance-none cursor-pointer accent-bestie-coral"
+              className="w-full h-3 bg-besty-green rounded-lg appearance-none cursor-pointer accent-besty-coral"
               aria-label="Daily app users slider"
               aria-valuemin={1}
               aria-valuemax={10}
@@ -382,10 +382,10 @@ export default function LandingPage() {
               aria-valuetext={`${sliderValue * 50} daily users`}
             />
             <div className="mt-4 text-center">
-              <div className="text-4xl sm:text-5xl font-black text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text mb-2">
+              <div className="text-4xl sm:text-5xl font-black text-transparent bg-gradient-to-r from-besty-coral to-besty-blue bg-clip-text mb-2">
                 {sliderValue * 50}
               </div>
-              <div className="text-xs sm:text-sm text-bestie-gray">daily app users = ${(sliderValue * 50 * 75).toLocaleString()} monthly value</div>
+              <div className="text-xs sm:text-sm text-besty-gray">daily app users = ${(sliderValue * 50 * 75).toLocaleString()} monthly value</div>
             </div>
             <p className="text-[11px] sm:text-xs text-gray-600 mt-3 sm:mt-4 italic">This is the kind of interactive tool YOUR app could have to engage users every day.</p>
           </div>
@@ -403,7 +403,7 @@ export default function LandingPage() {
 
 
           {mounted && (
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-bestie-coral mb-3 px-2">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-besty-coral mb-3 px-2">
               <div className="flex items-center gap-2">
                 <Clock size={16} className="sm:w-[18px] sm:h-[18px]" />
                 <span className="text-xs sm:text-sm font-semibold">
@@ -415,12 +415,12 @@ export default function LandingPage() {
             </div>
           )}
 
-          <div className="flex items-center justify-center gap-2 text-bestie-coral">
+          <div className="flex items-center justify-center gap-2 text-besty-coral">
             <div className="flex gap-1">
               {[...Array(8)].map((_, i) => (
                 <div
                   key={i}
-                  className={`w-2 h-2 rounded-full ${i < spotsRemaining ? 'bg-bestie-coral animate-pulse' : 'bg-gray-300'}`}
+                  className={`w-2 h-2 rounded-full ${i < spotsRemaining ? 'bg-besty-coral animate-pulse' : 'bg-gray-300'}`}
                 ></div>
               ))}
             </div>
@@ -433,33 +433,33 @@ export default function LandingPage() {
       <AppChoiceCards onInteraction={() => setInteractionScore(prev => prev + 2)} />
 
       {/* App Dreams Emotional Section */}
-      <section className="relative py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-b from-white via-bestie-mint/30 to-bestie-gray-light overflow-hidden" aria-labelledby="dreams-heading">
+      <section className="relative py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-b from-white via-besty-mint/30 to-besty-gray-light overflow-hidden" aria-labelledby="dreams-heading">
         {/* Decorative background elements */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(250,137,119,0.08),transparent_40%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(157,228,161,0.08),transparent_40%)]" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-bestie-coral/50 to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-besty-coral/50 to-transparent" />
 
         <div className="max-w-4xl mx-auto relative">
 
           {/* Header */}
           <div className="text-center mb-12 sm:mb-16">
-            <div className="inline-block bg-gradient-to-r from-bestie-coral/20 to-bestie-blue/20 backdrop-blur-sm border border-bestie-coral/40 rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-4 sm:mb-6">
-              <span className="text-xs sm:text-sm font-bold text-bestie-coral tracking-wider">
+            <div className="inline-block bg-gradient-to-r from-besty-coral/20 to-besty-blue/20 backdrop-blur-sm border border-besty-coral/40 rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-4 sm:mb-6">
+              <span className="text-xs sm:text-sm font-bold text-besty-coral tracking-wider">
                 THE DREAM
               </span>
             </div>
 
             <h2 id="dreams-heading" className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 leading-tight">
-              <span className="text-bestie-blue">Remember when you first thought,</span>
+              <span className="text-besty-blue">Remember when you first thought,</span>
               <br />
-              <span className="text-transparent bg-gradient-to-r from-bestie-coral via-bestie-blue to-bestie-coral bg-clip-text">
+              <span className="text-transparent bg-gradient-to-r from-besty-coral via-besty-blue to-besty-coral bg-clip-text">
                 "I wish I had my own app"?
               </span>
             </h2>
 
-            <p className="text-base sm:text-lg md:text-xl text-bestie-gray leading-relaxed max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-besty-gray leading-relaxed max-w-3xl mx-auto">
               That moment when you saw a business with their own app and thought,
-              <span className="text-bestie-blue font-bold"> "Why not me?"</span>
+              <span className="text-besty-blue font-bold"> "Why not me?"</span>
             </p>
           </div>
 
@@ -467,69 +467,69 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16">
 
             {/* Scenario 1: App Store Pride */}
-            <div className="group bg-bestie-gray-light backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-200 hover:border-bestie-coral transition-all duration-500 hover:scale-105 shadow-lg">
+            <div className="group bg-besty-gray-light backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-200 hover:border-besty-coral transition-all duration-500 hover:scale-105 shadow-lg">
               <div className="text-4xl sm:text-5xl mb-4 group-hover:scale-110 transition-transform duration-500">
                 🏆
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-bestie-blue mb-3">
+              <h3 className="text-xl sm:text-2xl font-black text-besty-blue mb-3">
                 The Pride Moment
               </h3>
-              <p className="text-sm sm:text-base text-bestie-gray leading-relaxed mb-4">
-                Imagine searching your business name in the <strong className="text-bestie-blue">App Store</strong> and
+              <p className="text-sm sm:text-base text-besty-gray leading-relaxed mb-4">
+                Imagine searching your business name in the <strong className="text-besty-blue">App Store</strong> and
                 seeing YOUR app right there. Your brand. Your icon. Your name.
               </p>
-              <p className="text-xs sm:text-sm text-bestie-coral italic">
+              <p className="text-xs sm:text-sm text-besty-coral italic">
                 "That's... that's MINE. I built that."
               </p>
             </div>
 
             {/* Scenario 2: Customer Delight */}
-            <div className="group bg-bestie-gray-light backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-200 hover:border-bestie-coral transition-all duration-500 hover:scale-105 shadow-lg">
+            <div className="group bg-besty-gray-light backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-200 hover:border-besty-coral transition-all duration-500 hover:scale-105 shadow-lg">
               <div className="text-4xl sm:text-5xl mb-4 group-hover:scale-110 transition-transform duration-500">
                 💫
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-bestie-blue mb-3">
+              <h3 className="text-xl sm:text-2xl font-black text-besty-blue mb-3">
                 The "Wow" Reaction
               </h3>
-              <p className="text-sm sm:text-base text-bestie-gray leading-relaxed mb-4">
-                When a customer asks how to stay connected and you say, <strong className="text-bestie-blue">"Download my app"</strong>—
-                and watch their eyes light up. <span className="text-bestie-coral">You're not just a business anymore. You're a brand.</span>
+              <p className="text-sm sm:text-base text-besty-gray leading-relaxed mb-4">
+                When a customer asks how to stay connected and you say, <strong className="text-besty-blue">"Download my app"</strong>—
+                and watch their eyes light up. <span className="text-besty-coral">You're not just a business anymore. You're a brand.</span>
               </p>
-              <p className="text-xs sm:text-sm text-bestie-coral italic">
+              <p className="text-xs sm:text-sm text-besty-coral italic">
                 "Wait, you have your OWN app?!"
               </p>
             </div>
 
             {/* Scenario 3: Freedom */}
-            <div className="group bg-bestie-gray-light backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-200 hover:border-bestie-coral transition-all duration-500 hover:scale-105 shadow-lg">
+            <div className="group bg-besty-gray-light backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-200 hover:border-besty-coral transition-all duration-500 hover:scale-105 shadow-lg">
               <div className="text-4xl sm:text-5xl mb-4 group-hover:scale-110 transition-transform duration-500">
                 ⏰
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-bestie-blue mb-3">
+              <h3 className="text-xl sm:text-2xl font-black text-besty-blue mb-3">
                 The Freedom Feeling
               </h3>
-              <p className="text-sm sm:text-base text-bestie-gray leading-relaxed mb-4">
-                No more being glued to your phone. Your app <strong className="text-bestie-blue">works while you sleep</strong>,
+              <p className="text-sm sm:text-base text-besty-gray leading-relaxed mb-4">
+                No more being glued to your phone. Your app <strong className="text-besty-blue">works while you sleep</strong>,
                 qualifying leads, booking calls, answering questions. You wake up to appointments already scheduled.
               </p>
-              <p className="text-xs sm:text-sm text-bestie-coral italic">
+              <p className="text-xs sm:text-sm text-besty-coral italic">
                 "I can't believe this just... runs itself."
               </p>
             </div>
 
             {/* Scenario 4: Credibility */}
-            <div className="group bg-bestie-gray-light backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-200 hover:border-bestie-coral transition-all duration-500 hover:scale-105 shadow-lg">
+            <div className="group bg-besty-gray-light backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-200 hover:border-besty-coral transition-all duration-500 hover:scale-105 shadow-lg">
               <div className="text-4xl sm:text-5xl mb-4 group-hover:scale-110 transition-transform duration-500">
                 👑
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-bestie-blue mb-3">
+              <h3 className="text-xl sm:text-2xl font-black text-besty-blue mb-3">
                 The Authority Shift
               </h3>
-              <p className="text-sm sm:text-base text-bestie-gray leading-relaxed mb-4">
-                When competitors are still using Instagram DMs and email forms, you have <strong className="text-bestie-blue">your own app</strong>.
+              <p className="text-sm sm:text-base text-besty-gray leading-relaxed mb-4">
+                When competitors are still using Instagram DMs and email forms, you have <strong className="text-besty-blue">your own app</strong>.
                 Suddenly you're not competing—you're in a different league entirely.
               </p>
-              <p className="text-xs sm:text-sm text-bestie-coral italic">
+              <p className="text-xs sm:text-sm text-besty-coral italic">
                 "How did they pull that off?"
               </p>
             </div>
@@ -537,22 +537,22 @@ export default function LandingPage() {
           </div>
 
           {/* Emotional Close */}
-          <div className="bg-gradient-to-br from-bestie-mint/50 to-bestie-green/20 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-8 sm:p-10 border-2 border-bestie-coral/30 text-center shadow-lg">
+          <div className="bg-gradient-to-br from-besty-mint/50 to-besty-green/20 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-8 sm:p-10 border-2 border-besty-coral/30 text-center shadow-lg">
 
-            <p className="text-lg sm:text-xl md:text-2xl font-bold text-bestie-blue mb-4 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl font-bold text-besty-blue mb-4 leading-relaxed">
               That dream doesn't have to stay a dream.
             </p>
 
-            <p className="text-base sm:text-lg text-bestie-gray mb-6 leading-relaxed">
-              Most people think, <span className="text-bestie-coral italic">"Apps are for big companies with huge budgets."</span>
+            <p className="text-base sm:text-lg text-besty-gray mb-6 leading-relaxed">
+              Most people think, <span className="text-besty-coral italic">"Apps are for big companies with huge budgets."</span>
               <br className="hidden sm:block" />
-              But what if you could have your own app—<strong className="text-bestie-blue">custom-built for YOUR business</strong>—
+              But what if you could have your own app—<strong className="text-besty-blue">custom-built for YOUR business</strong>—
               without the $50,000 price tag or 6-month timeline?
             </p>
 
-            <div className="inline-block bg-gradient-to-r from-bestie-coral/20 to-bestie-blue/20 backdrop-blur-sm border border-bestie-coral/40 rounded-xl px-6 py-4">
-              <p className="text-sm sm:text-base text-bestie-blue font-bold">
-                What if you could have it <span className="text-bestie-coral">by Thanksgiving</span>?
+            <div className="inline-block bg-gradient-to-r from-besty-coral/20 to-besty-blue/20 backdrop-blur-sm border border-besty-coral/40 rounded-xl px-6 py-4">
+              <p className="text-sm sm:text-base text-besty-blue font-bold">
+                What if you could have it <span className="text-besty-coral">by Thanksgiving</span>?
               </p>
             </div>
 
@@ -561,45 +561,45 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Bestie Partnership Section */}
-      <section className="relative py-12 sm:py-16 px-4 sm:px-6 bg-bestie-mint">
+      {/* Besty Partnership Section */}
+      <section className="relative py-12 sm:py-16 px-4 sm:px-6 bg-besty-mint">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-bestie-coral/10 to-bestie-blue/10 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border-2 border-bestie-coral/30 shadow-lg">
+          <div className="bg-gradient-to-br from-besty-coral/10 to-besty-blue/10 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border-2 border-besty-coral/30 shadow-lg">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-bestie-coral to-bestie-blue rounded-full flex items-center justify-center shadow-lg">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-besty-coral to-besty-blue rounded-full flex items-center justify-center shadow-lg">
                 <span className="text-2xl sm:text-3xl">🧡</span>
               </div>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl font-black text-center mb-4 text-bestie-blue">
-              Why Emily's Offering This Through <span className="text-bestie-coral">Bestie Bookkeepers</span>
+            <h3 className="text-2xl sm:text-3xl font-black text-center mb-4 text-besty-blue">
+              Why Emily's Offering This Through <span className="text-besty-coral">Besty Bookkeepers</span>
             </h3>
 
-            <div className="space-y-4 text-sm sm:text-base text-bestie-gray">
+            <div className="space-y-4 text-sm sm:text-base text-besty-gray">
               <p className="text-center">
-                Emily isn't just a bookkeeper—she's a <strong className="text-bestie-coral">business builder</strong>. Through Bestie Bookkeepers, she helps Tampa women entrepreneurs with their numbers <em>and</em> their growth strategy.
+                Emily isn't just a bookkeeper—she's a <strong className="text-besty-coral">business builder</strong>. Through Besty Bookkeepers, she helps Tampa women entrepreneurs with their numbers <em>and</em> their growth strategy.
               </p>
 
-              <div className="bg-white rounded-xl p-5 border border-bestie-coral/20 shadow-md">
-                <p className="text-bestie-blue font-semibold mb-2 text-center">🚀 The Bestie Advantage:</p>
-                <ul className="space-y-2 text-bestie-gray">
+              <div className="bg-white rounded-xl p-5 border border-besty-coral/20 shadow-md">
+                <p className="text-besty-blue font-semibold mb-2 text-center">🚀 The Besty Advantage:</p>
+                <ul className="space-y-2 text-besty-gray">
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-bestie-orange flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-besty-orange flex-shrink-0 mt-0.5" />
                     <span>Emily knows your business finances inside-out—she'll help design an app that makes money</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-bestie-orange flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-besty-orange flex-shrink-0 mt-0.5" />
                     <span>She's already built her own app (you'll see it below)—this isn't theory, it's proven</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-bestie-orange flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-besty-orange flex-shrink-0 mt-0.5" />
                     <span>You're not just getting an app, you're getting Emily's business brain behind the strategy</span>
                   </li>
                 </ul>
               </div>
 
-              <p className="text-center italic text-bestie-warm">
-                "My Bestie clients don't just survive—they thrive. This app offer is about giving my circle the same tools I use to scale." <strong>- Emily</strong>
+              <p className="text-center italic text-besty-warm">
+                "My Besty clients don't just survive—they thrive. This app offer is about giving my circle the same tools I use to scale." <strong>- Emily</strong>
               </p>
             </div>
           </div>
@@ -607,26 +607,26 @@ export default function LandingPage() {
       </section>
 
       {/* The Shift Section */}
-      <section className="relative py-24 md:py-32 px-6 md:px-12 bg-gradient-to-b from-bestie-gray-light to-white">
+      <section className="relative py-24 md:py-32 px-6 md:px-12 bg-gradient-to-b from-besty-gray-light to-white">
         <div className="max-w-5xl mx-auto">
-          <div className="bg-gradient-to-br from-white to-bestie-gray-light backdrop-blur-2xl rounded-3xl p-10 md:p-16 border border-bestie-coral/30 shadow-2xl">
+          <div className="bg-gradient-to-br from-white to-besty-gray-light backdrop-blur-2xl rounded-3xl p-10 md:p-16 border border-besty-coral/30 shadow-2xl">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-10 leading-tight">
-              <span className="text-bestie-blue">You've Already Noticed<br />Something's Changed Online</span>
+              <span className="text-besty-blue">You've Already Noticed<br />Something's Changed Online</span>
             </h2>
 
-            <div className="space-y-6 text-lg md:text-xl text-bestie-gray leading-relaxed">
+            <div className="space-y-6 text-lg md:text-xl text-besty-gray leading-relaxed">
               <p>The brands you admire aren't just posting content anymore.</p>
-              <p>They're creating <span className="text-bestie-blue font-bold">experiences</span>. Interactive tools. Apps that do the selling for them.</p>
+              <p>They're creating <span className="text-besty-blue font-bold">experiences</span>. Interactive tools. Apps that do the selling for them.</p>
               
-              <div className="bg-gradient-to-r from-bestie-coral/20 to-bestie-blue/20 border border-bestie-coral/30 rounded-xl p-6 my-6">
-                <p className="text-bestie-blue font-bold text-xl mb-2">💡 Consider this:</p>
-                <p className="text-bestie-gray">
-                  The average person spends <span className="text-bestie-coral font-bold">8 seconds</span> reading a static post. But interactive content? They'll engage for <span className="text-bestie-coral font-bold">2-3 minutes or more</span>. That's 20x the attention on your business.
+              <div className="bg-gradient-to-r from-besty-coral/20 to-besty-blue/20 border border-besty-coral/30 rounded-xl p-6 my-6">
+                <p className="text-besty-blue font-bold text-xl mb-2">💡 Consider this:</p>
+                <p className="text-besty-gray">
+                  The average person spends <span className="text-besty-coral font-bold">8 seconds</span> reading a static post. But interactive content? They'll engage for <span className="text-besty-coral font-bold">2-3 minutes or more</span>. That's 20x the attention on your business.
                 </p>
               </div>
               
-              <p className="text-xl md:text-2xl text-bestie-blue font-bold pt-4">And here's the exciting part...</p>
-              <p className="text-2xl md:text-3xl font-black text-transparent bg-gradient-to-r from-bestie-coral via-bestie-blue to-bestie-coral bg-clip-text">
+              <p className="text-xl md:text-2xl text-besty-blue font-bold pt-4">And here's the exciting part...</p>
+              <p className="text-2xl md:text-3xl font-black text-transparent bg-gradient-to-r from-besty-coral via-besty-blue to-besty-coral bg-clip-text">
                 You can do this too. And it's way more affordable than you think.
               </p>
             </div>
@@ -635,20 +635,20 @@ export default function LandingPage() {
       </section>
 
       {/* Proof Section - Emily's Actual Work */}
-      <section className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-white via-bestie-mint/30 to-bestie-gray-light">
+      <section className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-white via-besty-mint/30 to-besty-gray-light">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
 
             {/* Emily's Photo - Image 1 (playful, throwing things) */}
             <div className="order-2 md:order-1">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-bestie-coral to-bestie-blue rounded-2xl sm:rounded-3xl blur-2xl opacity-20"></div>
-                <div className="relative bg-gradient-to-br from-white to-bestie-gray-light backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-bestie-coral/30 shadow-2xl group">
+                <div className="absolute inset-0 bg-gradient-to-r from-besty-coral to-besty-blue rounded-2xl sm:rounded-3xl blur-2xl opacity-20"></div>
+                <div className="relative bg-gradient-to-br from-white to-besty-gray-light backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-besty-coral/30 shadow-2xl group">
                   {interactionScore >= 8 && !foundCodes.includes('HAUNTED20') && (
                     <MobileIndicator type="look" position="top-right" />
                   )}
                   <div
-                    className="aspect-[3/4] bg-gradient-to-br from-bestie-coral/10 to-bestie-blue/10 rounded-3xl border-4 border-bestie-coral/30 overflow-hidden shadow-2xl cursor-pointer transition-all duration-500 hover:scale-105 hover:rotate-1"
+                    className="aspect-[3/4] bg-gradient-to-br from-besty-coral/10 to-besty-blue/10 rounded-3xl border-4 border-besty-coral/30 overflow-hidden shadow-2xl cursor-pointer transition-all duration-500 hover:scale-105 hover:rotate-1"
                     onMouseEnter={() => {
                       if (interactionScore >= 8 && !foundCodes.includes('HAUNTED20')) {
                         setTimeout(() => handleCodeClick('HAUNTED20'), 1500);
@@ -667,13 +667,13 @@ export default function LandingPage() {
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     {interactionScore >= 8 && !foundCodes.includes('HAUNTED20') && (
-                      <div className="absolute inset-0 bg-bestie-coral/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute inset-0 bg-besty-coral/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <span className="text-4xl animate-pulse">👻</span>
                       </div>
                     )}
                   </div>
-                  <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-bestie-coral to-bestie-blue text-white px-6 py-3 rounded-2xl font-black text-lg shadow-xl rotate-3">
-                    Your Bestie, Emily! 💜
+                  <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-besty-coral to-besty-blue text-white px-6 py-3 rounded-2xl font-black text-lg shadow-xl rotate-3">
+                    Your Besty, Emily! 💜
                   </div>
                 </div>
               </div>
@@ -681,33 +681,33 @@ export default function LandingPage() {
 
             {/* Text content */}
             <div className="order-1 md:order-2">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-bestie-coral/20 to-bestie-blue/20 backdrop-blur-sm border border-bestie-coral/40 rounded-full px-5 py-2 mb-6">
-                <Sparkles className="text-bestie-coral" size={20} />
-                <span className="text-sm font-bold text-bestie-coral">REAL EXAMPLE</span>
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-besty-coral/20 to-besty-blue/20 backdrop-blur-sm border border-besty-coral/40 rounded-full px-5 py-2 mb-6">
+                <Sparkles className="text-besty-coral" size={20} />
+                <span className="text-sm font-bold text-besty-coral">REAL EXAMPLE</span>
               </div>
 
               <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
-                <span className="text-bestie-blue">This is What </span>
-                <span className="text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text">Custom Looks Like</span>
+                <span className="text-besty-blue">This is What </span>
+                <span className="text-transparent bg-gradient-to-r from-besty-coral to-besty-blue bg-clip-text">Custom Looks Like</span>
               </h2>
 
-              <div className="space-y-5 text-lg text-bestie-gray leading-relaxed">
-                <p className="text-xl text-bestie-blue font-bold">
+              <div className="space-y-5 text-lg text-besty-gray leading-relaxed">
+                <p className="text-xl text-besty-blue font-bold">
                   See that tablet? That's Emily's own "Financial Journey, Simplified" app feature.
                 </p>
                 <p>
                   She created a visual, step-by-step guide that her app users can interact with. It's not a boring PDF. It's not a generic template.
                 </p>
-                <p className="text-xl font-bold text-bestie-coral">
+                <p className="text-xl font-bold text-besty-coral">
                   It's a custom app experience that positions her as THE expert and makes her users excited to engage.
                 </p>
                 <p>
                   This is exactly the kind of thing we can build into YOUR app. An interactive quiz, a value calculator, a booking system, a guided journey—whatever fits your unique business.
                 </p>
-                <div className="bg-gradient-to-r from-bestie-green/20 to-bestie-mint border border-bestie-green/40 rounded-xl p-6 mt-8">
+                <div className="bg-gradient-to-r from-besty-green/20 to-besty-mint border border-besty-green/40 rounded-xl p-6 mt-8">
                   <div className="flex items-start gap-4">
-                    <CheckCircle className="text-bestie-green flex-shrink-0 mt-1" size={24} />
-                    <p className="text-bestie-blue font-semibold">
+                    <CheckCircle className="text-besty-green flex-shrink-0 mt-1" size={24} />
+                    <p className="text-besty-blue font-semibold">
                       When Emily shares her app, people don't just see a service—they experience her expertise on their phone. That's the power of having your own app.
                     </p>
                   </div>
@@ -720,21 +720,21 @@ export default function LandingPage() {
       </section>
 
       {/* Emily's BFF App Showcase */}
-      <section className="relative py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-b from-white via-bestie-orange/5 to-bestie-gray-light">
+      <section className="relative py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-b from-white via-besty-orange/5 to-besty-gray-light">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-bestie-coral/20 to-bestie-blue/20 backdrop-blur-sm border border-bestie-coral/40 rounded-full px-5 py-2 mb-6">
-              <Sparkles className="text-bestie-coral" size={20} />
-              <span className="text-sm font-bold text-bestie-coral">EMILY'S PROOF OF CONCEPT</span>
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-besty-coral/20 to-besty-blue/20 backdrop-blur-sm border border-besty-coral/40 rounded-full px-5 py-2 mb-6">
+              <Sparkles className="text-besty-coral" size={20} />
+              <span className="text-sm font-bold text-besty-coral">EMILY'S PROOF OF CONCEPT</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 leading-tight">
-              <span className="text-bestie-blue">Meet Emily's Own App: </span>
-              <span className="text-transparent bg-gradient-to-r from-bestie-orange to-bestie-coral bg-clip-text">BFF (Bestie Financial Freedom)</span>
+              <span className="text-besty-blue">Meet Emily's Own App: </span>
+              <span className="text-transparent bg-gradient-to-r from-besty-orange to-besty-coral bg-clip-text">BFF (Besty Financial Freedom)</span>
             </h2>
 
-            <p className="text-lg sm:text-xl text-bestie-gray max-w-3xl mx-auto">
-              Before offering this to you, Emily built her own web app. Here's what it does for her Bestie Bookkeepers business:
+            <p className="text-lg sm:text-xl text-besty-gray max-w-3xl mx-auto">
+              Before offering this to you, Emily built her own web app. Here's what it does for her Besty Bookkeepers business:
             </p>
           </div>
 
@@ -743,7 +743,7 @@ export default function LandingPage() {
               {
                 icon: '📊',
                 title: 'Financial Health Quiz',
-                description: 'Clients take a 5-minute assessment that identifies their biggest money challenges and recommends the perfect Bestie service package.'
+                description: 'Clients take a 5-minute assessment that identifies their biggest money challenges and recommends the perfect Besty service package.'
               },
               {
                 icon: '📅',
@@ -756,15 +756,15 @@ export default function LandingPage() {
                 description: 'Video tutorials, financial calculators, and guides that position Emily as THE expert before clients even meet her.'
               }
             ].map((feature, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-2xl p-6 border-2 border-bestie-orange/20">
+              <div key={idx} className="bg-gradient-to-br from-white/80 to-besty-gray-light/80 backdrop-blur-xl rounded-2xl p-6 border-2 border-besty-orange/20">
                 <div className="text-5xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold text-bestie-blue mb-3">{feature.title}</h3>
-                <p className="text-sm text-bestie-gray">{feature.description}</p>
+                <h3 className="text-xl font-bold text-besty-blue mb-3">{feature.title}</h3>
+                <p className="text-sm text-besty-gray">{feature.description}</p>
               </div>
             ))}
           </div>
 
-          <div className="bg-gradient-to-br from-bestie-coral/10 to-bestie-blue/10 backdrop-blur-xl rounded-2xl p-8 border-2 border-bestie-orange/30">
+          <div className="bg-gradient-to-br from-besty-coral/10 to-besty-blue/10 backdrop-blur-xl rounded-2xl p-8 border-2 border-besty-orange/30">
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="flex-shrink-0">
                 <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
@@ -772,19 +772,19 @@ export default function LandingPage() {
                 </div>
               </div>
               <div className="flex-1 text-center md:text-left">
-                <h3 className="text-2xl font-black text-bestie-blue mb-2">The Results? Undeniable.</h3>
+                <h3 className="text-2xl font-black text-besty-blue mb-2">The Results? Undeniable.</h3>
                 <div className="grid sm:grid-cols-3 gap-4 mt-4">
-                  <div className="bg-bestie-mint/50 rounded-lg p-3">
+                  <div className="bg-besty-mint/50 rounded-lg p-3">
                     <div className="text-3xl font-black text-green-400">+43%</div>
-                    <div className="text-xs text-bestie-gray">More qualified leads</div>
+                    <div className="text-xs text-besty-gray">More qualified leads</div>
                   </div>
-                  <div className="bg-bestie-mint/50 rounded-lg p-3">
+                  <div className="bg-besty-mint/50 rounded-lg p-3">
                     <div className="text-3xl font-black text-yellow-400">24/7</div>
-                    <div className="text-xs text-bestie-gray">Lead capture (even while sleeping)</div>
+                    <div className="text-xs text-besty-gray">Lead capture (even while sleeping)</div>
                   </div>
-                  <div className="bg-bestie-mint/50 rounded-lg p-3">
-                    <div className="text-3xl font-black text-bestie-coral">78%</div>
-                    <div className="text-xs text-bestie-gray">Booking conversion rate</div>
+                  <div className="bg-besty-mint/50 rounded-lg p-3">
+                    <div className="text-3xl font-black text-besty-coral">78%</div>
+                    <div className="text-xs text-besty-gray">Booking conversion rate</div>
                   </div>
                 </div>
               </div>
@@ -792,15 +792,15 @@ export default function LandingPage() {
           </div>
 
           <div className="mt-10 text-center">
-            <p className="text-xl text-bestie-warm font-bold italic">
-              "I wouldn't offer this to my circle if I hadn't proven it works for MY business first." <span className="text-bestie-blue">- Emily</span>
+            <p className="text-xl text-besty-warm font-bold italic">
+              "I wouldn't offer this to my circle if I hadn't proven it works for MY business first." <span className="text-besty-blue">- Emily</span>
             </p>
           </div>
         </div>
       </section>
 
       {/* Meta Fourth Wall Break */}
-      <section className="relative py-24 px-6 md:px-12 bg-gradient-to-b from-bestie-gray-light to-white">
+      <section className="relative py-24 px-6 md:px-12 bg-gradient-to-b from-besty-gray-light to-white">
         <div className="max-w-6xl mx-auto">
           
           {/* Emily's Photo & Message Section */}
@@ -808,8 +808,8 @@ export default function LandingPage() {
             {/* Image of Emily's tablet */}
             <div className="flex-shrink-0 w-full md:w-1/2">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-bestie-coral to-bestie-blue rounded-3xl blur-2xl opacity-20"></div>
-                <div className="relative bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-3xl p-8 border border-bestie-coral/30 shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-r from-besty-coral to-besty-blue rounded-3xl blur-2xl opacity-20"></div>
+                <div className="relative bg-gradient-to-br from-white/80 to-besty-gray-light/80 backdrop-blur-xl rounded-3xl p-8 border border-besty-coral/30 shadow-2xl">
                   <img
                     src="/emily-tablet.jpg"
                     alt="Emily's custom financial roadmap on tablet"
@@ -823,15 +823,15 @@ export default function LandingPage() {
             <div className="flex-1">
               <div className="relative inline-block mb-6">
                 <div
-                  className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-bestie-coral to-bestie-blue rounded-full cursor-pointer hover:scale-110 transition-transform"
+                  className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-besty-coral to-besty-blue rounded-full cursor-pointer hover:scale-110 transition-transform"
                   onDoubleClick={() => handleCodeClick('SPOOKY10')}
                   title="Something magical happens if you double-click..."
                 >
                   <span className="text-4xl select-none">🎃</span>
                 </div>
                 {/* Punny hint sticker */}
-                <div className="absolute -right-4 -top-2 bg-white px-3 py-1.5 rounded-full shadow-lg border-2 border-bestie-coral animate-bounce transform rotate-12">
-                  <p className="text-xs font-black text-bestie-coral whitespace-nowrap">
+                <div className="absolute -right-4 -top-2 bg-white px-3 py-1.5 rounded-full shadow-lg border-2 border-besty-coral animate-bounce transform rotate-12">
+                  <p className="text-xs font-black text-besty-coral whitespace-nowrap">
                     Double-tap for a gourd time! 🎃
                   </p>
                 </div>
@@ -839,20 +839,20 @@ export default function LandingPage() {
               
               <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
                 Wait... Let's Talk About<br />
-                <span className="text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text">This Page You're On Right Now</span>
+                <span className="text-transparent bg-gradient-to-r from-besty-coral to-besty-blue bg-clip-text">This Page You're On Right Now</span>
               </h2>
               
-              <div className="bg-gradient-to-br from-white/60 to-bestie-gray-light/60 backdrop-blur-xl rounded-3xl p-8 md:p-10 border border-bestie-coral/30 space-y-6 text-lg md:text-xl text-bestie-gray leading-relaxed">
-                <p className="text-2xl font-bold text-bestie-blue">
+              <div className="bg-gradient-to-br from-white/60 to-besty-gray-light/60 backdrop-blur-xl rounded-3xl p-8 md:p-10 border border-besty-coral/30 space-y-6 text-lg md:text-xl text-besty-gray leading-relaxed">
+                <p className="text-2xl font-bold text-besty-blue">
                   We built this entire landing page just for Emily's group.
                 </p>
                 <p>
                   Custom design. Interactive elements. Smooth animations. Even a hidden scavenger hunt with real discount codes worth up to 50% off.
                 </p>
-                <p className="text-xl md:text-2xl font-black text-bestie-blue">
-                  This is just the <span className="text-bestie-coral">special offer page</span>.
+                <p className="text-xl md:text-2xl font-black text-besty-blue">
+                  This is just the <span className="text-besty-coral">special offer page</span>.
                 </p>
-                <p className="text-3xl font-black text-transparent bg-gradient-to-r from-bestie-coral via-bestie-blue to-bestie-coral bg-clip-text pt-4">
+                <p className="text-3xl font-black text-transparent bg-gradient-to-r from-besty-coral via-besty-blue to-besty-coral bg-clip-text pt-4">
                   Imagine what we'll build for YOUR actual business when you're our client.
                 </p>
               </div>
@@ -860,10 +860,10 @@ export default function LandingPage() {
           </div>
 
           {/* Emily's Personal Testimonial Card */}
-          <div className="max-w-4xl mx-auto bg-gradient-to-br from-bestie-coral/20 to-bestie-blue/20 backdrop-blur-xl rounded-3xl p-8 md:p-12 border-2 border-bestie-coral/30">
+          <div className="max-w-4xl mx-auto bg-gradient-to-br from-besty-coral/20 to-besty-blue/20 backdrop-blur-xl rounded-3xl p-8 md:p-12 border-2 border-besty-coral/30">
             <div className="flex items-start gap-6">
               {/* Small circular headshot - Image 2 */}
-              <div className="flex-shrink-0 w-24 h-24 rounded-full overflow-hidden border-4 border-bestie-coral/60 shadow-lg">
+              <div className="flex-shrink-0 w-24 h-24 rounded-full overflow-hidden border-4 border-besty-coral/60 shadow-lg">
                 <img 
                   src="/emily-magnifying.jpg"
                   alt="Emily Handren"
@@ -874,18 +874,18 @@ export default function LandingPage() {
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="text-bestie-coral fill-pink-400" size={20} />
+                    <Star key={i} className="text-besty-coral fill-pink-400" size={20} />
                   ))}
                 </div>
-                <p className="text-xl md:text-2xl text-bestie-blue font-bold mb-4 italic">
+                <p className="text-xl md:text-2xl text-besty-blue font-bold mb-4 italic">
                   "As a fellow Tampa entrepreneur, I know how hard it is to stand out..."
                 </p>
-                <p className="text-lg text-bestie-gray leading-relaxed mb-4">
+                <p className="text-lg text-besty-gray leading-relaxed mb-4">
                   This team didn't just talk about possibilities—they SHOWED me by building this entire custom page just to demonstrate what they can do. If this is what they create for a special offer, imagine what they'll build for your actual business!
                 </p>
                 <div className="flex items-center gap-3">
                   <div>
-                    <p className="font-bold text-bestie-blue text-lg">Emily Handren</p>
+                    <p className="font-bold text-besty-blue text-lg">Emily Handren</p>
                     <p className="text-gray-600 text-sm">Founder, BESTY Bookkeepers • Tampa, FL</p>
                   </div>
                 </div>
@@ -897,34 +897,34 @@ export default function LandingPage() {
       </section>
 
       {/* Possibility Examples with Interactive Components */}
-      <section className="relative py-24 md:py-32 px-6 md:px-12 bg-gradient-to-b from-white to-bestie-gray-light">
+      <section className="relative py-24 md:py-32 px-6 md:px-12 bg-gradient-to-b from-white to-besty-gray-light">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
-              <span className="text-bestie-blue">What Could </span>
-              <span className="text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text">Your App</span>
-              <span className="text-bestie-blue"> Do?</span>
+              <span className="text-besty-blue">What Could </span>
+              <span className="text-transparent bg-gradient-to-r from-besty-coral to-besty-blue bg-clip-text">Your App</span>
+              <span className="text-besty-blue"> Do?</span>
             </h2>
-            <p className="text-xl md:text-2xl text-bestie-gray max-w-3xl mx-auto">Close your eyes and imagine these scenarios for YOUR business...</p>
+            <p className="text-xl md:text-2xl text-besty-gray max-w-3xl mx-auto">Close your eyes and imagine these scenarios for YOUR business...</p>
           </div>
 
           {/* Interactive Component #2: Quiz Demo */}
-          <div className="max-w-3xl mx-auto mb-16 bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-3xl p-10 border-2 border-bestie-coral/30 relative">
+          <div className="max-w-3xl mx-auto mb-16 bg-gradient-to-br from-white/80 to-besty-gray-light/80 backdrop-blur-xl rounded-3xl p-10 border-2 border-besty-coral/30 relative">
             <MobileIndicator type="tap" position="top-left" />
             <div className="w-20 h-20 mb-6 mx-auto">
               <HeelIcon />
             </div>
             <h3 className="text-2xl md:text-3xl font-bold mb-4 text-center">Try It: Your Client Discovery Quiz</h3>
-            <p className="text-bestie-gray text-center mb-8">This is a simple example. Yours would be fully custom and branded.</p>
+            <p className="text-besty-gray text-center mb-8">This is a simple example. Yours would be fully custom and branded.</p>
             
             {!quizAnswer ? (
               <div className="space-y-4">
-                <p className="text-lg font-semibold text-bestie-blue mb-4">What's your biggest business challenge right now?</p>
+                <p className="text-lg font-semibold text-besty-blue mb-4">What's your biggest business challenge right now?</p>
                 {['Engaging my audience daily', 'Building brand loyalty', 'Standing out from competitors', 'Automating client interactions'].map((option, idx) => (
                   <button
                     key={idx}
                     onClick={() => handleQuizAnswer(option)}
-                    className="w-full bg-bestie-gray-light hover:bg-bestie-coral/20 border border-gray-300 hover:border-bestie-coral rounded-xl p-4 text-left transition-all duration-300 hover:scale-[1.02]"
+                    className="w-full bg-besty-gray-light hover:bg-besty-coral/20 border border-gray-300 hover:border-besty-coral rounded-xl p-4 text-left transition-all duration-300 hover:scale-[1.02]"
                   >
                     {option}
                   </button>
@@ -933,8 +933,8 @@ export default function LandingPage() {
             ) : (
               <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/40 rounded-xl p-6 text-center">
                 <CheckCircle className="inline-block text-green-400 mb-3" size={48} />
-                <p className="text-xl font-bold text-bestie-blue mb-3">Perfect! You selected: "{quizAnswer}"</p>
-                <p className="text-bestie-gray">Now imagine: Based on this answer, your app could instantly recommend the perfect service package, show pricing, and book a consultation. All automatic.</p>
+                <p className="text-xl font-bold text-besty-blue mb-3">Perfect! You selected: "{quizAnswer}"</p>
+                <p className="text-besty-gray">Now imagine: Based on this answer, your app could instantly recommend the perfect service package, show pricing, and book a consultation. All automatic.</p>
               </div>
             )}
           </div>
@@ -950,7 +950,7 @@ export default function LandingPage() {
                 {idx === 0 && <MobileIndicator type="tap" position="top-right" />}
                 <div className={`relative transition-all duration-500 transform-style-3d ${selectedCard === idx ? 'rotate-y-180' : ''}`}>
                   {/* Front */}
-                  <div className={`bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-3xl p-8 md:p-10 border-2 border-bestie-coral/30 hover:border-bestie-coral/50 transition-all duration-300 ${selectedCard === idx ? 'hidden' : 'block'}`}>
+                  <div className={`bg-gradient-to-br from-white/80 to-besty-gray-light/80 backdrop-blur-xl rounded-3xl p-8 md:p-10 border-2 border-besty-coral/30 hover:border-besty-coral/50 transition-all duration-300 ${selectedCard === idx ? 'hidden' : 'block'}`}>
                     <div className="w-20 h-20 mb-6">
                       {idx === 0 && <HeelIcon />}
                       {idx === 1 && <MartiniIcon />}
@@ -958,18 +958,18 @@ export default function LandingPage() {
                       {idx === 3 && <BriefcaseIcon />}
                     </div>
                     <h3 className="text-2xl md:text-3xl font-bold mb-4">{item.title}</h3>
-                    <p className="text-bestie-gray leading-relaxed mb-4">{item.description}</p>
-                    <div className="text-bestie-coral font-semibold flex items-center gap-2">
+                    <p className="text-besty-gray leading-relaxed mb-4">{item.description}</p>
+                    <div className="text-besty-coral font-semibold flex items-center gap-2">
                       Click to see the benefit <ArrowRight size={20} />
                     </div>
                   </div>
 
                   {/* Back */}
-                  <div className={`bg-gradient-to-br from-bestie-coral to-bestie-blue backdrop-blur-xl rounded-3xl p-8 md:p-10 border-2 border-bestie-coral ${selectedCard === idx ? 'block' : 'hidden'}`}>
-                    <Heart className="text-bestie-coral mb-6" size={48} />
-                    <h3 className="text-2xl font-bold mb-4 text-bestie-blue">The Benefit:</h3>
+                  <div className={`bg-gradient-to-br from-besty-coral to-besty-blue backdrop-blur-xl rounded-3xl p-8 md:p-10 border-2 border-besty-coral ${selectedCard === idx ? 'block' : 'hidden'}`}>
+                    <Heart className="text-besty-coral mb-6" size={48} />
+                    <h3 className="text-2xl font-bold mb-4 text-besty-blue">The Benefit:</h3>
                     <p className="text-xl text-white leading-relaxed mb-6">{item.benefit}</p>
-                    <div className="text-bestie-coral font-semibold flex items-center gap-2">
+                    <div className="text-besty-coral font-semibold flex items-center gap-2">
                       Click again to flip back <ArrowRight size={20} className="rotate-180" />
                     </div>
                   </div>
@@ -979,10 +979,10 @@ export default function LandingPage() {
           </div>
 
           {/* Interactive Component #4: Progress Tracker for Scavenger Hunt */}
-          <div className="max-w-2xl mx-auto bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-3xl p-8 md:p-10 border-2 border-bestie-coral/30">
-            <Gift className="text-bestie-coral mx-auto mb-6" size={48} />
+          <div className="max-w-2xl mx-auto bg-gradient-to-br from-white/80 to-besty-gray-light/80 backdrop-blur-xl rounded-3xl p-8 md:p-10 border-2 border-besty-coral/30">
+            <Gift className="text-besty-coral mx-auto mb-6" size={48} />
             <h3 className="text-2xl font-bold mb-4 text-center">🎃 Secret Discount Hunt Active!</h3>
-            <p className="text-bestie-gray text-center mb-6">
+            <p className="text-besty-gray text-center mb-6">
               There are 3 secret discount codes hidden throughout this page. Each code unlocks a different discount level. Find all 3 and save 50%!
             </p>
 
@@ -990,7 +990,7 @@ export default function LandingPage() {
             <div className="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border-2 border-yellow-500/40 rounded-xl p-4 mb-6 text-center">
               <Trophy className="text-yellow-400 mx-auto mb-2" size={32} />
               <p className="text-yellow-300 font-bold text-sm mb-1">🏆 ULTIMATE PRIZE</p>
-              <p className="text-bestie-blue text-xs">
+              <p className="text-besty-blue text-xs">
                 Find all 3 codes <strong>AND</strong> reach 100% engagement to unlock Emily's ultimate gift!
               </p>
               <p className="text-yellow-200 text-[10px] italic mt-1">
@@ -1028,7 +1028,7 @@ export default function LandingPage() {
             </div>
 
             {foundCodes.length === 3 && (
-              <div className="bg-gradient-to-r from-bestie-coral to-bestie-blue text-bestie-blue font-bold py-4 px-6 rounded-xl text-center animate-pulse">
+              <div className="bg-gradient-to-r from-besty-coral to-besty-blue text-besty-blue font-bold py-4 px-6 rounded-xl text-center animate-pulse">
                 🎉 LEGENDARY! You found all 3! Use the 50% code at checkout!
               </div>
             )}
@@ -1039,7 +1039,7 @@ export default function LandingPage() {
               </p>
             )}
 
-            <p className="text-xs text-bestie-coral mt-6 text-center italic">
+            <p className="text-xs text-besty-coral mt-6 text-center italic">
               This is EXACTLY the kind of gamified experience we could build into YOUR app. Imagine your users hunting for achievements, unlocking rewards, and engaging with your brand every day.
             </p>
           </div>
@@ -1047,37 +1047,37 @@ export default function LandingPage() {
       </section>
 
       {/* The Offer */}
-      <section className="relative py-24 md:py-32 px-6 md:px-12 bg-gradient-to-b from-bestie-gray-light to-white">
+      <section className="relative py-24 md:py-32 px-6 md:px-12 bg-gradient-to-b from-besty-gray-light to-white">
         <div className="max-w-5xl mx-auto">
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-bestie-coral via-bestie-blue to-bestie-coral rounded-3xl blur-xl opacity-30"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-besty-coral via-besty-blue to-besty-coral rounded-3xl blur-xl opacity-30"></div>
             
-            <div className="relative bg-gradient-to-br from-white to-bestie-gray-light backdrop-blur-xl rounded-3xl p-10 md:p-16 border border-bestie-coral/30">
+            <div className="relative bg-gradient-to-br from-white to-besty-gray-light backdrop-blur-xl rounded-3xl p-10 md:p-16 border border-besty-coral/30">
               
               <div className="text-center mb-12">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-bestie-coral to-bestie-blue rounded-full mb-6">
-                  <Star className="text-bestie-blue" size={40} />
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-besty-coral to-besty-blue rounded-full mb-6">
+                  <Star className="text-besty-blue" size={40} />
                 </div>
                 <h2 className="text-4xl md:text-6xl font-black mb-4">
-                  <span className="text-bestie-blue">Emily's Circle </span>
-                  <span className="text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text">Exclusive</span>
+                  <span className="text-besty-blue">Emily's Circle </span>
+                  <span className="text-transparent bg-gradient-to-r from-besty-coral to-besty-blue bg-clip-text">Exclusive</span>
                 </h2>
-                <div className="text-6xl md:text-7xl font-black text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text mb-4">
+                <div className="text-6xl md:text-7xl font-black text-transparent bg-gradient-to-r from-besty-coral to-besty-blue bg-clip-text mb-4">
                   50% OFF
                 </div>
-                <p className="text-xl md:text-2xl text-bestie-gray mb-6">Because you're in Emily's network of unstoppable Tampa women</p>
+                <p className="text-xl md:text-2xl text-besty-gray mb-6">Because you're in Emily's network of unstoppable Tampa women</p>
                 
                 {/* Value Framing (No Specific Prices) */}
-                <div className="max-w-lg mx-auto bg-gradient-to-br from-white/50 to-bestie-gray-light/50 rounded-2xl p-8 border border-bestie-coral/30">
+                <div className="max-w-lg mx-auto bg-gradient-to-br from-white/50 to-besty-gray-light/50 rounded-2xl p-8 border border-besty-coral/30">
                   <div className="text-center space-y-4">
-                    <p className="text-lg text-bestie-blue font-semibold">
-                      Regular custom app development: <span className="text-bestie-gray">$15,000-$50,000+</span>
+                    <p className="text-lg text-besty-blue font-semibold">
+                      Regular custom app development: <span className="text-besty-gray">$15,000-$50,000+</span>
                     </p>
-                    <p className="text-bestie-gray">
-                      Our AI-powered approach: <span className="text-bestie-coral font-bold">50% of traditional cost</span>
+                    <p className="text-besty-gray">
+                      Our AI-powered approach: <span className="text-besty-coral font-bold">50% of traditional cost</span>
                     </p>
                     <div className="py-4">
-                      <p className="text-3xl font-black text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text">
+                      <p className="text-3xl font-black text-transparent bg-gradient-to-r from-besty-coral to-besty-blue bg-clip-text">
                         Tampa Friends & Family Rate
                       </p>
                       <p className="text-sm text-gray-600 mt-2">
@@ -1089,34 +1089,34 @@ export default function LandingPage() {
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-12">
-                <div className="bg-gradient-to-br from-white/50 to-bestie-gray-light/50 rounded-2xl p-8 border border-bestie-coral/30">
-                  <Zap className="text-bestie-coral mb-4" size={36} />
+                <div className="bg-gradient-to-br from-white/50 to-besty-gray-light/50 rounded-2xl p-8 border border-besty-coral/30">
+                  <Zap className="text-besty-coral mb-4" size={36} />
                   <h3 className="text-xl font-bold mb-3">Fully Custom. Zero Templates.</h3>
-                  <p className="text-bestie-gray leading-relaxed">
+                  <p className="text-besty-gray leading-relaxed">
                     Built specifically for YOUR business model, YOUR brand, YOUR dream client experience. Our U.S.-based team brings your vision to life.
                   </p>
                 </div>
 
-                <div className="bg-gradient-to-br from-white/50 to-bestie-gray-light/50 rounded-2xl p-8 border border-bestie-coral/30">
-                  <TrendingUp className="text-bestie-coral mb-4" size={36} />
+                <div className="bg-gradient-to-br from-white/50 to-besty-gray-light/50 rounded-2xl p-8 border border-besty-coral/30">
+                  <TrendingUp className="text-besty-coral mb-4" size={36} />
                   <h3 className="text-xl font-bold mb-3">AI-Powered Possibilities</h3>
-                  <p className="text-bestie-gray leading-relaxed">
+                  <p className="text-besty-gray leading-relaxed">
                     What used to cost $100K+ and take 6 months? We can build in 60-90 days at a fraction of the cost thanks to modern AI tools combined with human expertise.
                   </p>
                 </div>
 
-                <div className="bg-gradient-to-br from-white/50 to-bestie-gray-light/50 rounded-2xl p-8 border border-bestie-coral/30">
+                <div className="bg-gradient-to-br from-white/50 to-besty-gray-light/50 rounded-2xl p-8 border border-besty-coral/30">
                   <Sparkles className="text-gray-600 mb-4" size={36} />
                   <h3 className="text-xl font-bold mb-3">Engagement That Converts</h3>
-                  <p className="text-bestie-gray leading-relaxed">
+                  <p className="text-besty-gray leading-relaxed">
                     Quizzes that qualify. Calculators that pre-sell. Booking tools that close. Gamified experiences that create brand obsession. Real results.
                   </p>
                 </div>
 
-                <div className="bg-gradient-to-br from-white/50 to-bestie-gray-light/50 rounded-2xl p-8 border border-bestie-coral/30">
+                <div className="bg-gradient-to-br from-white/50 to-besty-gray-light/50 rounded-2xl p-8 border border-besty-coral/30">
                   <Clock className="text-green-400 mb-4" size={36} />
                   <h3 className="text-xl font-bold mb-3">Launch Q1 2026</h3>
-                  <p className="text-bestie-gray leading-relaxed">
+                  <p className="text-besty-gray leading-relaxed">
                     Start the new year with your custom app already live and working for you while others are still planning their "content strategy."
                   </p>
                 </div>
@@ -1125,20 +1125,20 @@ export default function LandingPage() {
               {/* Hunt Code #3 Hidden */}
               <div className="text-center mb-12">
                 <div className="inline-block opacity-0 hover:opacity-100 transition-opacity cursor-pointer" onClick={() => handleCodeClick('EMILY10')}>
-                  <span className="text-xs text-bestie-blue">🎃 {foundCodes.includes('EMILY10') ? '✓ Final code: EMILY10' : '...'}</span>
+                  <span className="text-xs text-besty-blue">🎃 {foundCodes.includes('EMILY10') ? '✓ Final code: EMILY10' : '...'}</span>
                 </div>
               </div>
 
               {/* Interactive Component #5: Engagement Score */}
-              <div className="bg-gradient-to-r from-bestie-coral/20 to-bestie-blue/20 border border-bestie-coral/40 rounded-2xl p-6 mb-10">
+              <div className="bg-gradient-to-r from-besty-coral/20 to-besty-blue/20 border border-besty-coral/40 rounded-2xl p-6 mb-10">
                 <h4 className="text-lg font-bold mb-3 text-center">Your Engagement Score on This Page:</h4>
                 <div className="w-full bg-white rounded-full h-4 mb-3">
                   <div 
-                    className="bg-gradient-to-r from-bestie-coral to-bestie-blue h-4 rounded-full transition-all duration-500"
+                    className="bg-gradient-to-r from-besty-coral to-besty-blue h-4 rounded-full transition-all duration-500"
                     style={{width: `${Math.min((interactionScore / 12) * 100, 100)}%`}}
                   ></div>
                 </div>
-                <p className="text-center text-sm text-bestie-gray mb-3">
+                <p className="text-center text-sm text-besty-gray mb-3">
                   {interactionScore < 4 && "You're just getting started! Try the interactive elements above."}
                   {interactionScore >= 4 && interactionScore < 8 && "Nice! You're engaging. This is exactly what YOUR app would track."}
                   {interactionScore >= 8 && interactionScore < 12 && "🔥 You're ALL IN! This is the kind of engagement your business needs!"}
@@ -1147,11 +1147,11 @@ export default function LandingPage() {
                 
                 {interactionScore >= 8 && !foundCodes.includes('HAUNTED20') && (
                   <div 
-                    className="mt-4 bg-gradient-to-r from-bestie-coral/50 to-bestie-blue/50 border border-bestie-coral/50 rounded-xl p-4 cursor-pointer hover:scale-105 transition-transform animate-pulse"
+                    className="mt-4 bg-gradient-to-r from-besty-coral/50 to-besty-blue/50 border border-besty-coral/50 rounded-xl p-4 cursor-pointer hover:scale-105 transition-transform animate-pulse"
                     onClick={() => handleCodeClick('HAUNTED20')}
                   >
-                    <p className="text-center text-bestie-gray text-sm mb-2">👻 Your engagement unlocked something...</p>
-                    <p className="text-center text-bestie-coral font-bold">Click here to reveal your reward!</p>
+                    <p className="text-center text-besty-gray text-sm mb-2">👻 Your engagement unlocked something...</p>
+                    <p className="text-center text-besty-coral font-bold">Click here to reveal your reward!</p>
                   </div>
                 )}
                 
@@ -1164,17 +1164,17 @@ export default function LandingPage() {
               </div>
 
               {/* Guarantee Box */}
-              <div className="bg-white border-2 border-bestie-green rounded-2xl p-6 sm:p-8 mb-10 shadow-lg">
+              <div className="bg-white border-2 border-besty-green rounded-2xl p-6 sm:p-8 mb-10 shadow-lg">
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-bestie-green to-bestie-coral rounded-full flex items-center justify-center shadow-md">
+                  <div className="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-besty-green to-besty-coral rounded-full flex items-center justify-center shadow-md">
                     <CheckCircle className="text-white" size={32} />
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-xl sm:text-2xl font-black text-bestie-blue mb-3">Our Commitment to You</h4>
-                    <p className="text-base sm:text-lg text-bestie-gray leading-relaxed mb-3">
+                    <h4 className="text-xl sm:text-2xl font-black text-besty-blue mb-3">Our Commitment to You</h4>
+                    <p className="text-base sm:text-lg text-besty-gray leading-relaxed mb-3">
                       We only take on projects where we know we can deliver exceptional value. If during our strategy session we don't think a custom app is right for you right now, we'll tell you honestly—even if it means we don't work together.
                     </p>
-                    <p className="text-base sm:text-lg text-bestie-blue font-bold">
+                    <p className="text-base sm:text-lg text-besty-blue font-bold">
                       Your success is more important to us than making a sale.
                     </p>
                   </div>
@@ -1192,8 +1192,8 @@ export default function LandingPage() {
                   className="mb-4 !px-12 !py-6 !text-2xl md:!text-3xl"
                 />
                 <p className="text-gray-600 text-sm mb-2">✨ Includes free 30-min strategy session • Zero pressure • All possibility</p>
-                <p className="text-bestie-coral text-xs font-bold flex items-center justify-center gap-2">
-                  <span className="inline-block w-2 h-2 bg-bestie-coral rounded-full animate-pulse"></span>
+                <p className="text-besty-coral text-xs font-bold flex items-center justify-center gap-2">
+                  <span className="inline-block w-2 h-2 bg-besty-coral rounded-full animate-pulse"></span>
                   Only {spotsRemaining} spots left for Emily's network
                 </p>
               </div>
@@ -1203,19 +1203,19 @@ export default function LandingPage() {
       </section>
 
       {/* Social Proof Bar */}
-      <section className="bg-gradient-to-r from-bestie-gray-light via-bestie-mint to-bestie-gray-light py-8 border-y border-bestie-coral/30">
+      <section className="bg-gradient-to-r from-besty-gray-light via-besty-mint to-besty-gray-light py-8 border-y border-besty-coral/30">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 text-bestie-gray">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 text-besty-gray">
             <div className="flex items-center gap-3">
-              <Star className="text-bestie-coral" size={24} />
+              <Star className="text-besty-coral" size={24} />
               <span className="font-semibold">U.S.-Based Team</span>
             </div>
             <div className="flex items-center gap-3">
-              <Star className="text-bestie-coral" size={24} />
+              <Star className="text-besty-coral" size={24} />
               <span className="font-semibold">60-90 Day Builds</span>
             </div>
             <div className="flex items-center gap-3">
-              <Star className="text-bestie-coral" size={24} />
+              <Star className="text-besty-coral" size={24} />
               <span className="font-semibold">Tampa Women First</span>
             </div>
           </div>
@@ -1223,11 +1223,11 @@ export default function LandingPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="relative py-24 px-6 md:px-12 bg-gradient-to-b from-bestie-gray-light to-white">
+      <section className="relative py-24 px-6 md:px-12 bg-gradient-to-b from-besty-gray-light to-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-black text-center mb-16">
-            <span className="text-bestie-blue">Questions You're </span>
-            <span className="text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text">Probably Asking</span>
+            <span className="text-besty-blue">Questions You're </span>
+            <span className="text-transparent bg-gradient-to-r from-besty-coral to-besty-blue bg-clip-text">Probably Asking</span>
           </h2>
 
           <div className="space-y-6">
@@ -1257,28 +1257,28 @@ export default function LandingPage() {
                 a: "That's exactly why we start with a free strategy session! We'll be honest about whether a custom app makes sense for you right now. We only want to work with businesses where we know we can create real value."
               }
             ].map((faq, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-white/60 to-bestie-gray-light/60 backdrop-blur-xl rounded-2xl p-8 border border-bestie-coral/30 hover:border-bestie-coral/30 transition-all duration-300">
-                <h3 className="text-xl md:text-2xl font-bold mb-4 text-bestie-blue">{faq.q}</h3>
-                <p className="text-lg text-bestie-gray leading-relaxed">{faq.a}</p>
+              <div key={idx} className="bg-gradient-to-br from-white/60 to-besty-gray-light/60 backdrop-blur-xl rounded-2xl p-8 border border-besty-coral/30 hover:border-besty-coral/30 transition-all duration-300">
+                <h3 className="text-xl md:text-2xl font-bold mb-4 text-besty-blue">{faq.q}</h3>
+                <p className="text-lg text-besty-gray leading-relaxed">{faq.a}</p>
               </div>
             ))}
           </div>
 
           <div className="text-center mt-12">
-            <p className="text-bestie-gray text-lg">
-              Still have questions? <span className="text-bestie-coral font-bold">That's what the free strategy call is for!</span> Zero pressure, all answers.
+            <p className="text-besty-gray text-lg">
+              Still have questions? <span className="text-besty-coral font-bold">That's what the free strategy call is for!</span> Zero pressure, all answers.
             </p>
           </div>
         </div>
       </section>
 
       {/* Final CTA */}
-      <section className="relative py-24 md:py-32 px-6 md:px-12 bg-gradient-to-b from-bestie-gray-light via-bestie-mint to-white overflow-hidden">
+      <section className="relative py-24 md:py-32 px-6 md:px-12 bg-gradient-to-b from-besty-gray-light via-besty-mint to-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 text-9xl animate-bounce">🎃</div>
           {/* Cool sticker next to Jack */}
           <div className="absolute top-24 left-56 hidden lg:block animate-pulse">
-            <div className="relative bg-gradient-to-br from-bestie-coral to-bestie-blue text-white px-6 py-3 rounded-full shadow-2xl transform -rotate-12 border-4 border-white">
+            <div className="relative bg-gradient-to-br from-besty-coral to-besty-blue text-white px-6 py-3 rounded-full shadow-2xl transform -rotate-12 border-4 border-white">
               <div className="flex items-center gap-2">
                 <span className="text-2xl">👆</span>
                 <div className="text-left">
@@ -1294,55 +1294,55 @@ export default function LandingPage() {
         </div>
 
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-bestie-coral to-bestie-blue rounded-full mb-8">
-            <Clock className="text-bestie-blue" size={48} />
+          <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-besty-coral to-besty-blue rounded-full mb-8">
+            <Clock className="text-besty-blue" size={48} />
           </div>
 
           <h2 className="text-5xl md:text-7xl font-black mb-8 leading-tight">
             This Special Ends
             <br />
-            <span className="text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text">Halloween Midnight</span>
+            <span className="text-transparent bg-gradient-to-r from-besty-coral to-besty-blue bg-clip-text">Halloween Midnight</span>
           </h2>
 
-          <div className="max-w-3xl mx-auto mb-12 space-y-6 text-lg md:text-xl text-bestie-gray">
-            <p className="text-2xl text-bestie-blue font-bold">
+          <div className="max-w-3xl mx-auto mb-12 space-y-6 text-lg md:text-xl text-besty-gray">
+            <p className="text-2xl text-besty-blue font-bold">
               By November 1st, this 50% discount is gone.
             </p>
             <p className="text-xl">
               Meanwhile, the women in Emily's circle who said yes? They'll be 60-90 days into their custom app build.
             </p>
-            <p className="text-2xl font-bold text-bestie-blue">
+            <p className="text-2xl font-bold text-besty-blue">
               By Q1 2026, their apps will be live (in the App Store or web), engaging users daily, and transforming their businesses...
             </p>
-            <p className="text-bestie-coral font-bold text-2xl">
+            <p className="text-besty-coral font-bold text-2xl">
               And you'll be thinking "I wish I had jumped on this when I had the chance."
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-white/60 to-bestie-gray-light/60 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-bestie-coral/30 mb-12">
-            <h3 className="text-3xl font-black mb-10 text-bestie-blue">Your Simple Next Steps:</h3>
+          <div className="bg-gradient-to-br from-white/60 to-besty-gray-light/60 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-besty-coral/30 mb-12">
+            <h3 className="text-3xl font-black mb-10 text-besty-blue">Your Simple Next Steps:</h3>
             
             <div className="grid md:grid-cols-3 gap-8 text-left">
               <div>
-                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-bestie-coral to-bestie-blue text-bestie-blue font-black rounded-2xl text-2xl mb-6 mx-auto md:mx-0">1</div>
-                <h4 className="font-bold text-xl mb-3 text-bestie-blue">Free Strategy Call</h4>
-                <p className="text-bestie-gray leading-relaxed">
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-besty-coral to-besty-blue text-besty-blue font-black rounded-2xl text-2xl mb-6 mx-auto md:mx-0">1</div>
+                <h4 className="font-bold text-xl mb-3 text-besty-blue">Free Strategy Call</h4>
+                <p className="text-besty-gray leading-relaxed">
                   30 minutes. We dream together about what's possible for YOUR specific business. No pitch. Just brainstorming.
                 </p>
               </div>
 
               <div>
-                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-bestie-coral to-bestie-blue text-bestie-blue font-black rounded-2xl text-2xl mb-6 mx-auto md:mx-0">2</div>
-                <h4 className="font-bold text-xl mb-3 text-bestie-blue">Custom Blueprint</h4>
-                <p className="text-bestie-gray leading-relaxed">
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-besty-coral to-besty-blue text-besty-blue font-black rounded-2xl text-2xl mb-6 mx-auto md:mx-0">2</div>
+                <h4 className="font-bold text-xl mb-3 text-besty-blue">Custom Blueprint</h4>
+                <p className="text-besty-gray leading-relaxed">
                   We map out your perfect app—quiz, calculator, booking tool, gamified experience, or something totally unique to you.
                 </p>
               </div>
 
               <div>
-                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-bestie-coral to-bestie-blue text-bestie-blue font-black rounded-2xl text-2xl mb-6 mx-auto md:mx-0">3</div>
-                <h4 className="font-bold text-xl mb-3 text-bestie-blue">We Build Your App</h4>
-                <p className="text-bestie-gray leading-relaxed">
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-besty-coral to-besty-blue text-besty-blue font-black rounded-2xl text-2xl mb-6 mx-auto md:mx-0">3</div>
+                <h4 className="font-bold text-xl mb-3 text-besty-blue">We Build Your App</h4>
+                <p className="text-besty-gray leading-relaxed">
                   60-90 days later, your custom app launches (iOS App Store or Web). It starts engaging your audience 24/7 while you focus on what you do best.
                 </p>
               </div>
@@ -1362,10 +1362,10 @@ export default function LandingPage() {
           {mounted && (
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-600 mb-4">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-bestie-coral rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-besty-coral rounded-full animate-pulse"></div>
                 <span>Only {spotsRemaining} of 8 spots left for Emily's network</span>
               </div>
-              <div className="hidden sm:block text-bestie-gray">•</div>
+              <div className="hidden sm:block text-besty-gray">•</div>
               <div className="flex items-center gap-2">
                 <Clock size={16} />
                 <span>{timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m remaining</span>
@@ -1373,7 +1373,7 @@ export default function LandingPage() {
             </div>
           )}
 
-          <p className="text-xs text-bestie-coral mt-4">
+          <p className="text-xs text-besty-coral mt-4">
             🎃 Found a discount code? Apply it after you reserve your spot!
           </p>
         </div>
@@ -1385,29 +1385,29 @@ export default function LandingPage() {
           
           {/* Meet Emily Section */}
           <div className="mb-20">
-            <div className="flex flex-col md:flex-row items-center gap-12 bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-3xl p-10 md:p-12 border border-bestie-coral/30">
+            <div className="flex flex-col md:flex-row items-center gap-12 bg-gradient-to-br from-white/80 to-besty-gray-light/80 backdrop-blur-xl rounded-3xl p-10 md:p-12 border border-besty-coral/30">
               
               {/* Text Content First */}
               <div className="flex-1">
-                <div className="inline-block bg-gradient-to-r from-bestie-coral/20 to-bestie-blue/20 border border-bestie-coral/40 rounded-full px-6 py-2 mb-6">
-                  <span className="text-sm font-bold text-bestie-coral">FROM YOUR HOST</span>
+                <div className="inline-block bg-gradient-to-r from-besty-coral/20 to-besty-blue/20 border border-besty-coral/40 rounded-full px-6 py-2 mb-6">
+                  <span className="text-sm font-bold text-besty-coral">FROM YOUR HOST</span>
                 </div>
                 
-                <h3 className="text-3xl md:text-4xl font-black mb-4 text-bestie-blue">
+                <h3 className="text-3xl md:text-4xl font-black mb-4 text-besty-blue">
                   Meet Emily Handren
                 </h3>
-                <p className="text-xl font-semibold text-bestie-gray mb-6">
+                <p className="text-xl font-semibold text-besty-gray mb-6">
                   Founder of BESTY Bookkeepers • Tampa Entrepreneur
                 </p>
                 
-                <div className="space-y-4 text-lg text-bestie-gray leading-relaxed">
+                <div className="space-y-4 text-lg text-besty-gray leading-relaxed">
                   <p>
                     "I started BESTY because I saw entrepreneurs drowning in bookkeeping instead of growing their businesses."
                   </p>
                   <p>
                     "When I saw what's possible with custom apps—tools that work FOR you instead of you working for them—I knew my network needed to see this."
                   </p>
-                  <p className="text-bestie-blue font-bold">
+                  <p className="text-besty-blue font-bold">
                     This Halloween special is my gift to the Tampa women who inspire me every day. 🎃
                   </p>
                 </div>
@@ -1416,15 +1416,15 @@ export default function LandingPage() {
               {/* Emily's Photo - Image 4 (relaxed with laptop) */}
               <div className="flex-shrink-0 w-full md:w-2/5">
                 <div className="relative">
-                  <div className="aspect-[3/4] bg-gradient-to-br from-bestie-coral/10 to-bestie-blue/10 rounded-3xl border-4 border-bestie-coral/30 overflow-hidden shadow-2xl">
+                  <div className="aspect-[3/4] bg-gradient-to-br from-besty-coral/10 to-besty-blue/10 rounded-3xl border-4 border-besty-coral/30 overflow-hidden shadow-2xl">
                     <img 
                       src="/emily-laptop.jpg"
                       alt="Emily Handren at her desk"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="absolute -top-4 -right-4 bg-gradient-to-r from-bestie-coral to-bestie-blue text-bestie-blue p-4 rounded-full shadow-2xl">
-                    <Heart className="text-bestie-blue" size={32} />
+                  <div className="absolute -top-4 -right-4 bg-gradient-to-r from-besty-coral to-besty-blue text-besty-blue p-4 rounded-full shadow-2xl">
+                    <Heart className="text-besty-blue" size={32} />
                   </div>
                 </div>
               </div>
@@ -1432,158 +1432,158 @@ export default function LandingPage() {
           </div>
 
           <h2 className="text-4xl md:text-5xl font-black text-center mb-16">
-            <span className="text-bestie-blue">What Emily's Circle </span>
-            <span className="text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text">Is Saying</span>
+            <span className="text-besty-blue">What Emily's Circle </span>
+            <span className="text-transparent bg-gradient-to-r from-besty-coral to-besty-blue bg-clip-text">Is Saying</span>
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-2xl p-8 border border-bestie-coral/30">
+            <div className="bg-gradient-to-br from-white/80 to-besty-gray-light/80 backdrop-blur-xl rounded-2xl p-8 border border-besty-coral/30">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="text-bestie-coral fill-pink-400" size={20} />
+                  <Star key={i} className="text-besty-coral fill-pink-400" size={20} />
                 ))}
               </div>
-              <p className="text-bestie-gray leading-relaxed mb-6 italic">
+              <p className="text-besty-gray leading-relaxed mb-6 italic">
                 "I've been talking about creating something interactive for my clients for over a year. This team made it happen in 90 days. Game changer."
               </p>
               <div className="text-sm">
-                <div className="font-bold text-bestie-blue">Jessica M.</div>
+                <div className="font-bold text-besty-blue">Jessica M.</div>
                 <div className="text-gray-600">Marketing Consultant, Tampa</div>
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-2xl p-8 border border-bestie-coral/30">
+            <div className="bg-gradient-to-br from-white/80 to-besty-gray-light/80 backdrop-blur-xl rounded-2xl p-8 border border-besty-coral/30">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="text-bestie-coral fill-pink-400" size={20} />
+                  <Star key={i} className="text-besty-coral fill-pink-400" size={20} />
                 ))}
               </div>
-              <p className="text-bestie-gray leading-relaxed mb-6 italic">
+              <p className="text-besty-gray leading-relaxed mb-6 italic">
                 "The ROI calculator they built for me pre-sells my services before I even get on a call. My close rate has never been higher."
               </p>
               <div className="text-sm">
-                <div className="font-bold text-bestie-blue">Alicia R.</div>
+                <div className="font-bold text-besty-blue">Alicia R.</div>
                 <div className="text-gray-600">Business Coach, St. Petersburg</div>
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-2xl p-8 border border-bestie-coral/30">
+            <div className="bg-gradient-to-br from-white/80 to-besty-gray-light/80 backdrop-blur-xl rounded-2xl p-8 border border-besty-coral/30">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="text-bestie-coral fill-pink-400" size={20} />
+                  <Star key={i} className="text-besty-coral fill-pink-400" size={20} />
                 ))}
               </div>
-              <p className="text-bestie-gray leading-relaxed mb-6 italic">
+              <p className="text-besty-gray leading-relaxed mb-6 italic">
                 "I thought custom apps were only for huge companies with massive budgets. Turns out, small businesses can play in this space too. So grateful."
               </p>
               <div className="text-sm">
-                <div className="font-bold text-bestie-blue">Carmen L.</div>
+                <div className="font-bold text-besty-blue">Carmen L.</div>
                 <div className="text-gray-600">Interior Designer, Tampa Bay</div>
               </div>
             </div>
           </div>
 
-          <p className="text-center text-bestie-gray text-xs mt-8 italic">
+          <p className="text-center text-besty-gray text-xs mt-8 italic">
             These testimonials represent feedback we've received. Individual results will vary based on your business model and implementation.
           </p>
         </div>
       </section>
 
       {/* Comprehensive App FAQs */}
-      <section className="relative py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-bestie-gray-light to-white">
+      <section className="relative py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-besty-gray-light to-white">
         <div className="max-w-4xl mx-auto">
 
           <div className="text-center mb-12">
-            <div className="inline-block bg-gradient-to-r from-bestie-coral/20 to-bestie-blue/20 backdrop-blur-sm border border-bestie-coral/40 rounded-full px-4 sm:px-6 py-2 mb-6">
-              <span className="text-xs sm:text-sm font-bold text-bestie-coral tracking-wider">FAQ</span>
+            <div className="inline-block bg-gradient-to-r from-besty-coral/20 to-besty-blue/20 backdrop-blur-sm border border-besty-coral/40 rounded-full px-4 sm:px-6 py-2 mb-6">
+              <span className="text-xs sm:text-sm font-bold text-besty-coral tracking-wider">FAQ</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-black text-bestie-blue mb-4">
+            <h2 className="text-3xl sm:text-4xl font-black text-besty-blue mb-4">
               iOS App Store or Custom Web App?
             </h2>
-            <p className="text-bestie-gray">Here's everything you need to decide which path is right for you</p>
+            <p className="text-besty-gray">Here's everything you need to decide which path is right for you</p>
           </div>
 
           <div className="space-y-4">
 
             {/* FAQ 1 */}
             <details className="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-md">
-              <summary className="cursor-pointer p-6 font-bold text-bestie-blue hover:bg-bestie-mint transition-colors list-none flex items-center justify-between">
+              <summary className="cursor-pointer p-6 font-bold text-besty-blue hover:bg-besty-mint transition-colors list-none flex items-center justify-between">
                 <span>💰 Which option costs more?</span>
                 <span className="text-gray-600 group-open:rotate-180 transition-transform">▼</span>
               </summary>
-              <div className="p-6 pt-0 text-bestie-gray space-y-3 text-sm leading-relaxed">
-                <p><strong className="text-bestie-blue">iOS App Store:</strong> Requires a $99/year Apple Developer account (but if you unlock the ultimate prize, Emily covers this first year!). After that, it's $99 annually to keep your app in the store.</p>
-                <p><strong className="text-bestie-blue">Custom Web App:</strong> No app store fees. Just standard hosting costs (usually $10-30/month depending on traffic).</p>
-                <p className="text-bestie-coral"><strong>Bottom line:</strong> Web apps are cheaper to maintain long-term if you're cost-sensitive.</p>
+              <div className="p-6 pt-0 text-besty-gray space-y-3 text-sm leading-relaxed">
+                <p><strong className="text-besty-blue">iOS App Store:</strong> Requires a $99/year Apple Developer account (but if you unlock the ultimate prize, Emily covers this first year!). After that, it's $99 annually to keep your app in the store.</p>
+                <p><strong className="text-besty-blue">Custom Web App:</strong> No app store fees. Just standard hosting costs (usually $10-30/month depending on traffic).</p>
+                <p className="text-besty-coral"><strong>Bottom line:</strong> Web apps are cheaper to maintain long-term if you're cost-sensitive.</p>
               </div>
             </details>
 
             {/* FAQ 2 */}
             <details className="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-md">
-              <summary className="cursor-pointer p-6 font-bold text-bestie-blue hover:bg-bestie-mint transition-colors list-none flex items-center justify-between">
+              <summary className="cursor-pointer p-6 font-bold text-besty-blue hover:bg-besty-mint transition-colors list-none flex items-center justify-between">
                 <span>⏰ Which one launches faster?</span>
                 <span className="text-gray-600 group-open:rotate-180 transition-transform">▼</span>
               </summary>
-              <div className="p-6 pt-0 text-bestie-gray space-y-3 text-sm leading-relaxed">
-                <p><strong className="text-bestie-blue">iOS App Store:</strong> Takes 7-10 extra days for Apple's review process. They check everything before approving your app.</p>
-                <p><strong className="text-bestie-blue">Custom Web App:</strong> Can be live in days. No approval process, no waiting.</p>
-                <p className="text-bestie-coral"><strong>Bottom line:</strong> If you need it FAST, web app wins. If you can wait for the credibility boost, iOS is worth it.</p>
+              <div className="p-6 pt-0 text-besty-gray space-y-3 text-sm leading-relaxed">
+                <p><strong className="text-besty-blue">iOS App Store:</strong> Takes 7-10 extra days for Apple's review process. They check everything before approving your app.</p>
+                <p><strong className="text-besty-blue">Custom Web App:</strong> Can be live in days. No approval process, no waiting.</p>
+                <p className="text-besty-coral"><strong>Bottom line:</strong> If you need it FAST, web app wins. If you can wait for the credibility boost, iOS is worth it.</p>
               </div>
             </details>
 
             {/* FAQ 3 */}
             <details className="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-md">
-              <summary className="cursor-pointer p-6 font-bold text-bestie-blue hover:bg-bestie-mint transition-colors list-none flex items-center justify-between">
+              <summary className="cursor-pointer p-6 font-bold text-besty-blue hover:bg-besty-mint transition-colors list-none flex items-center justify-between">
                 <span>📱 Can people still "install" a web app on their phone?</span>
                 <span className="text-gray-600 group-open:rotate-180 transition-transform">▼</span>
               </summary>
-              <div className="p-6 pt-0 text-bestie-gray space-y-3 text-sm leading-relaxed">
-                <p><strong className="text-bestie-blue">Yes!</strong> Both iPhone and Android users can add web apps to their home screen. It looks and feels just like a "real" app—they tap it, it opens full-screen, no browser UI.</p>
+              <div className="p-6 pt-0 text-besty-gray space-y-3 text-sm leading-relaxed">
+                <p><strong className="text-besty-blue">Yes!</strong> Both iPhone and Android users can add web apps to their home screen. It looks and feels just like a "real" app—they tap it, it opens full-screen, no browser UI.</p>
                 <p>The difference? An iOS App Store app gets discovered through search in the App Store. A web app gets discovered through YOUR marketing (social media, your website, QR codes, etc.).</p>
-                <p className="text-bestie-coral"><strong>Bottom line:</strong> Both can live on home screens. App Store gives you discoverability; web apps give you control.</p>
+                <p className="text-besty-coral"><strong>Bottom line:</strong> Both can live on home screens. App Store gives you discoverability; web apps give you control.</p>
               </div>
             </details>
 
             {/* FAQ 4 */}
             <details className="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-md">
-              <summary className="cursor-pointer p-6 font-bold text-bestie-blue hover:bg-bestie-mint transition-colors list-none flex items-center justify-between">
+              <summary className="cursor-pointer p-6 font-bold text-besty-blue hover:bg-besty-mint transition-colors list-none flex items-center justify-between">
                 <span>🎯 Which one is better for credibility and branding?</span>
                 <span className="text-gray-600 group-open:rotate-180 transition-transform">▼</span>
               </summary>
-              <div className="p-6 pt-0 text-bestie-gray space-y-3 text-sm leading-relaxed">
-                <p><strong className="text-bestie-blue">iOS App Store:</strong> Maximum "wow factor." Saying "Download my app from the App Store" carries serious weight. It positions you as established and professional.</p>
-                <p><strong className="text-bestie-blue">Custom Web App:</strong> Still impressive, but without the App Store prestige. Your customers know you built something custom, which is cool—but it doesn't have that "I saw it in the App Store" magic.</p>
-                <p className="text-bestie-coral"><strong>Bottom line:</strong> If brand positioning matters and you want maximum credibility, iOS App Store is the move.</p>
+              <div className="p-6 pt-0 text-besty-gray space-y-3 text-sm leading-relaxed">
+                <p><strong className="text-besty-blue">iOS App Store:</strong> Maximum "wow factor." Saying "Download my app from the App Store" carries serious weight. It positions you as established and professional.</p>
+                <p><strong className="text-besty-blue">Custom Web App:</strong> Still impressive, but without the App Store prestige. Your customers know you built something custom, which is cool—but it doesn't have that "I saw it in the App Store" magic.</p>
+                <p className="text-besty-coral"><strong>Bottom line:</strong> If brand positioning matters and you want maximum credibility, iOS App Store is the move.</p>
               </div>
             </details>
 
             {/* FAQ 5 */}
             <details className="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-md">
-              <summary className="cursor-pointer p-6 font-bold text-bestie-blue hover:bg-bestie-mint transition-colors list-none flex items-center justify-between">
+              <summary className="cursor-pointer p-6 font-bold text-besty-blue hover:bg-besty-mint transition-colors list-none flex items-center justify-between">
                 <span>🔄 Can I change my mind later?</span>
                 <span className="text-gray-600 group-open:rotate-180 transition-transform">▼</span>
               </summary>
-              <div className="p-6 pt-0 text-bestie-gray space-y-3 text-sm leading-relaxed">
-                <p><strong className="text-bestie-blue">Absolutely.</strong> We can always convert a web app to an iOS app later (or vice versa). The core functionality is the same—it's just how it's packaged and distributed.</p>
+              <div className="p-6 pt-0 text-besty-gray space-y-3 text-sm leading-relaxed">
+                <p><strong className="text-besty-blue">Absolutely.</strong> We can always convert a web app to an iOS app later (or vice versa). The core functionality is the same—it's just how it's packaged and distributed.</p>
                 <p>Starting with a web app to test the concept, then upgrading to the App Store once you see traction? Totally doable.</p>
-                <p className="text-bestie-coral"><strong>Bottom line:</strong> You're not locked in. Start where you're comfortable and pivot if needed.</p>
+                <p className="text-besty-coral"><strong>Bottom line:</strong> You're not locked in. Start where you're comfortable and pivot if needed.</p>
               </div>
             </details>
 
             {/* FAQ 6 */}
             <details className="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-md">
-              <summary className="cursor-pointer p-6 font-bold text-bestie-blue hover:bg-bestie-mint transition-colors list-none flex items-center justify-between">
+              <summary className="cursor-pointer p-6 font-bold text-besty-blue hover:bg-besty-mint transition-colors list-none flex items-center justify-between">
                 <span>🤔 I'm still not sure which to choose. What do you recommend?</span>
                 <span className="text-gray-600 group-open:rotate-180 transition-transform">▼</span>
               </summary>
-              <div className="p-6 pt-0 text-bestie-gray space-y-3 text-sm leading-relaxed">
-                <p><strong className="text-bestie-blue">That's what our first call is for!</strong> Emily will ask about your business model, your audience, your timeline, and your goals—and recommend the best fit.</p>
+              <div className="p-6 pt-0 text-besty-gray space-y-3 text-sm leading-relaxed">
+                <p><strong className="text-besty-blue">That's what our first call is for!</strong> Emily will ask about your business model, your audience, your timeline, and your goals—and recommend the best fit.</p>
                 <p>General rule of thumb:</p>
                 <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li><strong className="text-bestie-blue">Choose iOS App Store if:</strong> You want maximum credibility, you're building long-term brand equity, and you're willing to wait an extra week for Apple approval.</li>
-                  <li><strong className="text-bestie-blue">Choose Custom Web App if:</strong> You want speed, flexibility, lower ongoing costs, and full control without App Store restrictions.</li>
+                  <li><strong className="text-besty-blue">Choose iOS App Store if:</strong> You want maximum credibility, you're building long-term brand equity, and you're willing to wait an extra week for Apple approval.</li>
+                  <li><strong className="text-besty-blue">Choose Custom Web App if:</strong> You want speed, flexibility, lower ongoing costs, and full control without App Store restrictions.</li>
                 </ul>
-                <p className="text-bestie-coral"><strong>Bottom line:</strong> Both options work beautifully. Let Emily help you decide on the strategy call.</p>
+                <p className="text-besty-coral"><strong>Bottom line:</strong> Both options work beautifully. Let Emily help you decide on the strategy call.</p>
               </div>
             </details>
 
@@ -1599,9 +1599,9 @@ export default function LandingPage() {
           {/* Final urgency reminder */}
           <div className="text-center mb-8 pb-8 border-b border-gray-200/30">
             {mounted && (
-              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-bestie-coral/20 to-bestie-blue/20 backdrop-blur-sm border border-bestie-coral/40 rounded-full px-6 py-3 mb-4">
-                <Clock className="text-bestie-coral" size={20} />
-                <span className="text-bestie-coral font-bold">
+              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-besty-coral/20 to-besty-blue/20 backdrop-blur-sm border border-besty-coral/40 rounded-full px-6 py-3 mb-4">
+                <Clock className="text-besty-coral" size={20} />
+                <span className="text-besty-coral font-bold">
                   {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m until 50% OFF expires
                 </span>
               </div>
@@ -1611,34 +1611,34 @@ export default function LandingPage() {
                 {[...Array(8)].map((_, i) => (
                   <div 
                     key={i} 
-                    className={`w-3 h-3 rounded-full ${i < spotsRemaining ? 'bg-bestie-coral' : 'bg-gray-300'}`}
+                    className={`w-3 h-3 rounded-full ${i < spotsRemaining ? 'bg-besty-coral' : 'bg-gray-300'}`}
                   ></div>
                 ))}
               </div>
-              <span className="text-bestie-gray text-sm">{spotsRemaining}/8 spots remaining</span>
+              <span className="text-besty-gray text-sm">{spotsRemaining}/8 spots remaining</span>
             </div>
           </div>
 
           <div className="text-center">
-            {/* Bestie Bookkeepers Branding */}
+            {/* Besty Bookkeepers Branding */}
             <div className="mb-8">
-              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-bestie-orange/20 to-bestie-coral/20 backdrop-blur-sm border border-bestie-orange/40 rounded-full px-6 py-3 mb-4">
+              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-besty-orange/20 to-besty-coral/20 backdrop-blur-sm border border-besty-orange/40 rounded-full px-6 py-3 mb-4">
                 <span className="text-2xl">🧡</span>
-                <span className="text-bestie-warm font-black text-lg">BESTIE BOOKKEEPERS</span>
+                <span className="text-besty-warm font-black text-lg">BESTY BOOKKEEPERS</span>
               </div>
-              <p className="text-bestie-gray font-semibold mb-2">Presented by Emily Harris</p>
+              <p className="text-besty-gray font-semibold mb-2">Presented by Emily Handren</p>
               <p className="text-gray-600 text-sm">Tampa's trusted financial partner for women entrepreneurs</p>
             </div>
 
             <div className="text-gray-600 text-sm space-y-3">
               <p className="font-semibold">Exclusively for women business owners in Emily's Tampa networking circle</p>
-              <p className="text-bestie-gray">Custom app development • U.S.-based team • AI-powered • Built with possibility</p>
+              <p className="text-besty-gray">Custom app development • U.S.-based team • AI-powered • Built with possibility</p>
 
               <div className="mt-6 pt-6 border-t border-gray-200/30">
-                <p className="text-xs text-bestie-coral">
-                  © 2025 Bestie Bookkeepers | Emily's Circle | Tampa, FL
+                <p className="text-xs text-besty-coral">
+                  © 2025 Besty Bookkeepers | Emily's Circle | Tampa, FL
                 </p>
-                <p className="text-xs text-bestie-gray mt-2">
+                <p className="text-xs text-besty-gray mt-2">
                   Powered by Raize The Vibe • Built with 💜 for local businesses
                 </p>
               </div>
@@ -1646,7 +1646,7 @@ export default function LandingPage() {
               <div className="relative mt-8">
                 {interactionScore >= 15 ? (
                   <p
-                    className="text-xs text-bestie-coral hover:text-bestie-coral transition-all duration-300 cursor-pointer select-none inline-block animate-pulse font-bold"
+                    className="text-xs text-besty-coral hover:text-besty-coral transition-all duration-300 cursor-pointer select-none inline-block animate-pulse font-bold"
                     onClick={() => handleCodeClick('ENCHANTED50')}
                     title="🎉 You found the ultimate treasure! Click to claim!"
                   >

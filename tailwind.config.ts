@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bestie: {
+        besty: {
           coral: '#FA8977',      // Primary coral/peach
           blue: '#1E73BE',       // Deep blue
           'blue-hover': '#4489D6', // Lighter blue for hovers
