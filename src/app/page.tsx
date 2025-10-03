@@ -730,12 +730,24 @@ export default function LandingPage() {
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 leading-tight">
               <span className="text-besty-blue">Meet Emily's Own App: </span>
-              <span className="text-transparent bg-gradient-to-r from-besty-orange to-besty-coral bg-clip-text">BFF (Besty Financial Freedom)</span>
+              <span className="text-transparent bg-gradient-to-r from-besty-orange to-besty-coral bg-clip-text">BFF (Besty Financial Forecaster)</span>
             </h2>
 
-            <p className="text-lg sm:text-xl text-besty-gray max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-besty-gray max-w-3xl mx-auto mb-4">
               Before offering this to you, Emily built her own web app. Here's what it does for her Besty Bookkeepers business:
             </p>
+
+            <div className="flex justify-center">
+              <a
+                href="https://bff.bestybookkeepers.com/Start"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-besty-coral to-besty-blue text-white font-bold px-6 py-3 rounded-full hover:opacity-90 transition-all shadow-lg hover:shadow-xl group"
+              >
+                <span>Try Emily's BFF App Live</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 mb-12">
