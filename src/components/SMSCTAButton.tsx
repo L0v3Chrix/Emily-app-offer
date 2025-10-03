@@ -29,14 +29,14 @@ const SMSCTAButton: React.FC<SMSCTAButtonProps> = ({
     const codesCount = foundCodes.length;
 
     if (codesCount === 0) {
-      return "Hi Emily! 👋 I just saw your incredible Halloween offer and I can't wait to talk to you about it! When would be a good time this week to jump on a Zoom call and discuss this app? Also, how do I pay my $99 deposit?";
+      return "Hi Emily! 🚀 Just saw your Bestie Bookkeepers Halloween app offer! I've been dreaming about having my own app (iOS App Store or custom web)—this feels like my moment! Your BFF app results are amazing. When can we talk about MY app idea? Let's make this happen!";
     }
 
     if (codesCount < 3) {
-      return `Hi Emily! 🎃 I found ${foundCodes.join(", ")} on your Halloween page! I'm so excited about this offer. When can we chat about my custom app idea? How do I secure my spot with the $99 deposit?`;
+      return `Hi Emily! 📱 Found ${foundCodes.join(", ")} on your page and I'm ALL IN! Your BFF app proof-of-concept sold me. I want my own app (still deciding iOS vs web). When can we do a Bestie strategy call to plan mine?`;
     }
 
-    return "Hi Emily! ✨ I FOUND ALL 3 CODES! (SPOOKY10, HAUNTED20, ENCHANTED50) 🎉 I'm ALL IN on this incredible offer! When can we schedule a call to discuss my app? Ready to pay my $99 deposit right now!";
+    return "Hi Emily! 🏆 BOOM! All 3 codes found + 100% page engagement! I see the ultimate prize (that $99 App Store fee 👀). I'm READY to build my app with Bestie Bookkeepers. When can we start? SO many ideas!";
   };
 
   const handleCTAClick = () => {
@@ -52,9 +52,9 @@ const SMSCTAButton: React.FC<SMSCTAButtonProps> = ({
 
   const getButtonText = () => {
     if (buttonText) return buttonText;
-    if (foundCodes.length === 3) return "I Found All 3 Codes! ($99 Deposit)";
-    if (foundCodes.length > 0) return "Reserve My Spot - $99 Deposit";
-    return "Reserve My Spot - $99 Deposit";
+    if (foundCodes.length === 3) return "I Found All 3 Codes!";
+    if (foundCodes.length > 0) return "Let's Build My App";
+    return "Let's Build Your App";
   };
 
   const baseStyles = "relative overflow-hidden transition-all duration-300 font-bold rounded-full";

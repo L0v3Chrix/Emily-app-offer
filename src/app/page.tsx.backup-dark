@@ -42,22 +42,14 @@ export default function LandingPage() {
   useEffect(() => {
     if (!mounted) return;
 
-    // TEMP: Always show onboarding for testing (remove sessionStorage check)
-    // Show onboarding after 1 second
-    const timer = setTimeout(() => {
-      setShowOnboarding(true);
-    }, 1000);
-    return () => clearTimeout(timer);
-
-    // TODO: Re-enable sessionStorage check before production:
-    // const hasVisited = sessionStorage.getItem('emily-onboarding-shown');
-    // if (!hasVisited) {
-    //   const timer = setTimeout(() => {
-    //     setShowOnboarding(true);
-    //     sessionStorage.setItem('emily-onboarding-shown', 'true');
-    //   }, 1000);
-    //   return () => clearTimeout(timer);
-    // }
+    const hasVisited = localStorage.getItem('emily-app-visited');
+    if (!hasVisited) {
+      // Show onboarding after 2 seconds on first visit
+      const timer = setTimeout(() => {
+        setShowOnboarding(true);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
   }, [mounted]);
 
   const handleOnboardingClose = () => {
@@ -152,12 +144,10 @@ export default function LandingPage() {
       }
     };
 
-    if (mounted) {
-      calculateTimeLeft();
-      const timer = setInterval(calculateTimeLeft, 60000);
-      return () => clearInterval(timer);
-    }
-  }, [mounted]);
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 60000);
+    return () => clearInterval(timer);
+  }, []);
 
   const huntCodes = [
     { code: 'SPOOKY10', discount: '10%', hint: 'Hidden in plain sight' },
@@ -284,7 +274,7 @@ export default function LandingPage() {
       </a>
 
       {/* Onboarding Modal for First-Time Visitors */}
-      {mounted && showOnboarding && (
+      {showOnboarding && (
         <OnboardingModal
           onClose={handleOnboardingClose}
           onOpenTreasureMap={handleOpenTreasureMapFromOnboarding}
@@ -361,7 +351,7 @@ export default function LandingPage() {
           </div>
 
           {/* Interactive Component #1: Quick Value Slider */}
-          <div className="max-w-2xl mx-auto mb-8 sm:mb-12 bg-bestie-gray-light backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-bestie-coral/30 relative shadow-lg">
+          <div className="max-w-2xl mx-auto mb-8 sm:mb-12 bg-white backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-bestie-coral/30 relative shadow-lg">
             <MobileIndicator type="tap" position="top-right" />
             <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-bestie-blue">👉 Try This: App Engagement Demo</h3>
             <p className="text-xs sm:text-sm text-bestie-gray mb-3 sm:mb-4">How many daily app users would transform your business?</p>
@@ -374,7 +364,7 @@ export default function LandingPage() {
                 setSliderValue(Number(e.target.value));
                 setInteractionScore(prev => prev + 0.1);
               }}
-              className="w-full h-3 bg-bestie-green rounded-lg appearance-none cursor-pointer accent-bestie-coral"
+              className="w-full h-2 bg-bestie-mint rounded-lg appearance-none cursor-pointer accent-bestie-coral"
               aria-label="Daily app users slider"
               aria-valuemin={1}
               aria-valuemax={10}
@@ -402,18 +392,16 @@ export default function LandingPage() {
           </div>
 
 
-          {mounted && (
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-bestie-coral mb-3 px-2">
-              <div className="flex items-center gap-2">
-                <Clock size={16} className="sm:w-[18px] sm:h-[18px]" />
-                <span className="text-xs sm:text-sm font-semibold">
-                  {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m until offer expires
-                </span>
-              </div>
-              <span className="hidden sm:inline">•</span>
-              <span className="text-xs sm:text-sm font-semibold">Limited to 8 Tampa bosses</span>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-bestie-coral mb-3 px-2">
+            <div className="flex items-center gap-2">
+              <Clock size={16} className="sm:w-[18px] sm:h-[18px]" />
+              <span className="text-xs sm:text-sm font-semibold">
+                {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m until offer expires
+              </span>
             </div>
-          )}
+            <span className="hidden sm:inline">•</span>
+            <span className="text-xs sm:text-sm font-semibold">Limited to 8 Tampa bosses</span>
+          </div>
 
           <div className="flex items-center justify-center gap-2 text-bestie-coral">
             <div className="flex gap-1">
@@ -467,7 +455,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16">
 
             {/* Scenario 1: App Store Pride */}
-            <div className="group bg-bestie-gray-light backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-200 hover:border-bestie-coral transition-all duration-500 hover:scale-105 shadow-lg">
+            <div className="group bg-white backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-200 hover:border-bestie-coral transition-all duration-500 hover:scale-105 shadow-lg">
               <div className="text-4xl sm:text-5xl mb-4 group-hover:scale-110 transition-transform duration-500">
                 🏆
               </div>
@@ -484,7 +472,7 @@ export default function LandingPage() {
             </div>
 
             {/* Scenario 2: Customer Delight */}
-            <div className="group bg-bestie-gray-light backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-200 hover:border-bestie-coral transition-all duration-500 hover:scale-105 shadow-lg">
+            <div className="group bg-white backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-200 hover:border-bestie-coral transition-all duration-500 hover:scale-105 shadow-lg">
               <div className="text-4xl sm:text-5xl mb-4 group-hover:scale-110 transition-transform duration-500">
                 💫
               </div>
@@ -501,7 +489,7 @@ export default function LandingPage() {
             </div>
 
             {/* Scenario 3: Freedom */}
-            <div className="group bg-bestie-gray-light backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-200 hover:border-bestie-coral transition-all duration-500 hover:scale-105 shadow-lg">
+            <div className="group bg-white backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-200 hover:border-bestie-coral transition-all duration-500 hover:scale-105 shadow-lg">
               <div className="text-4xl sm:text-5xl mb-4 group-hover:scale-110 transition-transform duration-500">
                 ⏰
               </div>
@@ -518,7 +506,7 @@ export default function LandingPage() {
             </div>
 
             {/* Scenario 4: Credibility */}
-            <div className="group bg-bestie-gray-light backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-200 hover:border-bestie-coral transition-all duration-500 hover:scale-105 shadow-lg">
+            <div className="group bg-white backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-200 hover:border-bestie-coral transition-all duration-500 hover:scale-105 shadow-lg">
               <div className="text-4xl sm:text-5xl mb-4 group-hover:scale-110 transition-transform duration-500">
                 👑
               </div>
@@ -582,7 +570,7 @@ export default function LandingPage() {
 
               <div className="bg-white rounded-xl p-5 border border-bestie-coral/20 shadow-md">
                 <p className="text-bestie-blue font-semibold mb-2 text-center">🚀 The Bestie Advantage:</p>
-                <ul className="space-y-2 text-bestie-gray">
+                <ul className="space-y-2 text-purple-200">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-bestie-orange flex-shrink-0 mt-0.5" />
                     <span>Emily knows your business finances inside-out—she'll help design an app that makes money</span>
@@ -607,26 +595,27 @@ export default function LandingPage() {
       </section>
 
       {/* The Shift Section */}
-      <section className="relative py-24 md:py-32 px-6 md:px-12 bg-gradient-to-b from-bestie-gray-light to-white">
+      <section className="relative py-24 md:py-32 px-6 md:px-12 bg-gradient-to-b from-slate-900 to-slate-800">
         <div className="max-w-5xl mx-auto">
-          <div className="bg-gradient-to-br from-white to-bestie-gray-light backdrop-blur-2xl rounded-3xl p-10 md:p-16 border border-bestie-coral/30 shadow-2xl">
+          <div className="bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-2xl rounded-3xl p-10 md:p-16 border border-slate-700/50 shadow-2xl">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-10 leading-tight">
-              <span className="text-bestie-blue">You've Already Noticed<br />Something's Changed Online</span>
+              You've Already Noticed<br />
+              <span className="text-transparent bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text">Something's Changed Online</span>
             </h2>
-
-            <div className="space-y-6 text-lg md:text-xl text-bestie-gray leading-relaxed">
+            
+            <div className="space-y-6 text-lg md:text-xl text-slate-300 leading-relaxed">
               <p>The brands you admire aren't just posting content anymore.</p>
-              <p>They're creating <span className="text-bestie-blue font-bold">experiences</span>. Interactive tools. Apps that do the selling for them.</p>
+              <p>They're creating <span className="text-gray-600 font-bold">experiences</span>. Interactive tools. Apps that do the selling for them.</p>
               
-              <div className="bg-gradient-to-r from-bestie-coral/20 to-bestie-blue/20 border border-bestie-coral/30 rounded-xl p-6 my-6">
+              <div className="bg-gradient-to-r from-pink-500/20 to-purple-500/20 border border-bestie-coral/30 rounded-xl p-6 my-6">
                 <p className="text-bestie-blue font-bold text-xl mb-2">💡 Consider this:</p>
-                <p className="text-bestie-gray">
+                <p className="text-purple-200">
                   The average person spends <span className="text-bestie-coral font-bold">8 seconds</span> reading a static post. But interactive content? They'll engage for <span className="text-bestie-coral font-bold">2-3 minutes or more</span>. That's 20x the attention on your business.
                 </p>
               </div>
               
               <p className="text-xl md:text-2xl text-bestie-blue font-bold pt-4">And here's the exciting part...</p>
-              <p className="text-2xl md:text-3xl font-black text-transparent bg-gradient-to-r from-bestie-coral via-bestie-blue to-bestie-coral bg-clip-text">
+              <p className="text-2xl md:text-3xl font-black text-transparent bg-gradient-to-r from-pink-400 via-purple-500 to-pink-500 bg-clip-text">
                 You can do this too. And it's way more affordable than you think.
               </p>
             </div>
@@ -635,7 +624,7 @@ export default function LandingPage() {
       </section>
 
       {/* Proof Section - Emily's Actual Work */}
-      <section className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-white via-bestie-mint/30 to-bestie-gray-light">
+      <section className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 bg-gradient-to-b from-white via-pink-950/30 to-purple-950">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
 
@@ -643,12 +632,12 @@ export default function LandingPage() {
             <div className="order-2 md:order-1">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-bestie-coral to-bestie-blue rounded-2xl sm:rounded-3xl blur-2xl opacity-20"></div>
-                <div className="relative bg-gradient-to-br from-white to-bestie-gray-light backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-bestie-coral/30 shadow-2xl group">
+                <div className="relative bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-pink-500/30 shadow-2xl group">
                   {interactionScore >= 8 && !foundCodes.includes('HAUNTED20') && (
                     <MobileIndicator type="look" position="top-right" />
                   )}
                   <div
-                    className="aspect-[3/4] bg-gradient-to-br from-bestie-coral/10 to-bestie-blue/10 rounded-3xl border-4 border-bestie-coral/30 overflow-hidden shadow-2xl cursor-pointer transition-all duration-500 hover:scale-105 hover:rotate-1"
+                    className="aspect-[3/4] bg-gradient-to-br from-pink-200/10 to-blue-200/10 rounded-3xl border-4 border-pink-500/30 overflow-hidden shadow-2xl cursor-pointer transition-all duration-500 hover:scale-105 hover:rotate-1"
                     onMouseEnter={() => {
                       if (interactionScore >= 8 && !foundCodes.includes('HAUNTED20')) {
                         setTimeout(() => handleCodeClick('HAUNTED20'), 1500);
@@ -667,12 +656,12 @@ export default function LandingPage() {
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     {interactionScore >= 8 && !foundCodes.includes('HAUNTED20') && (
-                      <div className="absolute inset-0 bg-bestie-coral/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute inset-0 bg-purple-500/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <span className="text-4xl animate-pulse">👻</span>
                       </div>
                     )}
                   </div>
-                  <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-bestie-coral to-bestie-blue text-white px-6 py-3 rounded-2xl font-black text-lg shadow-xl rotate-3">
+                  <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-pink-400 to-purple-500 text-bestie-blue px-6 py-3 rounded-2xl font-black text-lg shadow-xl rotate-3">
                     Your Bestie, Emily! 💜
                   </div>
                 </div>
@@ -681,17 +670,17 @@ export default function LandingPage() {
 
             {/* Text content */}
             <div className="order-1 md:order-2">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-bestie-coral/20 to-bestie-blue/20 backdrop-blur-sm border border-bestie-coral/40 rounded-full px-5 py-2 mb-6">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500/20 to-purple-500/20 backdrop-blur-sm border border-bestie-coral/40 rounded-full px-5 py-2 mb-6">
                 <Sparkles className="text-bestie-coral" size={20} />
                 <span className="text-sm font-bold text-bestie-coral">REAL EXAMPLE</span>
               </div>
 
               <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
                 <span className="text-bestie-blue">This is What </span>
-                <span className="text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text">Custom Looks Like</span>
+                <span className="text-transparent bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text">Custom Looks Like</span>
               </h2>
 
-              <div className="space-y-5 text-lg text-bestie-gray leading-relaxed">
+              <div className="space-y-5 text-lg text-purple-200 leading-relaxed">
                 <p className="text-xl text-bestie-blue font-bold">
                   See that tablet? That's Emily's own "Financial Journey, Simplified" app feature.
                 </p>
@@ -704,10 +693,10 @@ export default function LandingPage() {
                 <p>
                   This is exactly the kind of thing we can build into YOUR app. An interactive quiz, a value calculator, a booking system, a guided journey—whatever fits your unique business.
                 </p>
-                <div className="bg-gradient-to-r from-bestie-green/20 to-bestie-mint border border-bestie-green/40 rounded-xl p-6 mt-8">
+                <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/40 rounded-xl p-6 mt-8">
                   <div className="flex items-start gap-4">
-                    <CheckCircle className="text-bestie-green flex-shrink-0 mt-1" size={24} />
-                    <p className="text-bestie-blue font-semibold">
+                    <CheckCircle className="text-green-400 flex-shrink-0 mt-1" size={24} />
+                    <p className="text-green-100 font-semibold">
                       When Emily shares her app, people don't just see a service—they experience her expertise on their phone. That's the power of having your own app.
                     </p>
                   </div>
@@ -723,9 +712,9 @@ export default function LandingPage() {
       <section className="relative py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-b from-white via-bestie-orange/5 to-bestie-gray-light">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-bestie-coral/20 to-bestie-blue/20 backdrop-blur-sm border border-bestie-coral/40 rounded-full px-5 py-2 mb-6">
-              <Sparkles className="text-bestie-coral" size={20} />
-              <span className="text-sm font-bold text-bestie-coral">EMILY'S PROOF OF CONCEPT</span>
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-bestie-orange/20 to-purple-500/20 backdrop-blur-sm border border-bestie-orange/40 rounded-full px-5 py-2 mb-6">
+              <Sparkles className="text-bestie-orange" size={20} />
+              <span className="text-sm font-bold text-bestie-warm">EMILY'S PROOF OF CONCEPT</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 leading-tight">
@@ -733,7 +722,7 @@ export default function LandingPage() {
               <span className="text-transparent bg-gradient-to-r from-bestie-orange to-bestie-coral bg-clip-text">BFF (Bestie Financial Freedom)</span>
             </h2>
 
-            <p className="text-lg sm:text-xl text-bestie-gray max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-purple-200 max-w-3xl mx-auto">
               Before offering this to you, Emily built her own web app. Here's what it does for her Bestie Bookkeepers business:
             </p>
           </div>
@@ -759,12 +748,12 @@ export default function LandingPage() {
               <div key={idx} className="bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-2xl p-6 border-2 border-bestie-orange/20">
                 <div className="text-5xl mb-4">{feature.icon}</div>
                 <h3 className="text-xl font-bold text-bestie-blue mb-3">{feature.title}</h3>
-                <p className="text-sm text-bestie-gray">{feature.description}</p>
+                <p className="text-sm text-purple-200">{feature.description}</p>
               </div>
             ))}
           </div>
 
-          <div className="bg-gradient-to-br from-bestie-coral/10 to-bestie-blue/10 backdrop-blur-xl rounded-2xl p-8 border-2 border-bestie-orange/30">
+          <div className="bg-gradient-to-br from-bestie-orange/10 to-purple-500/10 backdrop-blur-xl rounded-2xl p-8 border-2 border-bestie-orange/30">
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="flex-shrink-0">
                 <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
@@ -800,7 +789,7 @@ export default function LandingPage() {
       </section>
 
       {/* Meta Fourth Wall Break */}
-      <section className="relative py-24 px-6 md:px-12 bg-gradient-to-b from-bestie-gray-light to-white">
+      <section className="relative py-24 px-6 md:px-12 bg-gradient-to-b from-purple-950 to-pink-950/30">
         <div className="max-w-6xl mx-auto">
           
           {/* Emily's Photo & Message Section */}
@@ -809,7 +798,7 @@ export default function LandingPage() {
             <div className="flex-shrink-0 w-full md:w-1/2">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-bestie-coral to-bestie-blue rounded-3xl blur-2xl opacity-20"></div>
-                <div className="relative bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-3xl p-8 border border-bestie-coral/30 shadow-2xl">
+                <div className="relative bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-3xl p-8 border border-pink-500/30 shadow-2xl">
                   <img
                     src="/emily-tablet.jpg"
                     alt="Emily's custom financial roadmap on tablet"
@@ -821,28 +810,20 @@ export default function LandingPage() {
 
             {/* Message Content */}
             <div className="flex-1">
-              <div className="relative inline-block mb-6">
-                <div
-                  className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-bestie-coral to-bestie-blue rounded-full cursor-pointer hover:scale-110 transition-transform"
-                  onDoubleClick={() => handleCodeClick('SPOOKY10')}
-                  title="Something magical happens if you double-click..."
-                >
-                  <span className="text-4xl select-none">🎃</span>
-                </div>
-                {/* Punny hint sticker */}
-                <div className="absolute -right-4 -top-2 bg-white px-3 py-1.5 rounded-full shadow-lg border-2 border-bestie-coral animate-bounce transform rotate-12">
-                  <p className="text-xs font-black text-bestie-coral whitespace-nowrap">
-                    Double-tap for a gourd time! 🎃
-                  </p>
-                </div>
+              <div 
+                className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full mb-6 cursor-pointer hover:scale-110 transition-transform"
+                onDoubleClick={() => handleCodeClick('SPOOKY10')}
+                title="Something magical happens if you double-click..."
+              >
+                <span className="text-4xl select-none">🎃</span>
               </div>
               
               <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
                 Wait... Let's Talk About<br />
-                <span className="text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text">This Page You're On Right Now</span>
+                <span className="text-transparent bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text">This Page You're On Right Now</span>
               </h2>
               
-              <div className="bg-gradient-to-br from-white/60 to-bestie-gray-light/60 backdrop-blur-xl rounded-3xl p-8 md:p-10 border border-bestie-coral/30 space-y-6 text-lg md:text-xl text-bestie-gray leading-relaxed">
+              <div className="bg-gradient-to-br from-white/60 to-bestie-gray-light/60 backdrop-blur-xl rounded-3xl p-8 md:p-10 border border-pink-500/30 space-y-6 text-lg md:text-xl text-purple-200 leading-relaxed">
                 <p className="text-2xl font-bold text-bestie-blue">
                   We built this entire landing page just for Emily's group.
                 </p>
@@ -852,7 +833,7 @@ export default function LandingPage() {
                 <p className="text-xl md:text-2xl font-black text-bestie-blue">
                   This is just the <span className="text-bestie-coral">special offer page</span>.
                 </p>
-                <p className="text-3xl font-black text-transparent bg-gradient-to-r from-bestie-coral via-bestie-blue to-bestie-coral bg-clip-text pt-4">
+                <p className="text-3xl font-black text-transparent bg-gradient-to-r from-pink-400 via-purple-500 to-pink-500 bg-clip-text pt-4">
                   Imagine what we'll build for YOUR actual business when you're our client.
                 </p>
               </div>
@@ -860,7 +841,7 @@ export default function LandingPage() {
           </div>
 
           {/* Emily's Personal Testimonial Card */}
-          <div className="max-w-4xl mx-auto bg-gradient-to-br from-bestie-coral/20 to-bestie-blue/20 backdrop-blur-xl rounded-3xl p-8 md:p-12 border-2 border-bestie-coral/30">
+          <div className="max-w-4xl mx-auto bg-gradient-to-br from-pink-900/20 to-purple-900/20 backdrop-blur-xl rounded-3xl p-8 md:p-12 border-2 border-pink-500/30">
             <div className="flex items-start gap-6">
               {/* Small circular headshot - Image 2 */}
               <div className="flex-shrink-0 w-24 h-24 rounded-full overflow-hidden border-4 border-bestie-coral/60 shadow-lg">
@@ -880,7 +861,7 @@ export default function LandingPage() {
                 <p className="text-xl md:text-2xl text-bestie-blue font-bold mb-4 italic">
                   "As a fellow Tampa entrepreneur, I know how hard it is to stand out..."
                 </p>
-                <p className="text-lg text-bestie-gray leading-relaxed mb-4">
+                <p className="text-lg text-purple-200 leading-relaxed mb-4">
                   This team didn't just talk about possibilities—they SHOWED me by building this entire custom page just to demonstrate what they can do. If this is what they create for a special offer, imagine what they'll build for your actual business!
                 </p>
                 <div className="flex items-center gap-3">
@@ -897,12 +878,12 @@ export default function LandingPage() {
       </section>
 
       {/* Possibility Examples with Interactive Components */}
-      <section className="relative py-24 md:py-32 px-6 md:px-12 bg-gradient-to-b from-white to-bestie-gray-light">
+      <section className="relative py-24 md:py-32 px-6 md:px-12 bg-gradient-to-b from-pink-950/30 to-bestie-gray-light">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
               <span className="text-bestie-blue">What Could </span>
-              <span className="text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text">Your App</span>
+              <span className="text-transparent bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text">Your App</span>
               <span className="text-bestie-blue"> Do?</span>
             </h2>
             <p className="text-xl md:text-2xl text-bestie-gray max-w-3xl mx-auto">Close your eyes and imagine these scenarios for YOUR business...</p>
@@ -924,7 +905,7 @@ export default function LandingPage() {
                   <button
                     key={idx}
                     onClick={() => handleQuizAnswer(option)}
-                    className="w-full bg-bestie-gray-light hover:bg-bestie-coral/20 border border-gray-300 hover:border-bestie-coral rounded-xl p-4 text-left transition-all duration-300 hover:scale-[1.02]"
+                    className="w-full bg-slate-700/50 hover:bg-pink-500/20 border border-slate-600 hover:border-pink-500 rounded-xl p-4 text-left transition-all duration-300 hover:scale-[1.02]"
                   >
                     {option}
                   </button>
@@ -934,7 +915,7 @@ export default function LandingPage() {
               <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/40 rounded-xl p-6 text-center">
                 <CheckCircle className="inline-block text-green-400 mb-3" size={48} />
                 <p className="text-xl font-bold text-bestie-blue mb-3">Perfect! You selected: "{quizAnswer}"</p>
-                <p className="text-bestie-gray">Now imagine: Based on this answer, your app could instantly recommend the perfect service package, show pricing, and book a consultation. All automatic.</p>
+                <p className="text-purple-200">Now imagine: Based on this answer, your app could instantly recommend the perfect service package, show pricing, and book a consultation. All automatic.</p>
               </div>
             )}
           </div>
@@ -950,7 +931,7 @@ export default function LandingPage() {
                 {idx === 0 && <MobileIndicator type="tap" position="top-right" />}
                 <div className={`relative transition-all duration-500 transform-style-3d ${selectedCard === idx ? 'rotate-y-180' : ''}`}>
                   {/* Front */}
-                  <div className={`bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-3xl p-8 md:p-10 border-2 border-bestie-coral/30 hover:border-bestie-coral/50 transition-all duration-300 ${selectedCard === idx ? 'hidden' : 'block'}`}>
+                  <div className={`bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-3xl p-8 md:p-10 border-2 border-slate-700/50 hover:border-bestie-coral/50 transition-all duration-300 ${selectedCard === idx ? 'hidden' : 'block'}`}>
                     <div className="w-20 h-20 mb-6">
                       {idx === 0 && <HeelIcon />}
                       {idx === 1 && <MartiniIcon />}
@@ -965,10 +946,10 @@ export default function LandingPage() {
                   </div>
 
                   {/* Back */}
-                  <div className={`bg-gradient-to-br from-bestie-coral to-bestie-blue backdrop-blur-xl rounded-3xl p-8 md:p-10 border-2 border-bestie-coral ${selectedCard === idx ? 'block' : 'hidden'}`}>
+                  <div className={`bg-gradient-to-br from-purple-800/80 to-pink-800/80 backdrop-blur-xl rounded-3xl p-8 md:p-10 border-2 border-bestie-coral ${selectedCard === idx ? 'block' : 'hidden'}`}>
                     <Heart className="text-bestie-coral mb-6" size={48} />
                     <h3 className="text-2xl font-bold mb-4 text-bestie-blue">The Benefit:</h3>
-                    <p className="text-xl text-white leading-relaxed mb-6">{item.benefit}</p>
+                    <p className="text-xl text-purple-100 leading-relaxed mb-6">{item.benefit}</p>
                     <div className="text-bestie-coral font-semibold flex items-center gap-2">
                       Click again to flip back <ArrowRight size={20} className="rotate-180" />
                     </div>
@@ -979,7 +960,7 @@ export default function LandingPage() {
           </div>
 
           {/* Interactive Component #4: Progress Tracker for Scavenger Hunt */}
-          <div className="max-w-2xl mx-auto bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-3xl p-8 md:p-10 border-2 border-bestie-coral/30">
+          <div className="max-w-2xl mx-auto bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-3xl p-8 md:p-10 border-2 border-pink-500/30">
             <Gift className="text-bestie-coral mx-auto mb-6" size={48} />
             <h3 className="text-2xl font-bold mb-4 text-center">🎃 Secret Discount Hunt Active!</h3>
             <p className="text-bestie-gray text-center mb-6">
@@ -1014,12 +995,12 @@ export default function LandingPage() {
                       </>
                     ) : (
                       <>
-                        <div className="w-6 h-6 border-2 border-gray-300 rounded-full flex-shrink-0"></div>
+                        <div className="w-6 h-6 border-2 border-slate-600 rounded-full flex-shrink-0"></div>
                         <div className="flex-1">
-                          <span className="text-gray-500">Hidden Code #{idx + 1}</span>
-                          <span className="text-gray-600 text-xs block">{item.discount} discount</span>
+                          <span className="text-slate-500">Hidden Code #{idx + 1}</span>
+                          <span className="text-slate-600 text-xs block">{item.discount} discount</span>
                         </div>
-                        <span className="text-gray-600 text-xs">{item.hint}</span>
+                        <span className="text-slate-600 text-xs">{item.hint}</span>
                       </>
                     )}
                   </div>
@@ -1039,7 +1020,7 @@ export default function LandingPage() {
               </p>
             )}
 
-            <p className="text-xs text-bestie-coral mt-6 text-center italic">
+            <p className="text-xs text-purple-500 mt-6 text-center italic">
               This is EXACTLY the kind of gamified experience we could build into YOUR app. Imagine your users hunting for achievements, unlocking rewards, and engaging with your brand every day.
             </p>
           </div>
@@ -1047,28 +1028,28 @@ export default function LandingPage() {
       </section>
 
       {/* The Offer */}
-      <section className="relative py-24 md:py-32 px-6 md:px-12 bg-gradient-to-b from-bestie-gray-light to-white">
+      <section className="relative py-24 md:py-32 px-6 md:px-12 bg-gradient-to-b from-slate-900 to-slate-950">
         <div className="max-w-5xl mx-auto">
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-bestie-coral via-bestie-blue to-bestie-coral rounded-3xl blur-xl opacity-30"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-pink-600 rounded-3xl blur-xl opacity-30"></div>
             
-            <div className="relative bg-gradient-to-br from-white to-bestie-gray-light backdrop-blur-xl rounded-3xl p-10 md:p-16 border border-bestie-coral/30">
+            <div className="relative bg-gradient-to-br from-slate-900/95 to-slate-950/95 backdrop-blur-xl rounded-3xl p-10 md:p-16 border border-slate-700/50">
               
               <div className="text-center mb-12">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-bestie-coral to-bestie-blue rounded-full mb-6">
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full mb-6">
                   <Star className="text-bestie-blue" size={40} />
                 </div>
                 <h2 className="text-4xl md:text-6xl font-black mb-4">
                   <span className="text-bestie-blue">Emily's Circle </span>
-                  <span className="text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text">Exclusive</span>
+                  <span className="text-transparent bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text">Exclusive</span>
                 </h2>
-                <div className="text-6xl md:text-7xl font-black text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text mb-4">
+                <div className="text-6xl md:text-7xl font-black text-transparent bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text mb-4">
                   50% OFF
                 </div>
                 <p className="text-xl md:text-2xl text-bestie-gray mb-6">Because you're in Emily's network of unstoppable Tampa women</p>
                 
                 {/* Value Framing (No Specific Prices) */}
-                <div className="max-w-lg mx-auto bg-gradient-to-br from-white/50 to-bestie-gray-light/50 rounded-2xl p-8 border border-bestie-coral/30">
+                <div className="max-w-lg mx-auto bg-gradient-to-br from-white/50 to-bestie-gray-light/50 rounded-2xl p-8 border border-pink-500/30">
                   <div className="text-center space-y-4">
                     <p className="text-lg text-bestie-blue font-semibold">
                       Regular custom app development: <span className="text-bestie-gray">$15,000-$50,000+</span>
@@ -1077,7 +1058,7 @@ export default function LandingPage() {
                       Our AI-powered approach: <span className="text-bestie-coral font-bold">50% of traditional cost</span>
                     </p>
                     <div className="py-4">
-                      <p className="text-3xl font-black text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text">
+                      <p className="text-3xl font-black text-transparent bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text">
                         Tampa Friends & Family Rate
                       </p>
                       <p className="text-sm text-gray-600 mt-2">
@@ -1089,7 +1070,7 @@ export default function LandingPage() {
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-12">
-                <div className="bg-gradient-to-br from-white/50 to-bestie-gray-light/50 rounded-2xl p-8 border border-bestie-coral/30">
+                <div className="bg-gradient-to-br from-white/50 to-bestie-gray-light/50 rounded-2xl p-8 border border-slate-700/50">
                   <Zap className="text-bestie-coral mb-4" size={36} />
                   <h3 className="text-xl font-bold mb-3">Fully Custom. Zero Templates.</h3>
                   <p className="text-bestie-gray leading-relaxed">
@@ -1097,7 +1078,7 @@ export default function LandingPage() {
                   </p>
                 </div>
 
-                <div className="bg-gradient-to-br from-white/50 to-bestie-gray-light/50 rounded-2xl p-8 border border-bestie-coral/30">
+                <div className="bg-gradient-to-br from-white/50 to-bestie-gray-light/50 rounded-2xl p-8 border border-slate-700/50">
                   <TrendingUp className="text-bestie-coral mb-4" size={36} />
                   <h3 className="text-xl font-bold mb-3">AI-Powered Possibilities</h3>
                   <p className="text-bestie-gray leading-relaxed">
@@ -1105,7 +1086,7 @@ export default function LandingPage() {
                   </p>
                 </div>
 
-                <div className="bg-gradient-to-br from-white/50 to-bestie-gray-light/50 rounded-2xl p-8 border border-bestie-coral/30">
+                <div className="bg-gradient-to-br from-white/50 to-bestie-gray-light/50 rounded-2xl p-8 border border-slate-700/50">
                   <Sparkles className="text-gray-600 mb-4" size={36} />
                   <h3 className="text-xl font-bold mb-3">Engagement That Converts</h3>
                   <p className="text-bestie-gray leading-relaxed">
@@ -1113,7 +1094,7 @@ export default function LandingPage() {
                   </p>
                 </div>
 
-                <div className="bg-gradient-to-br from-white/50 to-bestie-gray-light/50 rounded-2xl p-8 border border-bestie-coral/30">
+                <div className="bg-gradient-to-br from-white/50 to-bestie-gray-light/50 rounded-2xl p-8 border border-slate-700/50">
                   <Clock className="text-green-400 mb-4" size={36} />
                   <h3 className="text-xl font-bold mb-3">Launch Q1 2026</h3>
                   <p className="text-bestie-gray leading-relaxed">
@@ -1125,12 +1106,12 @@ export default function LandingPage() {
               {/* Hunt Code #3 Hidden */}
               <div className="text-center mb-12">
                 <div className="inline-block opacity-0 hover:opacity-100 transition-opacity cursor-pointer" onClick={() => handleCodeClick('EMILY10')}>
-                  <span className="text-xs text-bestie-blue">🎃 {foundCodes.includes('EMILY10') ? '✓ Final code: EMILY10' : '...'}</span>
+                  <span className="text-xs text-purple-800">🎃 {foundCodes.includes('EMILY10') ? '✓ Final code: EMILY10' : '...'}</span>
                 </div>
               </div>
 
               {/* Interactive Component #5: Engagement Score */}
-              <div className="bg-gradient-to-r from-bestie-coral/20 to-bestie-blue/20 border border-bestie-coral/40 rounded-2xl p-6 mb-10">
+              <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-bestie-coral/40 rounded-2xl p-6 mb-10">
                 <h4 className="text-lg font-bold mb-3 text-center">Your Engagement Score on This Page:</h4>
                 <div className="w-full bg-white rounded-full h-4 mb-3">
                   <div 
@@ -1147,10 +1128,10 @@ export default function LandingPage() {
                 
                 {interactionScore >= 8 && !foundCodes.includes('HAUNTED20') && (
                   <div 
-                    className="mt-4 bg-gradient-to-r from-bestie-coral/50 to-bestie-blue/50 border border-bestie-coral/50 rounded-xl p-4 cursor-pointer hover:scale-105 transition-transform animate-pulse"
+                    className="mt-4 bg-gradient-to-r from-purple-900/50 to-pink-900/50 border border-bestie-coral/50 rounded-xl p-4 cursor-pointer hover:scale-105 transition-transform animate-pulse"
                     onClick={() => handleCodeClick('HAUNTED20')}
                   >
-                    <p className="text-center text-bestie-gray text-sm mb-2">👻 Your engagement unlocked something...</p>
+                    <p className="text-center text-purple-200 text-sm mb-2">👻 Your engagement unlocked something...</p>
                     <p className="text-center text-bestie-coral font-bold">Click here to reveal your reward!</p>
                   </div>
                 )}
@@ -1164,17 +1145,17 @@ export default function LandingPage() {
               </div>
 
               {/* Guarantee Box */}
-              <div className="bg-white border-2 border-bestie-green rounded-2xl p-6 sm:p-8 mb-10 shadow-lg">
+              <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-2 border-green-500/30 rounded-2xl p-8 mb-10">
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-bestie-green to-bestie-coral rounded-full flex items-center justify-center shadow-md">
-                    <CheckCircle className="text-white" size={32} />
+                  <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
+                    <CheckCircle className="text-bestie-blue" size={32} />
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-xl sm:text-2xl font-black text-bestie-blue mb-3">Our Commitment to You</h4>
-                    <p className="text-base sm:text-lg text-bestie-gray leading-relaxed mb-3">
+                    <h4 className="text-2xl font-black text-bestie-blue mb-3">Our Commitment to You</h4>
+                    <p className="text-lg text-green-100 leading-relaxed mb-3">
                       We only take on projects where we know we can deliver exceptional value. If during our strategy session we don't think a custom app is right for you right now, we'll tell you honestly—even if it means we don't work together.
                     </p>
-                    <p className="text-base sm:text-lg text-bestie-blue font-bold">
+                    <p className="text-green-200 font-semibold">
                       Your success is more important to us than making a sale.
                     </p>
                   </div>
@@ -1193,7 +1174,7 @@ export default function LandingPage() {
                 />
                 <p className="text-gray-600 text-sm mb-2">✨ Includes free 30-min strategy session • Zero pressure • All possibility</p>
                 <p className="text-bestie-coral text-xs font-bold flex items-center justify-center gap-2">
-                  <span className="inline-block w-2 h-2 bg-bestie-coral rounded-full animate-pulse"></span>
+                  <span className="inline-block w-2 h-2 bg-pink-400 rounded-full animate-pulse"></span>
                   Only {spotsRemaining} spots left for Emily's network
                 </p>
               </div>
@@ -1203,7 +1184,7 @@ export default function LandingPage() {
       </section>
 
       {/* Social Proof Bar */}
-      <section className="bg-gradient-to-r from-bestie-gray-light via-bestie-mint to-bestie-gray-light py-8 border-y border-bestie-coral/30">
+      <section className="bg-gradient-to-r from-slate-900 via-purple-900 to-bestie-gray-light py-8 border-y border-bestie-coral/30">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 text-bestie-gray">
             <div className="flex items-center gap-3">
@@ -1223,11 +1204,11 @@ export default function LandingPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="relative py-24 px-6 md:px-12 bg-gradient-to-b from-bestie-gray-light to-white">
+      <section className="relative py-24 px-6 md:px-12 bg-gradient-to-b from-pink-950/40 to-slate-950">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-black text-center mb-16">
             <span className="text-bestie-blue">Questions You're </span>
-            <span className="text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text">Probably Asking</span>
+            <span className="text-transparent bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text">Probably Asking</span>
           </h2>
 
           <div className="space-y-6">
@@ -1257,9 +1238,9 @@ export default function LandingPage() {
                 a: "That's exactly why we start with a free strategy session! We'll be honest about whether a custom app makes sense for you right now. We only want to work with businesses where we know we can create real value."
               }
             ].map((faq, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-white/60 to-bestie-gray-light/60 backdrop-blur-xl rounded-2xl p-8 border border-bestie-coral/30 hover:border-bestie-coral/30 transition-all duration-300">
+              <div key={idx} className="bg-gradient-to-br from-white/60 to-bestie-gray-light/60 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/50 hover:border-pink-500/30 transition-all duration-300">
                 <h3 className="text-xl md:text-2xl font-bold mb-4 text-bestie-blue">{faq.q}</h3>
-                <p className="text-lg text-bestie-gray leading-relaxed">{faq.a}</p>
+                <p className="text-lg text-purple-200 leading-relaxed">{faq.a}</p>
               </div>
             ))}
           </div>
@@ -1273,38 +1254,24 @@ export default function LandingPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="relative py-24 md:py-32 px-6 md:px-12 bg-gradient-to-b from-bestie-gray-light via-bestie-mint to-white overflow-hidden">
+      <section className="relative py-24 md:py-32 px-6 md:px-12 bg-gradient-to-b from-slate-950 via-purple-950 to-pink-950 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 text-9xl animate-bounce">🎃</div>
-          {/* Cool sticker next to Jack */}
-          <div className="absolute top-24 left-56 hidden lg:block animate-pulse">
-            <div className="relative bg-gradient-to-br from-bestie-coral to-bestie-blue text-white px-6 py-3 rounded-full shadow-2xl transform -rotate-12 border-4 border-white">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">👆</span>
-                <div className="text-left">
-                  <p className="text-sm font-black leading-tight">Tap Jack!</p>
-                  <p className="text-xs font-semibold opacity-90">He's got your back!</p>
-                </div>
-              </div>
-              {/* Sticker shadow effect */}
-              <div className="absolute -bottom-1 left-0 right-0 h-1 bg-black/20 blur-sm rounded-full"></div>
-            </div>
-          </div>
           <div className="absolute bottom-10 right-10 text-9xl animate-bounce" style={{animationDelay: '0.5s'}}>✨</div>
         </div>
 
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-bestie-coral to-bestie-blue rounded-full mb-8">
+          <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full mb-8">
             <Clock className="text-bestie-blue" size={48} />
           </div>
 
           <h2 className="text-5xl md:text-7xl font-black mb-8 leading-tight">
             This Special Ends
             <br />
-            <span className="text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text">Halloween Midnight</span>
+            <span className="text-transparent bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text">Halloween Midnight</span>
           </h2>
 
-          <div className="max-w-3xl mx-auto mb-12 space-y-6 text-lg md:text-xl text-bestie-gray">
+          <div className="max-w-3xl mx-auto mb-12 space-y-6 text-lg md:text-xl text-purple-200">
             <p className="text-2xl text-bestie-blue font-bold">
               By November 1st, this 50% discount is gone.
             </p>
@@ -1319,12 +1286,12 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-white/60 to-bestie-gray-light/60 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-bestie-coral/30 mb-12">
+          <div className="bg-gradient-to-br from-white/60 to-bestie-gray-light/60 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-slate-700/50 mb-12">
             <h3 className="text-3xl font-black mb-10 text-bestie-blue">Your Simple Next Steps:</h3>
             
             <div className="grid md:grid-cols-3 gap-8 text-left">
               <div>
-                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-bestie-coral to-bestie-blue text-bestie-blue font-black rounded-2xl text-2xl mb-6 mx-auto md:mx-0">1</div>
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-600 text-bestie-blue font-black rounded-2xl text-2xl mb-6 mx-auto md:mx-0">1</div>
                 <h4 className="font-bold text-xl mb-3 text-bestie-blue">Free Strategy Call</h4>
                 <p className="text-bestie-gray leading-relaxed">
                   30 minutes. We dream together about what's possible for YOUR specific business. No pitch. Just brainstorming.
@@ -1332,7 +1299,7 @@ export default function LandingPage() {
               </div>
 
               <div>
-                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-bestie-coral to-bestie-blue text-bestie-blue font-black rounded-2xl text-2xl mb-6 mx-auto md:mx-0">2</div>
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-600 text-bestie-blue font-black rounded-2xl text-2xl mb-6 mx-auto md:mx-0">2</div>
                 <h4 className="font-bold text-xl mb-3 text-bestie-blue">Custom Blueprint</h4>
                 <p className="text-bestie-gray leading-relaxed">
                   We map out your perfect app—quiz, calculator, booking tool, gamified experience, or something totally unique to you.
@@ -1340,7 +1307,7 @@ export default function LandingPage() {
               </div>
 
               <div>
-                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-bestie-coral to-bestie-blue text-bestie-blue font-black rounded-2xl text-2xl mb-6 mx-auto md:mx-0">3</div>
+                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-600 text-bestie-blue font-black rounded-2xl text-2xl mb-6 mx-auto md:mx-0">3</div>
                 <h4 className="font-bold text-xl mb-3 text-bestie-blue">We Build Your App</h4>
                 <p className="text-bestie-gray leading-relaxed">
                   60-90 days later, your custom app launches (iOS App Store or Web). It starts engaging your audience 24/7 while you focus on what you do best.
@@ -1359,37 +1326,35 @@ export default function LandingPage() {
             className="mb-6 !px-12 md:!px-16 !py-6 md:!py-7 !text-2xl md:!text-3xl"
           />
 
-          {mounted && (
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-600 mb-4">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-bestie-coral rounded-full animate-pulse"></div>
-                <span>Only {spotsRemaining} of 8 spots left for Emily's network</span>
-              </div>
-              <div className="hidden sm:block text-bestie-gray">•</div>
-              <div className="flex items-center gap-2">
-                <Clock size={16} />
-                <span>{timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m remaining</span>
-              </div>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-600 mb-4">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse"></div>
+              <span>Only {spotsRemaining} of 8 spots left for Emily's network</span>
             </div>
-          )}
+            <div className="hidden sm:block text-purple-600">•</div>
+            <div className="flex items-center gap-2">
+              <Clock size={16} />
+              <span>{timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m remaining</span>
+            </div>
+          </div>
 
-          <p className="text-xs text-bestie-coral mt-4">
+          <p className="text-xs text-purple-500 mt-4">
             🎃 Found a discount code? Apply it after you reserve your spot!
           </p>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="relative py-24 px-6 md:px-12 bg-white">
+      <section className="relative py-24 px-6 md:px-12 bg-slate-950">
         <div className="max-w-6xl mx-auto">
           
           {/* Meet Emily Section */}
           <div className="mb-20">
-            <div className="flex flex-col md:flex-row items-center gap-12 bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-3xl p-10 md:p-12 border border-bestie-coral/30">
+            <div className="flex flex-col md:flex-row items-center gap-12 bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-3xl p-10 md:p-12 border border-slate-700/50">
               
               {/* Text Content First */}
               <div className="flex-1">
-                <div className="inline-block bg-gradient-to-r from-bestie-coral/20 to-bestie-blue/20 border border-bestie-coral/40 rounded-full px-6 py-2 mb-6">
+                <div className="inline-block bg-gradient-to-r from-pink-500/20 to-purple-500/20 border border-bestie-coral/40 rounded-full px-6 py-2 mb-6">
                   <span className="text-sm font-bold text-bestie-coral">FROM YOUR HOST</span>
                 </div>
                 
@@ -1400,7 +1365,7 @@ export default function LandingPage() {
                   Founder of BESTY Bookkeepers • Tampa Entrepreneur
                 </p>
                 
-                <div className="space-y-4 text-lg text-bestie-gray leading-relaxed">
+                <div className="space-y-4 text-lg text-purple-200 leading-relaxed">
                   <p>
                     "I started BESTY because I saw entrepreneurs drowning in bookkeeping instead of growing their businesses."
                   </p>
@@ -1416,14 +1381,14 @@ export default function LandingPage() {
               {/* Emily's Photo - Image 4 (relaxed with laptop) */}
               <div className="flex-shrink-0 w-full md:w-2/5">
                 <div className="relative">
-                  <div className="aspect-[3/4] bg-gradient-to-br from-bestie-coral/10 to-bestie-blue/10 rounded-3xl border-4 border-bestie-coral/30 overflow-hidden shadow-2xl">
+                  <div className="aspect-[3/4] bg-gradient-to-br from-pink-200/10 to-slate-700/20 rounded-3xl border-4 border-bestie-coral/30 overflow-hidden shadow-2xl">
                     <img 
                       src="/emily-laptop.jpg"
                       alt="Emily Handren at her desk"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="absolute -top-4 -right-4 bg-gradient-to-r from-bestie-coral to-bestie-blue text-bestie-blue p-4 rounded-full shadow-2xl">
+                  <div className="absolute -top-4 -right-4 bg-gradient-to-r from-pink-400 to-purple-500 text-bestie-blue p-4 rounded-full shadow-2xl">
                     <Heart className="text-bestie-blue" size={32} />
                   </div>
                 </div>
@@ -1433,17 +1398,17 @@ export default function LandingPage() {
 
           <h2 className="text-4xl md:text-5xl font-black text-center mb-16">
             <span className="text-bestie-blue">What Emily's Circle </span>
-            <span className="text-transparent bg-gradient-to-r from-bestie-coral to-bestie-blue bg-clip-text">Is Saying</span>
+            <span className="text-transparent bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text">Is Saying</span>
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-2xl p-8 border border-bestie-coral/30">
+            <div className="bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/50">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="text-bestie-coral fill-pink-400" size={20} />
                 ))}
               </div>
-              <p className="text-bestie-gray leading-relaxed mb-6 italic">
+              <p className="text-purple-200 leading-relaxed mb-6 italic">
                 "I've been talking about creating something interactive for my clients for over a year. This team made it happen in 90 days. Game changer."
               </p>
               <div className="text-sm">
@@ -1452,13 +1417,13 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-2xl p-8 border border-bestie-coral/30">
+            <div className="bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/50">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="text-bestie-coral fill-pink-400" size={20} />
                 ))}
               </div>
-              <p className="text-bestie-gray leading-relaxed mb-6 italic">
+              <p className="text-purple-200 leading-relaxed mb-6 italic">
                 "The ROI calculator they built for me pre-sells my services before I even get on a call. My close rate has never been higher."
               </p>
               <div className="text-sm">
@@ -1467,13 +1432,13 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-2xl p-8 border border-bestie-coral/30">
+            <div className="bg-gradient-to-br from-white/80 to-bestie-gray-light/80 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/50">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="text-bestie-coral fill-pink-400" size={20} />
                 ))}
               </div>
-              <p className="text-bestie-gray leading-relaxed mb-6 italic">
+              <p className="text-purple-200 leading-relaxed mb-6 italic">
                 "I thought custom apps were only for huge companies with massive budgets. Turns out, small businesses can play in this space too. So grateful."
               </p>
               <div className="text-sm">
@@ -1483,35 +1448,35 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <p className="text-center text-bestie-gray text-xs mt-8 italic">
+          <p className="text-center text-purple-600 text-xs mt-8 italic">
             These testimonials represent feedback we've received. Individual results will vary based on your business model and implementation.
           </p>
         </div>
       </section>
 
       {/* Comprehensive App FAQs */}
-      <section className="relative py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-bestie-gray-light to-white">
+      <section className="relative py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-slate-900 to-black">
         <div className="max-w-4xl mx-auto">
 
           <div className="text-center mb-12">
-            <div className="inline-block bg-gradient-to-r from-bestie-coral/20 to-bestie-blue/20 backdrop-blur-sm border border-bestie-coral/40 rounded-full px-4 sm:px-6 py-2 mb-6">
-              <span className="text-xs sm:text-sm font-bold text-bestie-coral tracking-wider">FAQ</span>
+            <div className="inline-block bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm border border-purple-400/40 rounded-full px-4 sm:px-6 py-2 mb-6">
+              <span className="text-xs sm:text-sm font-bold text-purple-200 tracking-wider">FAQ</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-black text-bestie-blue mb-4">
               iOS App Store or Custom Web App?
             </h2>
-            <p className="text-bestie-gray">Here's everything you need to decide which path is right for you</p>
+            <p className="text-purple-200">Here's everything you need to decide which path is right for you</p>
           </div>
 
           <div className="space-y-4">
 
             {/* FAQ 1 */}
-            <details className="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-md">
-              <summary className="cursor-pointer p-6 font-bold text-bestie-blue hover:bg-bestie-mint transition-colors list-none flex items-center justify-between">
+            <details className="group bg-bestie-mint/50 rounded-xl border border-bestie-coral/20 overflow-hidden">
+              <summary className="cursor-pointer p-6 font-bold text-bestie-blue hover:bg-slate-700/50 transition-colors list-none flex items-center justify-between">
                 <span>💰 Which option costs more?</span>
                 <span className="text-gray-600 group-open:rotate-180 transition-transform">▼</span>
               </summary>
-              <div className="p-6 pt-0 text-bestie-gray space-y-3 text-sm leading-relaxed">
+              <div className="p-6 pt-0 text-purple-200 space-y-3 text-sm leading-relaxed">
                 <p><strong className="text-bestie-blue">iOS App Store:</strong> Requires a $99/year Apple Developer account (but if you unlock the ultimate prize, Emily covers this first year!). After that, it's $99 annually to keep your app in the store.</p>
                 <p><strong className="text-bestie-blue">Custom Web App:</strong> No app store fees. Just standard hosting costs (usually $10-30/month depending on traffic).</p>
                 <p className="text-bestie-coral"><strong>Bottom line:</strong> Web apps are cheaper to maintain long-term if you're cost-sensitive.</p>
@@ -1519,12 +1484,12 @@ export default function LandingPage() {
             </details>
 
             {/* FAQ 2 */}
-            <details className="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-md">
-              <summary className="cursor-pointer p-6 font-bold text-bestie-blue hover:bg-bestie-mint transition-colors list-none flex items-center justify-between">
+            <details className="group bg-bestie-mint/50 rounded-xl border border-bestie-coral/20 overflow-hidden">
+              <summary className="cursor-pointer p-6 font-bold text-bestie-blue hover:bg-slate-700/50 transition-colors list-none flex items-center justify-between">
                 <span>⏰ Which one launches faster?</span>
                 <span className="text-gray-600 group-open:rotate-180 transition-transform">▼</span>
               </summary>
-              <div className="p-6 pt-0 text-bestie-gray space-y-3 text-sm leading-relaxed">
+              <div className="p-6 pt-0 text-purple-200 space-y-3 text-sm leading-relaxed">
                 <p><strong className="text-bestie-blue">iOS App Store:</strong> Takes 7-10 extra days for Apple's review process. They check everything before approving your app.</p>
                 <p><strong className="text-bestie-blue">Custom Web App:</strong> Can be live in days. No approval process, no waiting.</p>
                 <p className="text-bestie-coral"><strong>Bottom line:</strong> If you need it FAST, web app wins. If you can wait for the credibility boost, iOS is worth it.</p>
@@ -1532,12 +1497,12 @@ export default function LandingPage() {
             </details>
 
             {/* FAQ 3 */}
-            <details className="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-md">
-              <summary className="cursor-pointer p-6 font-bold text-bestie-blue hover:bg-bestie-mint transition-colors list-none flex items-center justify-between">
+            <details className="group bg-bestie-mint/50 rounded-xl border border-bestie-coral/20 overflow-hidden">
+              <summary className="cursor-pointer p-6 font-bold text-bestie-blue hover:bg-slate-700/50 transition-colors list-none flex items-center justify-between">
                 <span>📱 Can people still "install" a web app on their phone?</span>
                 <span className="text-gray-600 group-open:rotate-180 transition-transform">▼</span>
               </summary>
-              <div className="p-6 pt-0 text-bestie-gray space-y-3 text-sm leading-relaxed">
+              <div className="p-6 pt-0 text-purple-200 space-y-3 text-sm leading-relaxed">
                 <p><strong className="text-bestie-blue">Yes!</strong> Both iPhone and Android users can add web apps to their home screen. It looks and feels just like a "real" app—they tap it, it opens full-screen, no browser UI.</p>
                 <p>The difference? An iOS App Store app gets discovered through search in the App Store. A web app gets discovered through YOUR marketing (social media, your website, QR codes, etc.).</p>
                 <p className="text-bestie-coral"><strong>Bottom line:</strong> Both can live on home screens. App Store gives you discoverability; web apps give you control.</p>
@@ -1545,12 +1510,12 @@ export default function LandingPage() {
             </details>
 
             {/* FAQ 4 */}
-            <details className="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-md">
-              <summary className="cursor-pointer p-6 font-bold text-bestie-blue hover:bg-bestie-mint transition-colors list-none flex items-center justify-between">
+            <details className="group bg-bestie-mint/50 rounded-xl border border-bestie-coral/20 overflow-hidden">
+              <summary className="cursor-pointer p-6 font-bold text-bestie-blue hover:bg-slate-700/50 transition-colors list-none flex items-center justify-between">
                 <span>🎯 Which one is better for credibility and branding?</span>
                 <span className="text-gray-600 group-open:rotate-180 transition-transform">▼</span>
               </summary>
-              <div className="p-6 pt-0 text-bestie-gray space-y-3 text-sm leading-relaxed">
+              <div className="p-6 pt-0 text-purple-200 space-y-3 text-sm leading-relaxed">
                 <p><strong className="text-bestie-blue">iOS App Store:</strong> Maximum "wow factor." Saying "Download my app from the App Store" carries serious weight. It positions you as established and professional.</p>
                 <p><strong className="text-bestie-blue">Custom Web App:</strong> Still impressive, but without the App Store prestige. Your customers know you built something custom, which is cool—but it doesn't have that "I saw it in the App Store" magic.</p>
                 <p className="text-bestie-coral"><strong>Bottom line:</strong> If brand positioning matters and you want maximum credibility, iOS App Store is the move.</p>
@@ -1558,12 +1523,12 @@ export default function LandingPage() {
             </details>
 
             {/* FAQ 5 */}
-            <details className="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-md">
-              <summary className="cursor-pointer p-6 font-bold text-bestie-blue hover:bg-bestie-mint transition-colors list-none flex items-center justify-between">
+            <details className="group bg-bestie-mint/50 rounded-xl border border-bestie-coral/20 overflow-hidden">
+              <summary className="cursor-pointer p-6 font-bold text-bestie-blue hover:bg-slate-700/50 transition-colors list-none flex items-center justify-between">
                 <span>🔄 Can I change my mind later?</span>
                 <span className="text-gray-600 group-open:rotate-180 transition-transform">▼</span>
               </summary>
-              <div className="p-6 pt-0 text-bestie-gray space-y-3 text-sm leading-relaxed">
+              <div className="p-6 pt-0 text-purple-200 space-y-3 text-sm leading-relaxed">
                 <p><strong className="text-bestie-blue">Absolutely.</strong> We can always convert a web app to an iOS app later (or vice versa). The core functionality is the same—it's just how it's packaged and distributed.</p>
                 <p>Starting with a web app to test the concept, then upgrading to the App Store once you see traction? Totally doable.</p>
                 <p className="text-bestie-coral"><strong>Bottom line:</strong> You're not locked in. Start where you're comfortable and pivot if needed.</p>
@@ -1571,12 +1536,12 @@ export default function LandingPage() {
             </details>
 
             {/* FAQ 6 */}
-            <details className="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-md">
-              <summary className="cursor-pointer p-6 font-bold text-bestie-blue hover:bg-bestie-mint transition-colors list-none flex items-center justify-between">
+            <details className="group bg-bestie-mint/50 rounded-xl border border-bestie-coral/20 overflow-hidden">
+              <summary className="cursor-pointer p-6 font-bold text-bestie-blue hover:bg-slate-700/50 transition-colors list-none flex items-center justify-between">
                 <span>🤔 I'm still not sure which to choose. What do you recommend?</span>
                 <span className="text-gray-600 group-open:rotate-180 transition-transform">▼</span>
               </summary>
-              <div className="p-6 pt-0 text-bestie-gray space-y-3 text-sm leading-relaxed">
+              <div className="p-6 pt-0 text-purple-200 space-y-3 text-sm leading-relaxed">
                 <p><strong className="text-bestie-blue">That's what our first call is for!</strong> Emily will ask about your business model, your audience, your timeline, and your goals—and recommend the best fit.</p>
                 <p>General rule of thumb:</p>
                 <ul className="list-disc list-inside space-y-2 ml-4">
@@ -1598,20 +1563,18 @@ export default function LandingPage() {
           
           {/* Final urgency reminder */}
           <div className="text-center mb-8 pb-8 border-b border-gray-200/30">
-            {mounted && (
-              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-bestie-coral/20 to-bestie-blue/20 backdrop-blur-sm border border-bestie-coral/40 rounded-full px-6 py-3 mb-4">
-                <Clock className="text-bestie-coral" size={20} />
-                <span className="text-bestie-coral font-bold">
-                  {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m until 50% OFF expires
-                </span>
-              </div>
-            )}
+            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-pink-500/20 to-purple-500/20 backdrop-blur-sm border border-bestie-coral/40 rounded-full px-6 py-3 mb-4">
+              <Clock className="text-bestie-coral" size={20} />
+              <span className="text-bestie-coral font-bold">
+                {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m until 50% OFF expires
+              </span>
+            </div>
             <div className="flex items-center justify-center gap-2">
               <div className="flex gap-1">
                 {[...Array(8)].map((_, i) => (
                   <div 
                     key={i} 
-                    className={`w-3 h-3 rounded-full ${i < spotsRemaining ? 'bg-bestie-coral' : 'bg-gray-300'}`}
+                    className={`w-3 h-3 rounded-full ${i < spotsRemaining ? 'bg-pink-400' : 'bg-slate-700'}`}
                   ></div>
                 ))}
               </div>
@@ -1632,13 +1595,13 @@ export default function LandingPage() {
 
             <div className="text-gray-600 text-sm space-y-3">
               <p className="font-semibold">Exclusively for women business owners in Emily's Tampa networking circle</p>
-              <p className="text-bestie-gray">Custom app development • U.S.-based team • AI-powered • Built with possibility</p>
+              <p className="text-purple-600">Custom app development • U.S.-based team • AI-powered • Built with possibility</p>
 
               <div className="mt-6 pt-6 border-t border-gray-200/30">
-                <p className="text-xs text-bestie-coral">
+                <p className="text-xs text-purple-500">
                   © 2025 Bestie Bookkeepers | Emily's Circle | Tampa, FL
                 </p>
-                <p className="text-xs text-bestie-gray mt-2">
+                <p className="text-xs text-purple-600 mt-2">
                   Powered by Raize The Vibe • Built with 💜 for local businesses
                 </p>
               </div>
@@ -1654,7 +1617,7 @@ export default function LandingPage() {
                   </p>
                 ) : (
                   <p
-                    className="text-[6px] text-gray-800 select-none inline-block opacity-5"
+                    className="text-[6px] text-slate-950 select-none inline-block opacity-5"
                     title={`${15 - interactionScore} more interactions needed to reveal...`}
                   >
                     ENCHANTED50

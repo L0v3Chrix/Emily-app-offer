@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Map, X, Lock, Unlock, Gift, Sparkles, Trophy, Clock } from 'lucide-react';
 
 interface TreasureMapModalProps {
@@ -19,6 +19,12 @@ const TreasureMapModal: React.FC<TreasureMapModalProps> = ({
   setShowMap
 }) => {
   const [pulseChest, setPulseChest] = useState<number | null>(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  // Minimum swipe distance (in px) to trigger dismiss
+  const minSwipeDistance = 100;
 
   const treasures = [
     {
@@ -27,7 +33,9 @@ const TreasureMapModal: React.FC<TreasureMapModalProps> = ({
       hint: 'Try the classic gamer code... ↑↑↓↓←→←→BA',
       icon: '🎃',
       color: 'from-orange-500 to-red-500',
-      unlocked: foundCodes.includes('SPOOKY10')
+      unlocked: foundCodes.includes('SPOOKY10'),
+      discount: 10,
+      cumulative: 10
     },
     {
       code: 'HAUNTED20',
@@ -36,7 +44,9 @@ const TreasureMapModal: React.FC<TreasureMapModalProps> = ({
       icon: '👻',
       color: 'from-purple-500 to-indigo-500',
       unlocked: foundCodes.includes('HAUNTED20'),
-      requiresInteraction: 8
+      requiresInteraction: 8,
+      discount: 20,
+      cumulative: 30
     },
     {
       code: 'ENCHANTED50',
@@ -45,7 +55,9 @@ const TreasureMapModal: React.FC<TreasureMapModalProps> = ({
       icon: '✨',
       color: 'from-pink-500 to-purple-500',
       unlocked: foundCodes.includes('ENCHANTED50'),
-      requiresInteraction: 15
+      requiresInteraction: 15,
+      discount: 20,
+      cumulative: 50
     }
   ];
 
@@ -59,20 +71,67 @@ const TreasureMapModal: React.FC<TreasureMapModalProps> = ({
     }
   }, [foundCodes]);
 
+  // Swipe gesture handling for mobile
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null); // Reset touchEnd
+    setTouchStart(e.targetTouches[0].clientY);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientY);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isDownSwipe = distance < -minSwipeDistance;
+
+    if (isDownSwipe) {
+      setShowMap(false);
+    }
+  };
+
   const getHintText = (index: number, treasure: typeof treasures[0]) => {
-    // Progressive hints based on time spent
+    // Progressive hints based on time spent AND interaction
     if (treasure.unlocked) return '✅ Code Found!';
 
-    if (treasure.requiresInteraction && interactionScore < treasure.requiresInteraction) {
-      return `🔒 Requires ${treasure.requiresInteraction} engagement points (you have ${interactionScore})`;
+    // Code 1: SPOOKY10 (Konami Code)
+    if (index === 0) {
+      if (treasure.requiresInteraction && interactionScore < treasure.requiresInteraction) {
+        return `🔒 Requires ${treasure.requiresInteraction} engagement points (you have ${interactionScore})`;
+      }
+
+      if (hintLevel === 0) return '🔍 Explore the page to unlock hints...';
+      if (hintLevel === 1) return '💡 Hint Level 1: Remember classic video game cheat codes from the 90s?';
+      if (hintLevel === 2) return '💡 Hint Level 2: The Konami Code was famous in games like Contra...';
+      if (hintLevel >= 3) return `💡 Full Hint: ${treasure.hint}`;
     }
 
-    if (hintLevel === 0) return '🔍 Explore the page to unlock hints...';
-    if (hintLevel === 1 && index === 0) return '💡 Hint: Think about classic video game codes...';
-    if (hintLevel === 2 && index === 0) return treasure.hint;
-    if (hintLevel >= 2 && index === 1) return '💡 Hint: Emily\'s images hold secrets...';
-    if (hintLevel >= 3 && index === 1) return treasure.hint;
-    if (hintLevel >= 4 && index === 2) return treasure.hint;
+    // Code 2: HAUNTED20 (Image Hover)
+    if (index === 1) {
+      if (treasure.requiresInteraction && interactionScore < treasure.requiresInteraction) {
+        return `🔒 Requires ${treasure.requiresInteraction} engagement points to unlock. Current: ${interactionScore} pts. Try the quiz, flip cards, and value slider!`;
+      }
+
+      if (hintLevel === 0) return '🔍 Keep engaging to unlock hints...';
+      if (hintLevel === 1) return '💡 Hint Level 1: Emily\'s photos aren\'t just decorative...';
+      if (hintLevel === 2) return '💡 Hint Level 2: Try hovering (or tapping on mobile) over Emily\'s images slowly...';
+      if (hintLevel >= 3) return `💡 Full Hint: ${treasure.hint}`;
+    }
+
+    // Code 3: ENCHANTED50 (High Engagement)
+    if (index === 2) {
+      if (treasure.requiresInteraction && interactionScore < treasure.requiresInteraction) {
+        return `🔒 Requires ${treasure.requiresInteraction} engagement points. Current: ${interactionScore} pts. This is the ultimate challenge—explore EVERYTHING! (${treasure.requiresInteraction - interactionScore} more points needed)`;
+      }
+
+      if (hintLevel === 0) return '🔍 This one requires serious dedication...';
+      if (hintLevel === 1) return '💡 Hint Level 1: Complete maximum engagement across the entire page first...';
+      if (hintLevel === 2) return '💡 Hint Level 2: Try every interactive element, read every section, scroll to the bottom...';
+      if (hintLevel === 3) return '💡 Hint Level 3: Check the page corners, the footer, unexpected places...';
+      if (hintLevel >= 4) return `💡 Full Hint: ${treasure.hint}`;
+    }
 
     return '🔍 Keep exploring for more hints...';
   };
@@ -86,12 +145,12 @@ const TreasureMapModal: React.FC<TreasureMapModalProps> = ({
     return (
       <button
         onClick={() => setShowMap(true)}
-        className="fixed bottom-6 right-6 bg-gradient-to-br from-yellow-600 to-orange-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 z-40 group animate-bounce"
+        className="fixed bottom-6 right-6 bg-gradient-to-br from-bestie-coral to-bestie-blue text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 z-40 group animate-bounce"
         title="Open Treasure Map"
       >
         <Map className="w-6 h-6" />
         {foundCodes.length > 0 && (
-          <div className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center animate-pulse">
+          <div className="absolute -top-2 -right-2 bg-bestie-coral text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center animate-pulse">
             {foundCodes.length}
           </div>
         )}
@@ -100,73 +159,94 @@ const TreasureMapModal: React.FC<TreasureMapModalProps> = ({
   }
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn">
-      <div className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 rounded-2xl max-w-2xl w-full p-8 relative shadow-2xl border-2 border-yellow-600/50 transform animate-slideUp">
+    <div
+      className="fixed inset-0 bg-gray-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn overflow-y-auto"
+      onClick={() => setShowMap(false)}
+    >
+      <div
+        ref={modalRef}
+        className="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl border-2 border-bestie-coral/50 transform animate-slideUp touch-pan-y my-4 max-h-[95vh] overflow-y-auto"
+        onClick={(e) => e.stopPropagation()}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
+        {/* Swipe indicator for mobile */}
+        <div className="md:hidden absolute top-2 left-1/2 -translate-x-1/2 w-12 h-1 bg-gray-300 rounded-full" />
 
-        {/* Close button */}
+        {/* Close button - larger touch target on mobile */}
         <button
           onClick={() => setShowMap(false)}
-          className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-full transition-colors group"
+          className="absolute top-4 right-4 p-3 md:p-2 hover:bg-bestie-mint rounded-full transition-colors group"
+          aria-label="Close treasure map"
         >
-          <X className="w-6 h-6 group-hover:rotate-90 transition-transform" />
+          <X className="w-7 h-7 md:w-6 md:h-6 text-bestie-blue group-hover:rotate-90 transition-transform" />
         </button>
 
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="inline-block p-4 bg-gradient-to-br from-yellow-600 to-orange-600 rounded-2xl mb-4">
+          <div className="inline-block p-4 bg-gradient-to-br from-bestie-coral to-bestie-blue rounded-2xl mb-4 shadow-lg">
             <Map className="w-12 h-12 text-white" />
           </div>
-          <h2 className="text-3xl font-black text-white mb-2">🗺️ Treasure Map</h2>
-          <p className="text-purple-200">Find all 3 hidden discount codes!</p>
+          <h2 className="text-3xl font-black text-bestie-blue mb-2">🗺️ Treasure Map</h2>
+          <p className="text-bestie-gray mb-2">Find all 3 hidden discount codes!</p>
+          <div className="inline-block bg-gradient-to-r from-bestie-coral/20 to-bestie-green/20 backdrop-blur-sm border border-bestie-coral/40 rounded-full px-4 py-2">
+            <p className="text-sm font-bold text-bestie-coral">
+              💰 Discounts stack: 10% + 20% + 20% = <span className="text-bestie-blue">50% OFF!</span>
+            </p>
+          </div>
         </div>
 
         {/* Progress bar */}
         <div className="mb-8">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm text-purple-300 font-semibold">Progress</span>
-            <span className="text-sm text-pink-400 font-bold">{foundCodes.length} / {treasures.length} Codes Found</span>
+            <span className="text-sm text-bestie-gray font-semibold">Progress</span>
+            <span className="text-sm text-bestie-coral font-bold">{foundCodes.length} / {treasures.length} Codes Found</span>
           </div>
-          <div className="h-3 bg-slate-800 rounded-full overflow-hidden">
+          <div className="h-3 bg-bestie-mint rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-yellow-500 via-orange-500 to-pink-500 transition-all duration-500 ease-out"
+              className="h-full bg-gradient-to-r from-bestie-green via-bestie-coral to-bestie-blue transition-all duration-500 ease-out"
               style={{ width: `${calculateProgress()}%` }}
             />
           </div>
         </div>
 
         {/* Treasure chests */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
           {treasures.map((treasure, index) => (
             <div
               key={treasure.code}
-              className={`relative p-6 rounded-xl border-2 transition-all duration-300 ${
+              className={`relative p-4 sm:p-6 rounded-xl border-2 transition-all duration-300 ${
                 treasure.unlocked
-                  ? 'bg-gradient-to-br from-green-900/50 to-emerald-900/50 border-green-500/50'
+                  ? 'bg-gradient-to-br from-bestie-green/20 to-bestie-mint border-bestie-green'
                   : pulseChest === index
-                  ? 'bg-gradient-to-br from-slate-800 to-slate-700 border-yellow-500 animate-pulse'
-                  : 'bg-gradient-to-br from-slate-800 to-slate-700 border-slate-600/50'
+                  ? 'bg-gradient-to-br from-bestie-mint to-white border-bestie-coral animate-pulse'
+                  : 'bg-gradient-to-br from-bestie-gray-light to-white border-gray-300'
               }`}
             >
               {/* Chest icon */}
-              <div className="text-center mb-4">
-                <div className={`text-6xl mb-2 ${pulseChest === index && !treasure.unlocked ? 'animate-bounce' : ''}`}>
-                  {treasure.unlocked ? <Unlock className="w-16 h-16 mx-auto text-green-400" /> : <Lock className="w-16 h-16 mx-auto text-slate-500" />}
+              <div className="text-center mb-3 sm:mb-4">
+                <div className={`text-4xl sm:text-6xl mb-2 ${pulseChest === index && !treasure.unlocked ? 'animate-bounce' : ''}`}>
+                  {treasure.unlocked ? <Unlock className="w-12 h-12 sm:w-16 sm:h-16 mx-auto text-bestie-green" /> : <Lock className="w-12 h-12 sm:w-16 sm:h-16 mx-auto text-gray-400" />}
                 </div>
-                <div className="text-4xl mb-2">{treasure.icon}</div>
-                <h3 className="font-bold text-white mb-1">{treasure.name}</h3>
-                <div className={`text-2xl font-black bg-gradient-to-r ${treasure.color} bg-clip-text text-transparent`}>
-                  {treasure.code.split('').slice(-2).join('')}% OFF
+                <div className="text-3xl sm:text-4xl mb-2">{treasure.icon}</div>
+                <h3 className="font-bold text-bestie-blue mb-1 text-sm sm:text-base">{treasure.name}</h3>
+                <div className={`text-lg sm:text-xl font-black bg-gradient-to-r ${treasure.color} bg-clip-text text-transparent mb-1`}>
+                  +{treasure.discount}% OFF
+                </div>
+                <div className="text-xs text-bestie-gray font-semibold">
+                  (Total: {treasure.cumulative}% if you find all before)
                 </div>
               </div>
 
               {/* Hint */}
-              <div className="text-xs text-purple-200 text-center bg-slate-900/50 rounded-lg p-3">
+              <div className="text-xs text-bestie-gray text-center bg-bestie-mint rounded-lg p-2 sm:p-3">
                 {getHintText(index, treasure)}
               </div>
 
               {/* Unlocked indicator */}
               {treasure.unlocked && (
-                <div className="absolute -top-2 -right-2 bg-green-500 text-white p-2 rounded-full shadow-lg">
+                <div className="absolute -top-2 -right-2 bg-bestie-green text-white p-2 rounded-full shadow-lg">
                   <Gift className="w-5 h-5" />
                 </div>
               )}
@@ -176,17 +256,73 @@ const TreasureMapModal: React.FC<TreasureMapModalProps> = ({
 
         {/* Victory message */}
         {foundCodes.length === treasures.length && (
-          <div className="bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl p-6 text-center animate-pulse">
-            <Trophy className="w-12 h-12 mx-auto mb-3 text-yellow-300" />
-            <h3 className="text-2xl font-black text-white mb-2">🎉 ALL CODES FOUND!</h3>
-            <p className="text-white/90 mb-4">
-              You've discovered all the hidden treasures! Use code <strong>ENCHANTED50</strong> for your biggest discount!
+          <div className="bg-gradient-to-r from-bestie-coral to-bestie-blue rounded-xl p-4 sm:p-6 text-center shadow-lg">
+            <Trophy className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 text-bestie-green animate-bounce" />
+            <h3 className="text-xl sm:text-2xl font-black text-white mb-2">🎉 ALL CODES FOUND!</h3>
+            <p className="text-white/90 mb-4 text-sm sm:text-base">
+              You've discovered all the hidden treasures!
             </p>
+
+            {/* 50% Discount */}
+            <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3 sm:p-4 mb-4">
+              <p className="text-bestie-green font-black text-xl sm:text-2xl mb-2">
+                TOTAL: 50% OFF!
+              </p>
+              <p className="text-white text-xs sm:text-sm">
+                10% (SPOOKY10) + 20% (HAUNTED20) + 20% (ENCHANTED50) = <strong>50% Friends & Family Rate</strong>
+              </p>
+            </div>
+
+            {/* Ultimate Prize Section */}
+            {interactionScore >= 20 ? (
+              <div className="bg-gradient-to-br from-yellow-500/30 to-orange-500/30 border-2 border-yellow-400 rounded-xl p-5 mb-4 animate-pulse">
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <Sparkles className="w-6 h-6 text-yellow-300" />
+                  <h4 className="text-xl font-black text-yellow-300">🏆 ULTIMATE PRIZE UNLOCKED!</h4>
+                  <Sparkles className="w-6 h-6 text-yellow-300" />
+                </div>
+                <p className="text-white font-bold text-lg mb-2">
+                  100% Engagement Achievement! 🎯
+                </p>
+                <div className="bg-white/20 rounded-lg p-3 mb-3">
+                  <p className="text-yellow-100 text-sm mb-1">
+                    You found all 3 codes <strong>AND</strong> explored everything!
+                  </p>
+                  <p className="text-white font-black text-xl">
+                    Emily covers your $99 App Store fee! 🍎
+                  </p>
+                </div>
+                <p className="text-xs text-yellow-200 italic">
+                  If you choose iOS App Store, the $99 Apple Developer application fee is on us!
+                </p>
+              </div>
+            ) : (
+              <div className="bg-slate-800/50 border border-slate-600 rounded-xl p-4 mb-4">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <Trophy className="w-5 h-5 text-slate-400" />
+                  <h4 className="text-sm font-bold text-slate-300">🏆 Ultimate Prize Available</h4>
+                </div>
+                <p className="text-slate-400 text-xs mb-2">
+                  Get to <strong>20 engagement points</strong> to unlock the ultimate prize!
+                </p>
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-slate-500">Current: {interactionScore} pts</span>
+                  <span className="text-pink-400 font-bold">{20 - interactionScore} pts to go!</span>
+                </div>
+                <div className="h-2 bg-slate-900 rounded-full overflow-hidden mt-2">
+                  <div
+                    className="h-full bg-gradient-to-r from-pink-500 to-yellow-500 transition-all duration-500"
+                    style={{ width: `${Math.min((interactionScore / 20) * 100, 100)}%` }}
+                  />
+                </div>
+              </div>
+            )}
+
             <button
               onClick={() => setShowMap(false)}
-              className="bg-white text-purple-600 px-6 py-3 rounded-full font-bold hover:scale-105 transition-transform"
+              className="bg-white text-purple-600 px-6 py-4 md:py-3 text-base md:text-sm rounded-full font-bold hover:scale-105 transition-transform touch-manipulation"
             >
-              Claim Your Prize! 🎁
+              {interactionScore >= 20 ? 'Claim Your Ultimate Prize! 🏆' : 'Claim Your Prize! 🎁'}
             </button>
           </div>
         )}

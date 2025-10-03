@@ -7,8 +7,9 @@ Quick landing page build for Emily Handren (BESTY Bookkeepers) Halloween special
 - **Client**: Emily Handren / BESTY Bookkeepers
 - **Project Type**: Single landing page (promotional)
 - **Timeline**: Quick build - launch ASAP before Halloween 2025
-- **Offer**: $6,000 custom app builds (50% off regular $12k) with $99 deposit
+- **Offer**: Custom iOS App Store OR Web App development (50% off friends & family rate)
 - **Target**: Tampa women entrepreneurs in Emily's network (limited to 8 spots)
+- **Special Prize**: App Store application fee ($99) covered for users who achieve 100% engagement + find all codes
 
 ## Technical Specifications
 - **Framework**: Next.js with React

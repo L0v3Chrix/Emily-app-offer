@@ -17,7 +17,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the page.
 ## Project Details
 
 - **Client**: Emily Handren / BESTY Bookkeepers
-- **Offer**: $6,000 custom app builds (50% off) with $99 deposit
+- **Offer**: Custom iOS App Store OR Web App development (50% off)
 - **Deadline**: Halloween 2025 midnight
 - **Limited**: 8 spots for Tampa women entrepreneurs
 
